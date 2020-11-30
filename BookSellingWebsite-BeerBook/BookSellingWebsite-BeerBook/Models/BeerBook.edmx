@@ -1,0 +1,664 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BEERBOOKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account_">
+          <Key>
+            <PropertyRef Name="AccID_" />
+          </Key>
+          <Property Name="AccID_" Type="int" Nullable="false" />
+          <Property Name="Username_" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email_" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password_" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated_" Type="smalldatetime" />
+          <Property Name="Status_" Type="bit" />
+          <Property Name="CustomerID_" Type="int" Nullable="false" />
+          <Property Name="AuID_" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author_">
+          <Key>
+            <PropertyRef Name="AuthorID_" />
+          </Key>
+          <Property Name="AuthorID_" Type="int" Nullable="false" />
+          <Property Name="Name_" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationality_" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BirthDate_" Type="smalldatetime" />
+          <Property Name="Sex_" Type="bit" />
+          <Property Name="Description_" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Authorization_">
+          <Key>
+            <PropertyRef Name="AuID_" />
+          </Key>
+          <Property Name="AuID_" Type="int" Nullable="false" />
+          <Property Name="AuName_" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description_" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Book_">
+          <Key>
+            <PropertyRef Name="BookID_" />
+          </Key>
+          <Property Name="BookID_" Type="int" Nullable="false" />
+          <Property Name="Name_" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Quantity_" Type="bigint" Nullable="false" />
+          <Property Name="Price_" Type="bigint" Nullable="false" />
+          <Property Name="Description_" Type="nvarchar" MaxLength="200" />
+          <Property Name="AuthorID_" Type="int" Nullable="false" />
+          <Property Name="BhID_" Type="int" Nullable="false" />
+          <Property Name="Language_" Type="nvarchar" MaxLength="20" />
+          <Property Name="Image_" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="BookHouse_">
+          <Key>
+            <PropertyRef Name="BhID_" />
+          </Key>
+          <Property Name="BhID_" Type="int" Nullable="false" />
+          <Property Name="Name_" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address_" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description_" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Customer_">
+          <Key>
+            <PropertyRef Name="CustomerID_" />
+          </Key>
+          <Property Name="CustomerID_" Type="int" Nullable="false" />
+          <Property Name="Name_" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate_" Type="datetime" />
+          <Property Name="Sex_" Type="bit" />
+          <Property Name="Email_" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone_" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Address_" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PayMethod_">
+          <Key>
+            <PropertyRef Name="PayID_" />
+          </Key>
+          <Property Name="PayID_" Type="int" Nullable="false" />
+          <Property Name="Name_" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetails_">
+          <Key>
+            <PropertyRef Name="CustomerID_" />
+            <PropertyRef Name="PoID_" />
+            <PropertyRef Name="BookID_" />
+          </Key>
+          <Property Name="CustomerID_" Type="int" Nullable="false" />
+          <Property Name="PoID_" Type="int" Nullable="false" />
+          <Property Name="BookID_" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrders_">
+          <Key>
+            <PropertyRef Name="PoID_" />
+          </Key>
+          <Property Name="PoID_" Type="int" Nullable="false" />
+          <Property Name="OrderDate_" Type="datetime" />
+          <Property Name="DeliveryDate_" Type="datetime" />
+          <Property Name="Status_" Type="bit" />
+          <Property Name="PayID_" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__Account___AuID___276EDEB3">
+          <End Role="Authorization_" Type="Self.Authorization_" Multiplicity="1" />
+          <End Role="Account_" Type="Self.Account_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization_">
+              <PropertyRef Name="AuID_" />
+            </Principal>
+            <Dependent Role="Account_">
+              <PropertyRef Name="AuID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account___Custom__267ABA7A">
+          <End Role="Customer_" Type="Self.Customer_" Multiplicity="1" />
+          <End Role="Account_" Type="Self.Account_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_">
+              <PropertyRef Name="CustomerID_" />
+            </Principal>
+            <Dependent Role="Account_">
+              <PropertyRef Name="CustomerID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book___AuthorID___286302EC">
+          <End Role="Author_" Type="Self.Author_" Multiplicity="1" />
+          <End Role="Book_" Type="Self.Book_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author_">
+              <PropertyRef Name="AuthorID_" />
+            </Principal>
+            <Dependent Role="Book_">
+              <PropertyRef Name="AuthorID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book___BhID___29572725">
+          <End Role="BookHouse_" Type="Self.BookHouse_" Multiplicity="1" />
+          <End Role="Book_" Type="Self.Book_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookHouse_">
+              <PropertyRef Name="BhID_" />
+            </Principal>
+            <Dependent Role="Book_">
+              <PropertyRef Name="BhID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__BookI__2D27B809">
+          <End Role="Book_" Type="Self.Book_" Multiplicity="1" />
+          <End Role="PurchaseOrderDetails_" Type="Self.PurchaseOrderDetails_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book_">
+              <PropertyRef Name="BookID_" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails_">
+              <PropertyRef Name="BookID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__Custo__2B3F6F97">
+          <End Role="Customer_" Type="Self.Customer_" Multiplicity="1" />
+          <End Role="PurchaseOrderDetails_" Type="Self.PurchaseOrderDetails_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_">
+              <PropertyRef Name="CustomerID_" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails_">
+              <PropertyRef Name="CustomerID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__PayID__2A4B4B5E">
+          <End Role="PayMethod_" Type="Self.PayMethod_" Multiplicity="1" />
+          <End Role="PurchaseOrders_" Type="Self.PurchaseOrders_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayMethod_">
+              <PropertyRef Name="PayID_" />
+            </Principal>
+            <Dependent Role="PurchaseOrders_">
+              <PropertyRef Name="PayID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__PoID___2C3393D0">
+          <End Role="PurchaseOrders_" Type="Self.PurchaseOrders_" Multiplicity="1" />
+          <End Role="PurchaseOrderDetails_" Type="Self.PurchaseOrderDetails_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrders_">
+              <PropertyRef Name="PoID_" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails_">
+              <PropertyRef Name="PoID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BEERBOOKModelStoreContainer">
+          <EntitySet Name="Account_" EntityType="Self.Account_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author_" EntityType="Self.Author_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authorization_" EntityType="Self.Authorization_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book_" EntityType="Self.Book_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookHouse_" EntityType="Self.BookHouse_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_" EntityType="Self.Customer_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayMethod_" EntityType="Self.PayMethod_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderDetails_" EntityType="Self.PurchaseOrderDetails_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrders_" EntityType="Self.PurchaseOrders_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account___AuID___276EDEB3" Association="Self.FK__Account___AuID___276EDEB3">
+            <End Role="Authorization_" EntitySet="Authorization_" />
+            <End Role="Account_" EntitySet="Account_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Account___Custom__267ABA7A" Association="Self.FK__Account___Custom__267ABA7A">
+            <End Role="Customer_" EntitySet="Customer_" />
+            <End Role="Account_" EntitySet="Account_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book___AuthorID___286302EC" Association="Self.FK__Book___AuthorID___286302EC">
+            <End Role="Author_" EntitySet="Author_" />
+            <End Role="Book_" EntitySet="Book_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book___BhID___29572725" Association="Self.FK__Book___BhID___29572725">
+            <End Role="BookHouse_" EntitySet="BookHouse_" />
+            <End Role="Book_" EntitySet="Book_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__BookI__2D27B809" Association="Self.FK__PurchaseO__BookI__2D27B809">
+            <End Role="Book_" EntitySet="Book_" />
+            <End Role="PurchaseOrderDetails_" EntitySet="PurchaseOrderDetails_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__Custo__2B3F6F97" Association="Self.FK__PurchaseO__Custo__2B3F6F97">
+            <End Role="Customer_" EntitySet="Customer_" />
+            <End Role="PurchaseOrderDetails_" EntitySet="PurchaseOrderDetails_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__PayID__2A4B4B5E" Association="Self.FK__PurchaseO__PayID__2A4B4B5E">
+            <End Role="PayMethod_" EntitySet="PayMethod_" />
+            <End Role="PurchaseOrders_" EntitySet="PurchaseOrders_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__PoID___2C3393D0" Association="Self.FK__PurchaseO__PoID___2C3393D0">
+            <End Role="PurchaseOrders_" EntitySet="PurchaseOrders_" />
+            <End Role="PurchaseOrderDetails_" EntitySet="PurchaseOrderDetails_" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BEERBOOKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account_">
+          <Key>
+            <PropertyRef Name="AccID_" />
+          </Key>
+          <Property Name="AccID_" Type="Int32" Nullable="false" />
+          <Property Name="Username_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated_" Type="DateTime" Precision="0" />
+          <Property Name="Status_" Type="Boolean" />
+          <Property Name="CustomerID_" Type="Int32" Nullable="false" />
+          <Property Name="AuID_" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authorization_" Relationship="Self.FK__Account___AuID___276EDEB3" FromRole="Account_" ToRole="Authorization_" />
+          <NavigationProperty Name="Customer_" Relationship="Self.FK__Account___Custom__267ABA7A" FromRole="Account_" ToRole="Customer_" />
+        </EntityType>
+        <EntityType Name="Author_">
+          <Key>
+            <PropertyRef Name="AuthorID_" />
+          </Key>
+          <Property Name="AuthorID_" Type="Int32" Nullable="false" />
+          <Property Name="Name_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nationality_" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate_" Type="DateTime" Precision="0" />
+          <Property Name="Sex_" Type="Boolean" />
+          <Property Name="Description_" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Book_" Relationship="Self.FK__Book___AuthorID___286302EC" FromRole="Author_" ToRole="Book_" />
+        </EntityType>
+        <EntityType Name="Authorization_">
+          <Key>
+            <PropertyRef Name="AuID_" />
+          </Key>
+          <Property Name="AuID_" Type="Int32" Nullable="false" />
+          <Property Name="AuName_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account_" Relationship="Self.FK__Account___AuID___276EDEB3" FromRole="Authorization_" ToRole="Account_" />
+        </EntityType>
+        <EntityType Name="Book_">
+          <Key>
+            <PropertyRef Name="BookID_" />
+          </Key>
+          <Property Name="BookID_" Type="Int32" Nullable="false" />
+          <Property Name="Name_" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity_" Type="Int64" Nullable="false" />
+          <Property Name="Price_" Type="Int64" Nullable="false" />
+          <Property Name="Description_" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorID_" Type="Int32" Nullable="false" />
+          <Property Name="BhID_" Type="Int32" Nullable="false" />
+          <Property Name="Language_" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Image_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Author_" Relationship="Self.FK__Book___AuthorID___286302EC" FromRole="Book_" ToRole="Author_" />
+          <NavigationProperty Name="BookHouse_" Relationship="Self.FK__Book___BhID___29572725" FromRole="Book_" ToRole="BookHouse_" />
+          <NavigationProperty Name="PurchaseOrderDetails_" Relationship="Self.FK__PurchaseO__BookI__2D27B809" FromRole="Book_" ToRole="PurchaseOrderDetails_" />
+        </EntityType>
+        <EntityType Name="BookHouse_">
+          <Key>
+            <PropertyRef Name="BhID_" />
+          </Key>
+          <Property Name="BhID_" Type="Int32" Nullable="false" />
+          <Property Name="Name_" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address_" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description_" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Book_" Relationship="Self.FK__Book___BhID___29572725" FromRole="BookHouse_" ToRole="Book_" />
+        </EntityType>
+        <EntityType Name="Customer_">
+          <Key>
+            <PropertyRef Name="CustomerID_" />
+          </Key>
+          <Property Name="CustomerID_" Type="Int32" Nullable="false" />
+          <Property Name="Name_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate_" Type="DateTime" Precision="3" />
+          <Property Name="Sex_" Type="Boolean" />
+          <Property Name="Email_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone_" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address_" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Account_" Relationship="Self.FK__Account___Custom__267ABA7A" FromRole="Customer_" ToRole="Account_" />
+          <NavigationProperty Name="PurchaseOrderDetails_" Relationship="Self.FK__PurchaseO__Custo__2B3F6F97" FromRole="Customer_" ToRole="PurchaseOrderDetails_" />
+        </EntityType>
+        <EntityType Name="PayMethod_">
+          <Key>
+            <PropertyRef Name="PayID_" />
+          </Key>
+          <Property Name="PayID_" Type="Int32" Nullable="false" />
+          <Property Name="Name_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PurchaseOrders_" Relationship="Self.FK__PurchaseO__PayID__2A4B4B5E" FromRole="PayMethod_" ToRole="PurchaseOrders_" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetails_">
+          <Key>
+            <PropertyRef Name="CustomerID_" />
+            <PropertyRef Name="PoID_" />
+            <PropertyRef Name="BookID_" />
+          </Key>
+          <Property Name="CustomerID_" Type="Int32" Nullable="false" />
+          <Property Name="PoID_" Type="Int32" Nullable="false" />
+          <Property Name="BookID_" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Book_" Relationship="Self.FK__PurchaseO__BookI__2D27B809" FromRole="PurchaseOrderDetails_" ToRole="Book_" />
+          <NavigationProperty Name="Customer_" Relationship="Self.FK__PurchaseO__Custo__2B3F6F97" FromRole="PurchaseOrderDetails_" ToRole="Customer_" />
+          <NavigationProperty Name="PurchaseOrders_" Relationship="Self.FK__PurchaseO__PoID___2C3393D0" FromRole="PurchaseOrderDetails_" ToRole="PurchaseOrders_" />
+        </EntityType>
+        <EntityType Name="PurchaseOrders_">
+          <Key>
+            <PropertyRef Name="PoID_" />
+          </Key>
+          <Property Name="PoID_" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate_" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryDate_" Type="DateTime" Precision="3" />
+          <Property Name="Status_" Type="Boolean" />
+          <Property Name="PayID_" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PayMethod_" Relationship="Self.FK__PurchaseO__PayID__2A4B4B5E" FromRole="PurchaseOrders_" ToRole="PayMethod_" />
+          <NavigationProperty Name="PurchaseOrderDetails_" Relationship="Self.FK__PurchaseO__PoID___2C3393D0" FromRole="PurchaseOrders_" ToRole="PurchaseOrderDetails_" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Account___AuID___276EDEB3">
+          <End Role="Authorization_" Type="Self.Authorization_" Multiplicity="1" />
+          <End Role="Account_" Type="Self.Account_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization_">
+              <PropertyRef Name="AuID_" />
+            </Principal>
+            <Dependent Role="Account_">
+              <PropertyRef Name="AuID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account___Custom__267ABA7A">
+          <End Role="Customer_" Type="Self.Customer_" Multiplicity="1" />
+          <End Role="Account_" Type="Self.Account_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_">
+              <PropertyRef Name="CustomerID_" />
+            </Principal>
+            <Dependent Role="Account_">
+              <PropertyRef Name="CustomerID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book___AuthorID___286302EC">
+          <End Role="Author_" Type="Self.Author_" Multiplicity="1" />
+          <End Role="Book_" Type="Self.Book_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author_">
+              <PropertyRef Name="AuthorID_" />
+            </Principal>
+            <Dependent Role="Book_">
+              <PropertyRef Name="AuthorID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book___BhID___29572725">
+          <End Role="BookHouse_" Type="Self.BookHouse_" Multiplicity="1" />
+          <End Role="Book_" Type="Self.Book_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookHouse_">
+              <PropertyRef Name="BhID_" />
+            </Principal>
+            <Dependent Role="Book_">
+              <PropertyRef Name="BhID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__BookI__2D27B809">
+          <End Role="Book_" Type="Self.Book_" Multiplicity="1" />
+          <End Role="PurchaseOrderDetails_" Type="Self.PurchaseOrderDetails_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book_">
+              <PropertyRef Name="BookID_" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails_">
+              <PropertyRef Name="BookID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__Custo__2B3F6F97">
+          <End Role="Customer_" Type="Self.Customer_" Multiplicity="1" />
+          <End Role="PurchaseOrderDetails_" Type="Self.PurchaseOrderDetails_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_">
+              <PropertyRef Name="CustomerID_" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails_">
+              <PropertyRef Name="CustomerID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__PayID__2A4B4B5E">
+          <End Role="PayMethod_" Type="Self.PayMethod_" Multiplicity="1" />
+          <End Role="PurchaseOrders_" Type="Self.PurchaseOrders_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayMethod_">
+              <PropertyRef Name="PayID_" />
+            </Principal>
+            <Dependent Role="PurchaseOrders_">
+              <PropertyRef Name="PayID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__PoID___2C3393D0">
+          <End Role="PurchaseOrders_" Type="Self.PurchaseOrders_" Multiplicity="1" />
+          <End Role="PurchaseOrderDetails_" Type="Self.PurchaseOrderDetails_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrders_">
+              <PropertyRef Name="PoID_" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails_">
+              <PropertyRef Name="PoID_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BEERBOOKEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account_" EntityType="Self.Account_" />
+          <EntitySet Name="Author_" EntityType="Self.Author_" />
+          <EntitySet Name="Authorization_" EntityType="Self.Authorization_" />
+          <EntitySet Name="Book_" EntityType="Self.Book_" />
+          <EntitySet Name="BookHouse_" EntityType="Self.BookHouse_" />
+          <EntitySet Name="Customer_" EntityType="Self.Customer_" />
+          <EntitySet Name="PayMethod_" EntityType="Self.PayMethod_" />
+          <EntitySet Name="PurchaseOrderDetails_" EntityType="Self.PurchaseOrderDetails_" />
+          <EntitySet Name="PurchaseOrders_" EntityType="Self.PurchaseOrders_" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__Account___AuID___276EDEB3" Association="Self.FK__Account___AuID___276EDEB3">
+            <End Role="Authorization_" EntitySet="Authorization_" />
+            <End Role="Account_" EntitySet="Account_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Account___Custom__267ABA7A" Association="Self.FK__Account___Custom__267ABA7A">
+            <End Role="Customer_" EntitySet="Customer_" />
+            <End Role="Account_" EntitySet="Account_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book___AuthorID___286302EC" Association="Self.FK__Book___AuthorID___286302EC">
+            <End Role="Author_" EntitySet="Author_" />
+            <End Role="Book_" EntitySet="Book_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book___BhID___29572725" Association="Self.FK__Book___BhID___29572725">
+            <End Role="BookHouse_" EntitySet="BookHouse_" />
+            <End Role="Book_" EntitySet="Book_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__BookI__2D27B809" Association="Self.FK__PurchaseO__BookI__2D27B809">
+            <End Role="Book_" EntitySet="Book_" />
+            <End Role="PurchaseOrderDetails_" EntitySet="PurchaseOrderDetails_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__Custo__2B3F6F97" Association="Self.FK__PurchaseO__Custo__2B3F6F97">
+            <End Role="Customer_" EntitySet="Customer_" />
+            <End Role="PurchaseOrderDetails_" EntitySet="PurchaseOrderDetails_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__PayID__2A4B4B5E" Association="Self.FK__PurchaseO__PayID__2A4B4B5E">
+            <End Role="PayMethod_" EntitySet="PayMethod_" />
+            <End Role="PurchaseOrders_" EntitySet="PurchaseOrders_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__PoID___2C3393D0" Association="Self.FK__PurchaseO__PoID___2C3393D0">
+            <End Role="PurchaseOrders_" EntitySet="PurchaseOrders_" />
+            <End Role="PurchaseOrderDetails_" EntitySet="PurchaseOrderDetails_" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BEERBOOKModelStoreContainer" CdmEntityContainer="BEERBOOKEntities">
+          <EntitySetMapping Name="Account_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.Account_">
+              <MappingFragment StoreEntitySet="Account_">
+                <ScalarProperty Name="AccID_" ColumnName="AccID_" />
+                <ScalarProperty Name="Username_" ColumnName="Username_" />
+                <ScalarProperty Name="Email_" ColumnName="Email_" />
+                <ScalarProperty Name="Password_" ColumnName="Password_" />
+                <ScalarProperty Name="DateCreated_" ColumnName="DateCreated_" />
+                <ScalarProperty Name="Status_" ColumnName="Status_" />
+                <ScalarProperty Name="CustomerID_" ColumnName="CustomerID_" />
+                <ScalarProperty Name="AuID_" ColumnName="AuID_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Author_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.Author_">
+              <MappingFragment StoreEntitySet="Author_">
+                <ScalarProperty Name="AuthorID_" ColumnName="AuthorID_" />
+                <ScalarProperty Name="Name_" ColumnName="Name_" />
+                <ScalarProperty Name="Nationality_" ColumnName="Nationality_" />
+                <ScalarProperty Name="BirthDate_" ColumnName="BirthDate_" />
+                <ScalarProperty Name="Sex_" ColumnName="Sex_" />
+                <ScalarProperty Name="Description_" ColumnName="Description_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authorization_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.Authorization_">
+              <MappingFragment StoreEntitySet="Authorization_">
+                <ScalarProperty Name="AuID_" ColumnName="AuID_" />
+                <ScalarProperty Name="AuName_" ColumnName="AuName_" />
+                <ScalarProperty Name="Description_" ColumnName="Description_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.Book_">
+              <MappingFragment StoreEntitySet="Book_">
+                <ScalarProperty Name="BookID_" ColumnName="BookID_" />
+                <ScalarProperty Name="Name_" ColumnName="Name_" />
+                <ScalarProperty Name="Quantity_" ColumnName="Quantity_" />
+                <ScalarProperty Name="Price_" ColumnName="Price_" />
+                <ScalarProperty Name="Description_" ColumnName="Description_" />
+                <ScalarProperty Name="AuthorID_" ColumnName="AuthorID_" />
+                <ScalarProperty Name="BhID_" ColumnName="BhID_" />
+                <ScalarProperty Name="Language_" ColumnName="Language_" />
+                <ScalarProperty Name="Image_" ColumnName="Image_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookHouse_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.BookHouse_">
+              <MappingFragment StoreEntitySet="BookHouse_">
+                <ScalarProperty Name="BhID_" ColumnName="BhID_" />
+                <ScalarProperty Name="Name_" ColumnName="Name_" />
+                <ScalarProperty Name="Address_" ColumnName="Address_" />
+                <ScalarProperty Name="Description_" ColumnName="Description_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.Customer_">
+              <MappingFragment StoreEntitySet="Customer_">
+                <ScalarProperty Name="CustomerID_" ColumnName="CustomerID_" />
+                <ScalarProperty Name="Name_" ColumnName="Name_" />
+                <ScalarProperty Name="BirthDate_" ColumnName="BirthDate_" />
+                <ScalarProperty Name="Sex_" ColumnName="Sex_" />
+                <ScalarProperty Name="Email_" ColumnName="Email_" />
+                <ScalarProperty Name="Phone_" ColumnName="Phone_" />
+                <ScalarProperty Name="Address_" ColumnName="Address_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayMethod_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.PayMethod_">
+              <MappingFragment StoreEntitySet="PayMethod_">
+                <ScalarProperty Name="PayID_" ColumnName="PayID_" />
+                <ScalarProperty Name="Name_" ColumnName="Name_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderDetails_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.PurchaseOrderDetails_">
+              <MappingFragment StoreEntitySet="PurchaseOrderDetails_">
+                <ScalarProperty Name="CustomerID_" ColumnName="CustomerID_" />
+                <ScalarProperty Name="PoID_" ColumnName="PoID_" />
+                <ScalarProperty Name="BookID_" ColumnName="BookID_" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders_">
+            <EntityTypeMapping TypeName="BEERBOOKModel.PurchaseOrders_">
+              <MappingFragment StoreEntitySet="PurchaseOrders_">
+                <ScalarProperty Name="PoID_" ColumnName="PoID_" />
+                <ScalarProperty Name="OrderDate_" ColumnName="OrderDate_" />
+                <ScalarProperty Name="DeliveryDate_" ColumnName="DeliveryDate_" />
+                <ScalarProperty Name="Status_" ColumnName="Status_" />
+                <ScalarProperty Name="PayID_" ColumnName="PayID_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BEERBOOKModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

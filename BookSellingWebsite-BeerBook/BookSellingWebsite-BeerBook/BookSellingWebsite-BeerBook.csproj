@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{684BB569-0347-4985-9113-43D71CA2FB59}</ProjectGuid>
+    <ProjectGuid>{635FA4BF-CB39-46F4-AE58-BCAB686310DE}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44309</IISExpressSSLPort>
+    <IISExpressSSLPort>44373</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,9 +128,64 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorController.cs" />
+    <Compile Include="Controllers\AuthorizationController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BookHouseController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\PayMethodController.cs" />
+    <Compile Include="Controllers\PurchaseOrderController.cs" />
+    <Compile Include="Controllers\PurchaseOrderDetailsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Authorization_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Author_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeerBook.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BeerBook.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeerBook.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeerBook.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BeerBook.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookHouse_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Book_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PayMethod_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseOrderDetails_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseOrders_.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>BeerBook.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,6 +237,7 @@
     <Content Include="assets\images\products\dacnhantam.jpg" />
     <Content Include="assets\images\products\dragonball.jpg" />
     <Content Include="assets\images\products\onepunchman.jpg" />
+    <Content Include="assets\images\slider\1.jpg" />
     <Content Include="assets\js\ajax-mail.js" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\imagesloaded.pkgd.min.js" />
@@ -196,7 +260,6 @@
     <Content Include="assets\js\venobox.min.js" />
     <Content Include="assets\js\waypoints.min.js" />
     <Content Include="assets\js\wow.min.js" />
-    <Content Include="assets\images\slider\1.jpg" />
     <Content Include="assets\style.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -206,6 +269,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\BookImages\dragonball.jpg" />
+    <Content Include="Models\BeerBook.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BeerBook.edmx</DependentUpon>
+      <LastGenOutput>BeerBook.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BeerBook.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BeerBook.edmx</DependentUpon>
+      <LastGenOutput>BeerBook.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\fonts\fontawesome-webfont3e6e.eot" />
@@ -216,6 +290,13 @@
     <Content Include="assets\fonts\Material-Design-Iconic-Fontd1f1.ttf" />
     <Content Include="assets\fonts\Material-Design-Iconic-Fontd1f1.woff" />
     <Content Include="assets\fonts\Material-Design-Iconic-Fontd1f1.woff2" />
+    <EntityDeploy Include="Models\BeerBook.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BeerBook.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BeerBook.edmx.diagram">
+      <DependentUpon>BeerBook.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -236,19 +317,35 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\CheckOut.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Home\ShoppingCart.cshtml" />
-    <Content Include="Views\Home\CheckOut.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Book\ListBook.cshtml" />
+    <Content Include="Views\Book\EditBook.cshtml" />
+    <Content Include="Views\Book\AddBook.cshtml" />
+    <Content Include="Views\Book\DetailBook.cshtml" />
+    <Content Include="Views\Customer\ListCustomer.cshtml" />
+    <Content Include="Views\Author\ListAuthor.cshtml" />
+    <Content Include="Views\Author\EditAuthor.cshtml" />
+    <Content Include="Views\Author\AddAuthor.cshtml" />
+    <Content Include="Views\Author\DetailAuthor.cshtml" />
+    <Content Include="Views\Customer\AddCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\images\logo\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Authorization\" />
+    <Folder Include="Views\BookHouse\" />
+    <Folder Include="Views\Main\" />
+    <Folder Include="Views\PayMethod\" />
+    <Folder Include="Views\PurchaseOder\" />
+    <Folder Include="Views\PurchaseOrderDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -262,6 +359,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -279,9 +379,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57803</DevelopmentServerPort>
+          <DevelopmentServerPort>56881</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44309/</IISUrl>
+          <IISUrl>https://localhost:44373/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

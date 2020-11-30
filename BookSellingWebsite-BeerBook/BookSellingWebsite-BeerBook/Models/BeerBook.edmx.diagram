@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87e245b71fd04486ba373ab094617a57" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="BEERBOOKModel.Account_" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.Author_" Width="1.5" PointX="7" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.Authorization_" Width="1.5" PointX="0.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.Book_" Width="1.5" PointX="4.625" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.BookHouse_" Width="1.5" PointX="7" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.Customer_" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.PayMethod_" Width="1.5" PointX="9.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.PurchaseOrderDetails_" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.PurchaseOrders_" Width="1.5" PointX="7.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BEERBOOKModel.sysdiagram" Width="1.5" PointX="10.625" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="BEERBOOKModel.FK__Account___AuID___276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="BEERBOOKModel.FK__Account___Custom__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="BEERBOOKModel.FK__Book___AuthorID___286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="BEERBOOKModel.FK__Book___BhID___29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="BEERBOOKModel.FK__PurchaseO__BookI__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="BEERBOOKModel.FK__PurchaseO__Custo__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="BEERBOOKModel.FK__PurchaseO__PayID__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="BEERBOOKModel.FK__PurchaseO__PoID___2C3393D0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

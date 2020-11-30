@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BookSellingWebsite_BeerBook.Models.Book_>
+
+@{
+    Layout = null;
+    ViewBag.Title = "ListBook";
+}
+
+<h2>ListBook</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddBook","Book")
+</p>
+<table class="table" style="border:solid 1px black">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookID_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorID_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BhID_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Language_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookID_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorID_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BhID_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Language_)
+        </td>
+        <td>
+            <img src="@Url.Content("~/Images/BookImages/"+ item.Image_)" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditBook","Book", new { id=item.BookID_}, null) |
+            @Html.ActionLink("Details", "DetailBook","Book", new {  id=item.BookID_}, null) |
+            @Html.ActionLink("Delete", "DeleteBook","Book", new { id=item.BookID_}, null)
+        </td>
+    </tr>
+}
+
+</table>

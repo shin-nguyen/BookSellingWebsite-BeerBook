@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BookSellingWebsite_BeerBook.Models.Customer_>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address_)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address_)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID_ }) |
+                @Html.ActionLink("Details", "Details", new { id=item.CustomerID_ }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID_ })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

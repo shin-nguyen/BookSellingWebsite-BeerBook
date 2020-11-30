@@ -1,0 +1,100 @@
+﻿@model BookSellingWebsite_BeerBook.Models.Book_
+
+@{
+    Layout = null;
+}
+
+<h2>EditBook</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.BookID_)
+
+
+
+    <table>
+        <tr>
+            <td>
+                Name:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Name_, new { @class = "form-control", placehoder = "Name" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Quantity:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Quantity_, new { @class = "form-control", placehoder = "Quantity" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Price:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Price_, new { @class = "form-control", placehoder = "Price" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Description:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Description_, new { @class = "form-control", placehoder = "Description" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                AuthorID:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.AuthorID_, new { @class = "form-control", placehoder = "AuthorID" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                BookHouseID:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.BhID_, new { @class = "form-control", placehoder = "BookHouseID" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Language:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Language_, new { @class = "form-control", placehoder = "Language" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Image:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Image_, new { @class = "form-control", placehoder = "Image" })
+            </td>
+        </tr>
+
+        <tr style="text-align:center;padding-top:20px">
+            <td colspan="2">
+                <input type="submit" value="Save Book" class="btn btn-danger" />
+            </td>
+        </tr>
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ListBook")
+</div>

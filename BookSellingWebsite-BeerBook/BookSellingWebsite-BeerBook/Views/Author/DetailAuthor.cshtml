@@ -1,0 +1,66 @@
+﻿@model BookSellingWebsite_BeerBook.Models.Author_
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DetailAuthor</title>
+</head>
+<body>
+    <div>
+        <h4>Author_</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name_)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Name_)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Nationality_)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nationality_)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BirthDate_)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BirthDate_)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sex_)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sex_)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description_)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description_)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.AuthorID_ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

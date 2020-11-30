@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BookSellingWebsite_BeerBook.Models.Author_>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListAuthor</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("AddAuthor", "AddAuthor")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nationality_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description_)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description_)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditAuthor","Author" ,new { id=item.AuthorID_ },null) |
+                @Html.ActionLink("Detail", "DetailAuthor","Author", new { id=item.AuthorID_ },null) |
+                @Html.ActionLink("Delete", "DeleteAuthor","Author", new { id=item.AuthorID_ },null)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
