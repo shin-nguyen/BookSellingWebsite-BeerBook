@@ -88,3 +88,20 @@ amount int,
 order_stt_fk int references tbl_status(stt_id),
 constraint order_PK primary key(order_fk_cusid, order_fk_bookid, order_time));
 go
+
+--add default acc
+insert into tbl_role values ('Admin','chu cua hang');
+insert into tbl_role values ('Shipper','nguoi van chuyen');
+insert into tbl_role values ('User','nguoi dung');
+go
+
+insert into tbl_account values ('admin','gFuYE2Bpl7A=',1)
+insert into tbl_account values ('shipper','gFuYE2Bpl7A=',2)
+insert into tbl_account values ('user','gFuYE2Bpl7A=',3)
+go
+
+insert into tbl_customer values ('Nghia Dang','0364956694', 'Thu Duc, TP.HCM', 3)
+insert into tbl_customer values ('Tuan Nhan', '0547327432', 'Thu Duc, TP.HCM', 2)
+go
+
+
