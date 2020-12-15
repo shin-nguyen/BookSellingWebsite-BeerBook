@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="dbbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="tbl_account">
           <Key>
             <PropertyRef Name="acc_id" />
@@ -143,7 +133,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_accou__acc_r__4CA06362">
+        <Association Name="FK__tbl_accou__acc_r__3A81B327">
           <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="0..1" />
           <End Role="tbl_account" Type="Self.tbl_account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -155,7 +145,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_book__book_f__5AEE82B9">
+        <Association Name="FK__tbl_book__book_f__48CFD27E">
           <End Role="tbl_author" Type="Self.tbl_author" Multiplicity="0..1" />
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -167,7 +157,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_book__book_f__5BE2A6F2">
+        <Association Name="FK__tbl_book__book_f__49C3F6B7">
           <End Role="tbl_publisher" Type="Self.tbl_publisher" Multiplicity="0..1" />
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -179,7 +169,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_book__book_f__5CD6CB2B">
+        <Association Name="FK__tbl_book__book_f__4AB81AF0">
           <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="0..1" />
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -191,7 +181,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_cart__cart_f__628FA481">
+        <Association Name="FK__tbl_cart__cart_f__5070F446">
           <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
           <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,7 +193,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_cart__cart_f__6383C8BA">
+        <Association Name="FK__tbl_cart__cart_f__5165187F">
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="1" />
           <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +205,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_custo__cus_a__4F7CD00D">
+        <Association Name="FK__tbl_custo__cus_a__3D5E1FD2">
           <End Role="tbl_account" Type="Self.tbl_account" Multiplicity="0..1" />
           <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -227,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_order__order__68487DD7">
+        <Association Name="FK__tbl_order__order__5629CD9C">
           <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
           <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -239,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_order__order__693CA210">
+        <Association Name="FK__tbl_order__order__571DF1D5">
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="1" />
           <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -251,7 +241,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_order__order__6A30C649">
+        <Association Name="FK__tbl_order__order__5812160E">
           <End Role="tbl_status" Type="Self.tbl_status" Multiplicity="0..1" />
           <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -264,7 +254,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="dbbookModelStoreContainer">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_account" EntityType="Self.tbl_account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_author" EntityType="Self.tbl_author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_avtofbook" EntityType="Self.tbl_avtofbook" Schema="dbo" store:Type="Tables" />
@@ -285,43 +274,43 @@
             <End Role="tbl_customer" EntitySet="tbl_customer" />
             <End Role="tbl_avtofcus" EntitySet="tbl_avtofcus" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_accou__acc_r__4CA06362" Association="Self.FK__tbl_accou__acc_r__4CA06362">
+          <AssociationSet Name="FK__tbl_accou__acc_r__3A81B327" Association="Self.FK__tbl_accou__acc_r__3A81B327">
             <End Role="tbl_role" EntitySet="tbl_role" />
             <End Role="tbl_account" EntitySet="tbl_account" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_book__book_f__5AEE82B9" Association="Self.FK__tbl_book__book_f__5AEE82B9">
+          <AssociationSet Name="FK__tbl_book__book_f__48CFD27E" Association="Self.FK__tbl_book__book_f__48CFD27E">
             <End Role="tbl_author" EntitySet="tbl_author" />
             <End Role="tbl_book" EntitySet="tbl_book" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_book__book_f__5BE2A6F2" Association="Self.FK__tbl_book__book_f__5BE2A6F2">
+          <AssociationSet Name="FK__tbl_book__book_f__49C3F6B7" Association="Self.FK__tbl_book__book_f__49C3F6B7">
             <End Role="tbl_publisher" EntitySet="tbl_publisher" />
             <End Role="tbl_book" EntitySet="tbl_book" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_book__book_f__5CD6CB2B" Association="Self.FK__tbl_book__book_f__5CD6CB2B">
+          <AssociationSet Name="FK__tbl_book__book_f__4AB81AF0" Association="Self.FK__tbl_book__book_f__4AB81AF0">
             <End Role="tbl_category" EntitySet="tbl_category" />
             <End Role="tbl_book" EntitySet="tbl_book" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_cart__cart_f__628FA481" Association="Self.FK__tbl_cart__cart_f__628FA481">
+          <AssociationSet Name="FK__tbl_cart__cart_f__5070F446" Association="Self.FK__tbl_cart__cart_f__5070F446">
             <End Role="tbl_customer" EntitySet="tbl_customer" />
             <End Role="tbl_cart" EntitySet="tbl_cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_cart__cart_f__6383C8BA" Association="Self.FK__tbl_cart__cart_f__6383C8BA">
+          <AssociationSet Name="FK__tbl_cart__cart_f__5165187F" Association="Self.FK__tbl_cart__cart_f__5165187F">
             <End Role="tbl_book" EntitySet="tbl_book" />
             <End Role="tbl_cart" EntitySet="tbl_cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_custo__cus_a__4F7CD00D" Association="Self.FK__tbl_custo__cus_a__4F7CD00D">
+          <AssociationSet Name="FK__tbl_custo__cus_a__3D5E1FD2" Association="Self.FK__tbl_custo__cus_a__3D5E1FD2">
             <End Role="tbl_account" EntitySet="tbl_account" />
             <End Role="tbl_customer" EntitySet="tbl_customer" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_order__order__68487DD7" Association="Self.FK__tbl_order__order__68487DD7">
+          <AssociationSet Name="FK__tbl_order__order__5629CD9C" Association="Self.FK__tbl_order__order__5629CD9C">
             <End Role="tbl_customer" EntitySet="tbl_customer" />
             <End Role="tbl_order" EntitySet="tbl_order" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_order__order__693CA210" Association="Self.FK__tbl_order__order__693CA210">
+          <AssociationSet Name="FK__tbl_order__order__571DF1D5" Association="Self.FK__tbl_order__order__571DF1D5">
             <End Role="tbl_book" EntitySet="tbl_book" />
             <End Role="tbl_order" EntitySet="tbl_order" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_order__order__6A30C649" Association="Self.FK__tbl_order__order__6A30C649">
+          <AssociationSet Name="FK__tbl_order__order__5812160E" Association="Self.FK__tbl_order__order__5812160E">
             <End Role="tbl_status" EntitySet="tbl_status" />
             <End Role="tbl_order" EntitySet="tbl_order" />
           </AssociationSet>
@@ -331,16 +320,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbbookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="tbl_account">
           <Key>
             <PropertyRef Name="acc_id" />
@@ -349,8 +328,8 @@
           <Property Name="acc_username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="acc_password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="acc_role_fk" Type="Int32" />
-          <NavigationProperty Name="tbl_role" Relationship="Self.FK__tbl_accou__acc_r__4CA06362" FromRole="tbl_account" ToRole="tbl_role" />
-          <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_custo__cus_a__4F7CD00D" FromRole="tbl_account" ToRole="tbl_customer" />
+          <NavigationProperty Name="tbl_role" Relationship="Self.FK__tbl_accou__acc_r__3A81B327" FromRole="tbl_account" ToRole="tbl_role" />
+          <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_custo__cus_a__3D5E1FD2" FromRole="tbl_account" ToRole="tbl_customer" />
         </EntityType>
         <EntityType Name="tbl_author">
           <Key>
@@ -359,7 +338,7 @@
           <Property Name="au_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="au_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="au_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_book__book_f__5AEE82B9" FromRole="tbl_author" ToRole="tbl_book" />
+          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_book__book_f__48CFD27E" FromRole="tbl_author" ToRole="tbl_book" />
         </EntityType>
         <EntityType Name="tbl_avtofbook">
           <Key>
@@ -388,12 +367,12 @@
           <Property Name="book_fk_auid" Type="Int32" />
           <Property Name="book_fk_puid" Type="Int32" />
           <Property Name="book_fk_cateid" Type="Int32" />
-          <NavigationProperty Name="tbl_author" Relationship="Self.FK__tbl_book__book_f__5AEE82B9" FromRole="tbl_book" ToRole="tbl_author" />
+          <NavigationProperty Name="tbl_author" Relationship="Self.FK__tbl_book__book_f__48CFD27E" FromRole="tbl_book" ToRole="tbl_author" />
           <NavigationProperty Name="tbl_avtofbook" Relationship="Self.avtofbookFK" FromRole="tbl_book" ToRole="tbl_avtofbook" />
-          <NavigationProperty Name="tbl_publisher" Relationship="Self.FK__tbl_book__book_f__5BE2A6F2" FromRole="tbl_book" ToRole="tbl_publisher" />
-          <NavigationProperty Name="tbl_category" Relationship="Self.FK__tbl_book__book_f__5CD6CB2B" FromRole="tbl_book" ToRole="tbl_category" />
-          <NavigationProperty Name="tbl_cart" Relationship="Self.FK__tbl_cart__cart_f__6383C8BA" FromRole="tbl_book" ToRole="tbl_cart" />
-          <NavigationProperty Name="tbl_order" Relationship="Self.FK__tbl_order__order__693CA210" FromRole="tbl_book" ToRole="tbl_order" />
+          <NavigationProperty Name="tbl_publisher" Relationship="Self.FK__tbl_book__book_f__49C3F6B7" FromRole="tbl_book" ToRole="tbl_publisher" />
+          <NavigationProperty Name="tbl_category" Relationship="Self.FK__tbl_book__book_f__4AB81AF0" FromRole="tbl_book" ToRole="tbl_category" />
+          <NavigationProperty Name="tbl_cart" Relationship="Self.FK__tbl_cart__cart_f__5165187F" FromRole="tbl_book" ToRole="tbl_cart" />
+          <NavigationProperty Name="tbl_order" Relationship="Self.FK__tbl_order__order__571DF1D5" FromRole="tbl_book" ToRole="tbl_order" />
         </EntityType>
         <EntityType Name="tbl_cart">
           <Key>
@@ -403,8 +382,8 @@
           <Property Name="cart_fk_cusid" Type="Int32" Nullable="false" />
           <Property Name="cart_fk_bookid" Type="Int32" Nullable="false" />
           <Property Name="cart_book_amount" Type="Int32" />
-          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_cart__cart_f__6383C8BA" FromRole="tbl_cart" ToRole="tbl_book" />
-          <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_cart__cart_f__628FA481" FromRole="tbl_cart" ToRole="tbl_customer" />
+          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_cart__cart_f__5165187F" FromRole="tbl_cart" ToRole="tbl_book" />
+          <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_cart__cart_f__5070F446" FromRole="tbl_cart" ToRole="tbl_customer" />
         </EntityType>
         <EntityType Name="tbl_category">
           <Key>
@@ -412,7 +391,7 @@
           </Key>
           <Property Name="cate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cate_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_book__book_f__5CD6CB2B" FromRole="tbl_category" ToRole="tbl_book" />
+          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_book__book_f__4AB81AF0" FromRole="tbl_category" ToRole="tbl_book" />
         </EntityType>
         <EntityType Name="tbl_customer">
           <Key>
@@ -423,10 +402,10 @@
           <Property Name="cus_phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="cus_address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="cus_acc_fk" Type="Int32" />
-          <NavigationProperty Name="tbl_account" Relationship="Self.FK__tbl_custo__cus_a__4F7CD00D" FromRole="tbl_customer" ToRole="tbl_account" />
+          <NavigationProperty Name="tbl_account" Relationship="Self.FK__tbl_custo__cus_a__3D5E1FD2" FromRole="tbl_customer" ToRole="tbl_account" />
           <NavigationProperty Name="tbl_avtofcus" Relationship="Self.avtofcusFK" FromRole="tbl_customer" ToRole="tbl_avtofcus" />
-          <NavigationProperty Name="tbl_cart" Relationship="Self.FK__tbl_cart__cart_f__628FA481" FromRole="tbl_customer" ToRole="tbl_cart" />
-          <NavigationProperty Name="tbl_order" Relationship="Self.FK__tbl_order__order__68487DD7" FromRole="tbl_customer" ToRole="tbl_order" />
+          <NavigationProperty Name="tbl_cart" Relationship="Self.FK__tbl_cart__cart_f__5070F446" FromRole="tbl_customer" ToRole="tbl_cart" />
+          <NavigationProperty Name="tbl_order" Relationship="Self.FK__tbl_order__order__5629CD9C" FromRole="tbl_customer" ToRole="tbl_order" />
         </EntityType>
         <EntityType Name="tbl_order">
           <Key>
@@ -439,9 +418,9 @@
           <Property Name="order_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="amount" Type="Int32" />
           <Property Name="order_stt_fk" Type="Int32" />
-          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_order__order__693CA210" FromRole="tbl_order" ToRole="tbl_book" />
-          <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_order__order__68487DD7" FromRole="tbl_order" ToRole="tbl_customer" />
-          <NavigationProperty Name="tbl_status" Relationship="Self.FK__tbl_order__order__6A30C649" FromRole="tbl_order" ToRole="tbl_status" />
+          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_order__order__571DF1D5" FromRole="tbl_order" ToRole="tbl_book" />
+          <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_order__order__5629CD9C" FromRole="tbl_order" ToRole="tbl_customer" />
+          <NavigationProperty Name="tbl_status" Relationship="Self.FK__tbl_order__order__5812160E" FromRole="tbl_order" ToRole="tbl_status" />
         </EntityType>
         <EntityType Name="tbl_publisher">
           <Key>
@@ -450,7 +429,7 @@
           <Property Name="pu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pu_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="pu_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_book__book_f__5BE2A6F2" FromRole="tbl_publisher" ToRole="tbl_book" />
+          <NavigationProperty Name="tbl_book" Relationship="Self.FK__tbl_book__book_f__49C3F6B7" FromRole="tbl_publisher" ToRole="tbl_book" />
         </EntityType>
         <EntityType Name="tbl_role">
           <Key>
@@ -459,7 +438,7 @@
           <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="role_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="role_description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_account" Relationship="Self.FK__tbl_accou__acc_r__4CA06362" FromRole="tbl_role" ToRole="tbl_account" />
+          <NavigationProperty Name="tbl_account" Relationship="Self.FK__tbl_accou__acc_r__3A81B327" FromRole="tbl_role" ToRole="tbl_account" />
         </EntityType>
         <EntityType Name="tbl_status">
           <Key>
@@ -467,9 +446,9 @@
           </Key>
           <Property Name="stt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="stt_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_order" Relationship="Self.FK__tbl_order__order__6A30C649" FromRole="tbl_status" ToRole="tbl_order" />
+          <NavigationProperty Name="tbl_order" Relationship="Self.FK__tbl_order__order__5812160E" FromRole="tbl_status" ToRole="tbl_order" />
         </EntityType>
-        <Association Name="FK__tbl_accou__acc_r__4CA06362">
+        <Association Name="FK__tbl_accou__acc_r__3A81B327">
           <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="0..1" />
           <End Role="tbl_account" Type="Self.tbl_account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -481,7 +460,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_custo__cus_a__4F7CD00D">
+        <Association Name="FK__tbl_custo__cus_a__3D5E1FD2">
           <End Role="tbl_account" Type="Self.tbl_account" Multiplicity="0..1" />
           <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -493,7 +472,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_book__book_f__5AEE82B9">
+        <Association Name="FK__tbl_book__book_f__48CFD27E">
           <End Role="tbl_author" Type="Self.tbl_author" Multiplicity="0..1" />
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -529,7 +508,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_book__book_f__5BE2A6F2">
+        <Association Name="FK__tbl_book__book_f__49C3F6B7">
           <End Role="tbl_publisher" Type="Self.tbl_publisher" Multiplicity="0..1" />
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -541,7 +520,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_book__book_f__5CD6CB2B">
+        <Association Name="FK__tbl_book__book_f__4AB81AF0">
           <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="0..1" />
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -553,7 +532,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_cart__cart_f__6383C8BA">
+        <Association Name="FK__tbl_cart__cart_f__5165187F">
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="1" />
           <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -565,7 +544,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_order__order__693CA210">
+        <Association Name="FK__tbl_order__order__571DF1D5">
           <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="1" />
           <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -577,7 +556,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_cart__cart_f__628FA481">
+        <Association Name="FK__tbl_cart__cart_f__5070F446">
           <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
           <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -589,7 +568,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_order__order__68487DD7">
+        <Association Name="FK__tbl_order__order__5629CD9C">
           <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
           <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -601,7 +580,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_order__order__6A30C649">
+        <Association Name="FK__tbl_order__order__5812160E">
           <End Role="tbl_status" Type="Self.tbl_status" Multiplicity="0..1" />
           <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -614,7 +593,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="dbbookEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tbl_account" EntityType="Self.tbl_account" />
           <EntitySet Name="tbl_author" EntityType="Self.tbl_author" />
           <EntitySet Name="tbl_avtofbook" EntityType="Self.tbl_avtofbook" />
@@ -627,15 +605,15 @@
           <EntitySet Name="tbl_publisher" EntityType="Self.tbl_publisher" />
           <EntitySet Name="tbl_role" EntityType="Self.tbl_role" />
           <EntitySet Name="tbl_status" EntityType="Self.tbl_status" />
-          <AssociationSet Name="FK__tbl_accou__acc_r__4CA06362" Association="Self.FK__tbl_accou__acc_r__4CA06362">
+          <AssociationSet Name="FK__tbl_accou__acc_r__3A81B327" Association="Self.FK__tbl_accou__acc_r__3A81B327">
             <End Role="tbl_role" EntitySet="tbl_role" />
             <End Role="tbl_account" EntitySet="tbl_account" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_custo__cus_a__4F7CD00D" Association="Self.FK__tbl_custo__cus_a__4F7CD00D">
+          <AssociationSet Name="FK__tbl_custo__cus_a__3D5E1FD2" Association="Self.FK__tbl_custo__cus_a__3D5E1FD2">
             <End Role="tbl_account" EntitySet="tbl_account" />
             <End Role="tbl_customer" EntitySet="tbl_customer" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_book__book_f__5AEE82B9" Association="Self.FK__tbl_book__book_f__5AEE82B9">
+          <AssociationSet Name="FK__tbl_book__book_f__48CFD27E" Association="Self.FK__tbl_book__book_f__48CFD27E">
             <End Role="tbl_author" EntitySet="tbl_author" />
             <End Role="tbl_book" EntitySet="tbl_book" />
           </AssociationSet>
@@ -647,31 +625,31 @@
             <End Role="tbl_customer" EntitySet="tbl_customer" />
             <End Role="tbl_avtofcus" EntitySet="tbl_avtofcus" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_book__book_f__5BE2A6F2" Association="Self.FK__tbl_book__book_f__5BE2A6F2">
+          <AssociationSet Name="FK__tbl_book__book_f__49C3F6B7" Association="Self.FK__tbl_book__book_f__49C3F6B7">
             <End Role="tbl_publisher" EntitySet="tbl_publisher" />
             <End Role="tbl_book" EntitySet="tbl_book" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_book__book_f__5CD6CB2B" Association="Self.FK__tbl_book__book_f__5CD6CB2B">
+          <AssociationSet Name="FK__tbl_book__book_f__4AB81AF0" Association="Self.FK__tbl_book__book_f__4AB81AF0">
             <End Role="tbl_category" EntitySet="tbl_category" />
             <End Role="tbl_book" EntitySet="tbl_book" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_cart__cart_f__6383C8BA" Association="Self.FK__tbl_cart__cart_f__6383C8BA">
+          <AssociationSet Name="FK__tbl_cart__cart_f__5165187F" Association="Self.FK__tbl_cart__cart_f__5165187F">
             <End Role="tbl_book" EntitySet="tbl_book" />
             <End Role="tbl_cart" EntitySet="tbl_cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_order__order__693CA210" Association="Self.FK__tbl_order__order__693CA210">
+          <AssociationSet Name="FK__tbl_order__order__571DF1D5" Association="Self.FK__tbl_order__order__571DF1D5">
             <End Role="tbl_book" EntitySet="tbl_book" />
             <End Role="tbl_order" EntitySet="tbl_order" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_cart__cart_f__628FA481" Association="Self.FK__tbl_cart__cart_f__628FA481">
+          <AssociationSet Name="FK__tbl_cart__cart_f__5070F446" Association="Self.FK__tbl_cart__cart_f__5070F446">
             <End Role="tbl_customer" EntitySet="tbl_customer" />
             <End Role="tbl_cart" EntitySet="tbl_cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_order__order__68487DD7" Association="Self.FK__tbl_order__order__68487DD7">
+          <AssociationSet Name="FK__tbl_order__order__5629CD9C" Association="Self.FK__tbl_order__order__5629CD9C">
             <End Role="tbl_customer" EntitySet="tbl_customer" />
             <End Role="tbl_order" EntitySet="tbl_order" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_order__order__6A30C649" Association="Self.FK__tbl_order__order__6A30C649">
+          <AssociationSet Name="FK__tbl_order__order__5812160E" Association="Self.FK__tbl_order__order__5812160E">
             <End Role="tbl_status" EntitySet="tbl_status" />
             <End Role="tbl_order" EntitySet="tbl_order" />
           </AssociationSet>
@@ -682,17 +660,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dbbookModelStoreContainer" CdmEntityContainer="dbbookEntities">
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="dbbookModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_account">
             <EntityTypeMapping TypeName="dbbookModel.tbl_account">
               <MappingFragment StoreEntitySet="tbl_account">

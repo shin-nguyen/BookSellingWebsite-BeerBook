@@ -25,7 +25,6 @@ namespace Book.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<tbl_account> tbl_account { get; set; }
         public DbSet<tbl_author> tbl_author { get; set; }
         public DbSet<tbl_avtofbook> tbl_avtofbook { get; set; }
