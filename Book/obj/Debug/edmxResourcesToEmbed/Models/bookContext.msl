@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbbookModelStoreContainer" CdmEntityContainer="dbbookEntities">
+    <EntitySetMapping Name="tbl_account">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_account">
+        <MappingFragment StoreEntitySet="tbl_account">
+          <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+          <ScalarProperty Name="acc_username" ColumnName="acc_username" />
+          <ScalarProperty Name="acc_password" ColumnName="acc_password" />
+          <ScalarProperty Name="acc_role_fk" ColumnName="acc_role_fk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_author">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_author">
+        <MappingFragment StoreEntitySet="tbl_author">
+          <ScalarProperty Name="au_id" ColumnName="au_id" />
+          <ScalarProperty Name="au_name" ColumnName="au_name" />
+          <ScalarProperty Name="au_description" ColumnName="au_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_avtofbook">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_avtofbook">
+        <MappingFragment StoreEntitySet="tbl_avtofbook">
+          <ScalarProperty Name="avtofbook_id" ColumnName="avtofbook_id" />
+          <ScalarProperty Name="avtofbook_img" ColumnName="avtofbook_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_avtofcus">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_avtofcus">
+        <MappingFragment StoreEntitySet="tbl_avtofcus">
+          <ScalarProperty Name="avtofcus_id" ColumnName="avtofcus_id" />
+          <ScalarProperty Name="avtofcus_img" ColumnName="avtofcus_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_book">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_book">
+        <MappingFragment StoreEntitySet="tbl_book">
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_description" ColumnName="book_description" />
+          <ScalarProperty Name="book_price" ColumnName="book_price" />
+          <ScalarProperty Name="book_fk_auid" ColumnName="book_fk_auid" />
+          <ScalarProperty Name="book_fk_puid" ColumnName="book_fk_puid" />
+          <ScalarProperty Name="book_fk_cateid" ColumnName="book_fk_cateid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_cart">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_cart">
+        <MappingFragment StoreEntitySet="tbl_cart">
+          <ScalarProperty Name="cart_fk_cusid" ColumnName="cart_fk_cusid" />
+          <ScalarProperty Name="cart_fk_bookid" ColumnName="cart_fk_bookid" />
+          <ScalarProperty Name="cart_book_amount" ColumnName="cart_book_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_category">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_category">
+        <MappingFragment StoreEntitySet="tbl_category">
+          <ScalarProperty Name="cate_id" ColumnName="cate_id" />
+          <ScalarProperty Name="cate_name" ColumnName="cate_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_customer">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_customer">
+        <MappingFragment StoreEntitySet="tbl_customer">
+          <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+          <ScalarProperty Name="cus_name" ColumnName="cus_name" />
+          <ScalarProperty Name="cus_phone" ColumnName="cus_phone" />
+          <ScalarProperty Name="cus_address" ColumnName="cus_address" />
+          <ScalarProperty Name="cus_acc_fk" ColumnName="cus_acc_fk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_order">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_order">
+        <MappingFragment StoreEntitySet="tbl_order">
+          <ScalarProperty Name="order_fk_cusid" ColumnName="order_fk_cusid" />
+          <ScalarProperty Name="order_fk_bookid" ColumnName="order_fk_bookid" />
+          <ScalarProperty Name="order_time" ColumnName="order_time" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="order_stt_fk" ColumnName="order_stt_fk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_publisher">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_publisher">
+        <MappingFragment StoreEntitySet="tbl_publisher">
+          <ScalarProperty Name="pu_id" ColumnName="pu_id" />
+          <ScalarProperty Name="pu_name" ColumnName="pu_name" />
+          <ScalarProperty Name="pu_description" ColumnName="pu_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_role">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_role">
+        <MappingFragment StoreEntitySet="tbl_role">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="role_description" ColumnName="role_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_status">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_status">
+        <MappingFragment StoreEntitySet="tbl_status">
+          <ScalarProperty Name="stt_id" ColumnName="stt_id" />
+          <ScalarProperty Name="stt_name" ColumnName="stt_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

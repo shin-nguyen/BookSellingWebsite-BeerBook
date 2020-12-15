@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_account">
           <Key>
             <PropertyRef Name="acc_id" />
           </Key>
           <Property Name="acc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="acc_username" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="acc_password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="acc_password" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="acc_role_fk" Type="int" />
         </EntityType>
         <EntityType Name="tbl_author">
@@ -315,8 +315,7 @@
             <End Role="tbl_order" EntitySet="tbl_order" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbbookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -326,7 +325,7 @@
           </Key>
           <Property Name="acc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="acc_username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="acc_password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acc_password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="acc_role_fk" Type="Int32" />
           <NavigationProperty Name="tbl_role" Relationship="Self.FK__tbl_accou__acc_r__3A81B327" FromRole="tbl_account" ToRole="tbl_role" />
           <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_custo__cus_a__3D5E1FD2" FromRole="tbl_account" ToRole="tbl_customer" />

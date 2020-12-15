@@ -45,13 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -147,15 +149,58 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Book.Context.cs">
+    <Compile Include="Models\bookContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Book.Context.tt</DependentUpon>
+      <DependentUpon>bookContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Book.Designer.cs">
+    <Compile Include="Models\bookContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Book.edmx</DependentUpon>
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bookContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bookContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cyptop.cs" />
+    <Compile Include="Models\RegisterClass.cs" />
+    <Compile Include="Models\tbl_account.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_author.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_avtofbook.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_avtofcus.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_book.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_cart.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_category.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_customer.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_order.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_publisher.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_role.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_status.cs">
+      <DependentUpon>bookContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,23 +209,133 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\SignIn\css\main.css" />
+    <Content Include="Content\SignIn\css\util.css" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\SignIn\fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="Content\SignIn\fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\SignIn\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\SignIn\images\bg-01.jpg" />
+    <Content Include="Content\SignIn\images\icons\favicon.ico" />
+    <Content Include="Content\SignIn\js\main.js" />
+    <Content Include="Content\SignIn\vendor\animate\animate.css" />
+    <Content Include="Content\SignIn\vendor\animsition\css\animsition.css" />
+    <Content Include="Content\SignIn\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Content\SignIn\vendor\animsition\js\animsition.js" />
+    <Content Include="Content\SignIn\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\popper.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Content\SignIn\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Content\SignIn\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Content\SignIn\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Content\SignIn\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Content\SignIn\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Content\SignIn\vendor\daterangepicker\moment.js" />
+    <Content Include="Content\SignIn\vendor\daterangepicker\moment.min.js" />
+    <Content Include="Content\SignIn\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Content\SignIn\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Content\SignIn\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Content\SignIn\vendor\select2\select2.css" />
+    <Content Include="Content\SignIn\vendor\select2\select2.js" />
+    <Content Include="Content\SignIn\vendor\select2\select2.min.css" />
+    <Content Include="Content\SignIn\vendor\select2\select2.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Book.Context.tt">
+    <Content Include="Models\bookContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Book.Context.cs</LastGenOutput>
+      <DependentUpon>bookContext.edmx</DependentUpon>
+      <LastGenOutput>bookContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\bookContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>bookContext.edmx</DependentUpon>
+      <LastGenOutput>bookContext.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Book.edmx">
+    <EntityDeploy Include="Models\bookContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Book.Designer.cs</LastGenOutput>
+      <LastGenOutput>bookContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\Book.edmx.diagram">
-      <DependentUpon>Book.edmx</DependentUpon>
-    </None>
+    <Content Include="Models\bookContext.edmx.diagram">
+      <DependentUpon>bookContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\SignIn\fonts\Desktop - Shortcut.lnk" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\SignIn\fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\SignIn\fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\SignIn\fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\SignIn\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -206,14 +361,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\HomeScreen\Index.cshtml" />
+    <Content Include="Views\Ship\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\API\" />
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\HomeScreen\" />
-    <Folder Include="Views\Ship\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

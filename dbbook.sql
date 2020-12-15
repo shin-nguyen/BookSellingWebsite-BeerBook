@@ -13,7 +13,7 @@ go
 create table tbl_account(
 acc_id int identity primary key,
 acc_username nvarchar(20) not null unique,
-acc_password nvarchar(20) not null,
+acc_password nvarchar(200) not null,
 acc_role_fk int references tbl_role(role_id)
 );
 go
@@ -103,5 +103,4 @@ go
 insert into tbl_customer values ('Nghia Dang','0364956694', 'Thu Duc, TP.HCM', 3)
 insert into tbl_customer values ('Tuan Nhan', '0547327432', 'Thu Duc, TP.HCM', 2)
 go
-
 
