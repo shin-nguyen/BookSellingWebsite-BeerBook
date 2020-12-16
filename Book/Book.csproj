@@ -143,6 +143,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\API\AvatarOfBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeScreenController.cs" />
     <Compile Include="Controllers\ShipController.cs" />
@@ -205,6 +206,78 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\animate.css" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\fontawesome-stars.css" />
+    <Content Include="Assets\css\helper.css" />
+    <Content Include="Assets\css\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Assets\css\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Assets\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\css\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Assets\css\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Assets\css\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Assets\css\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Assets\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\css\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Assets\css\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Assets\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Assets\css\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Assets\css\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Assets\css\jquery-ui.min.css" />
+    <Content Include="Assets\css\magnific-popup.css" />
+    <Content Include="Assets\css\material-design-iconic-font.min.css" />
+    <Content Include="Assets\css\meanmenu.css" />
+    <Content Include="Assets\css\nice-select.css" />
+    <Content Include="Assets\css\owl.carousel.min.css" />
+    <Content Include="Assets\css\owl.video.play.png" />
+    <Content Include="Assets\css\responsive.css" />
+    <Content Include="Assets\css\slick.css" />
+    <Content Include="Assets\css\venobox.css" />
+    <Content Include="Assets\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="Assets\images\banner\1.jpg" />
+    <Content Include="Assets\images\banner\2.jpg" />
+    <Content Include="Assets\images\favicon.png" />
+    <Content Include="Assets\images\icon\shipping\1.png" />
+    <Content Include="Assets\images\icon\shipping\2.png" />
+    <Content Include="Assets\images\icon\shipping\3.png" />
+    <Content Include="Assets\images\icon\shipping\4.png" />
+    <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\payment\1.png" />
+    <Content Include="Assets\images\products\1.jpg" />
+    <Content Include="Assets\images\products\2.jpg" />
+    <Content Include="Assets\images\products\3.jpg" />
+    <Content Include="Assets\images\products\4.jpg" />
+    <Content Include="Assets\images\products\5.jpg" />
+    <Content Include="Assets\images\products\6.jpg" />
+    <Content Include="Assets\images\products\7.jpg" />
+    <Content Include="Assets\images\products\dacnhantam.jpg" />
+    <Content Include="Assets\images\products\dragonball.jpg" />
+    <Content Include="Assets\images\products\onepunchman.jpg" />
+    <Content Include="Assets\images\slider\1.jpg" />
+    <Content Include="Assets\js\ajax-mail.js" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\imagesloaded.pkgd.min.js" />
+    <Content Include="Assets\js\isotope.pkgd.min.js" />
+    <Content Include="Assets\js\jquery-ui.min.js" />
+    <Content Include="Assets\js\jquery.barrating.min.js" />
+    <Content Include="Assets\js\jquery.countdown.min.js" />
+    <Content Include="Assets\js\jquery.counterup.min.js" />
+    <Content Include="Assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="Assets\js\jquery.meanmenu.min.js" />
+    <Content Include="Assets\js\jquery.mixitup.min.js" />
+    <Content Include="Assets\js\jquery.nice-select.min.js" />
+    <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\owl.carousel.min.js" />
+    <Content Include="Assets\js\scrollUp.min.js" />
+    <Content Include="Assets\js\slick.min.js" />
+    <Content Include="Assets\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Assets\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="Assets\js\vendor\popper.min.js" />
+    <Content Include="Assets\js\venobox.min.js" />
+    <Content Include="Assets\js\waypoints.min.js" />
+    <Content Include="Assets\js\wow.min.js" />
+    <Content Include="Assets\style.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -232,6 +305,14 @@
     <Content Include="Models\bookContext.edmx.diagram">
       <DependentUpon>bookContext.edmx</DependentUpon>
     </Content>
+    <Content Include="Assets\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="Assets\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="Assets\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Assets\fonts\Material-Design-Iconic-Fontd1f1.ttf" />
+    <Content Include="Assets\fonts\Material-Design-Iconic-Fontd1f1.woff" />
+    <Content Include="Assets\fonts\Material-Design-Iconic-Fontd1f1.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -258,7 +339,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\HomeScreen\Index.cshtml" />
     <Content Include="Views\Ship\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -275,10 +355,12 @@
     <Content Include="Views\Admin\AddAuthor.cshtml" />
     <Content Include="Views\Admin\BookOfAuthor.cshtml" />
     <Content Include="Views\Admin\EditAuthor.cshtml" />
+    <Content Include="Views\HomeScreen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\API\" />
+    <Folder Include="Views\AvatarOfBook\" />
+    <Folder Include="Views\AvatarOfProduct\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
