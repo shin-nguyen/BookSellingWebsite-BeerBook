@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CATEGORY</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        
+        <div class="form-group">
+            @Html.ActionLink("New Category", "AddCategory")
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <input type="search" name="search" placeholder="seach..." />
+            <button>Try it or Reset</button>
+        </div>
+
+
+    </div>
+}
+
+<div style="overflow:scroll">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>View All Books</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach (var item in ViewData["list"] as List<Book.Models.tbl_category>)
+            {
+                <tr>
+                    <td>@item.cate_id</td>
+                    <td>@item.cate_name</td>
+                    <td><a class="btn btn-info btn-sm" href="@Url.Action("BookOfCategory", new { id=item.cate_id })">Books of this Category</a></td>
+                    <td><a class="btn btn-warning btn-sm" href="@Url.Action("EditCategory", new { id=item.cate_id })">Edit</a></td>
+                    <td><a class="btn btn-danger btn-sm" href="@Url.Action("DeleteCategory", new { id=item.cate_id })">Delete</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

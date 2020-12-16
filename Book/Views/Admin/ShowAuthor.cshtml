@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Author";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>AUTHOR</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+
+        <div class="form-group">
+            @Html.ActionLink("New Author", "AddAuthor")
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <input type="search" name="search" placeholder="seach..." />
+            <button>Try it or Reset</button>
+        </div>
+
+
+    </div>
+}
+
+<div style="overflow:scroll">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>DESCRIPTIOM</th>
+                <th>View All Books</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach (var item in ViewData["list"] as List<Book.Models.tbl_author>)
+            {
+                <tr>
+                    <td>@item.au_id</td>
+                    <td>@item.au_name</td>
+                    <td>@item.au_description</td>
+                    <td><a class="btn btn-info btn-sm" href="@Url.Action("BookOfAuthor", new { id=item.au_id })">Books of this Author</a></td>
+                    <td><a class="btn btn-warning btn-sm" href="@Url.Action("EditAuthor", new { id=item.au_id })">Edit</a></td>
+                    <td><a class="btn btn-danger btn-sm" href="@Url.Action("DeleteAuthor", new { id=item.au_id })">Delete</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

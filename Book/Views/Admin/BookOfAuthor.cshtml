@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Book.Models.tbl_book>
+
+@{
+    ViewBag.Title = "BookOfAuthor";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>All Books of "@ViewBag.au"</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Tittle
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Publisher
+        </th>
+        <th>
+            Avatar
+        </th>
+        <th>
+            Category
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.book_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.book_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.book_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_publisher.pu_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_avtofbook.avtofbook_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_category.cate_name)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back", "ShowAuthor", "Admin")
+</div>

@@ -11,7 +11,8 @@ namespace Book.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_category
     {
         public tbl_category()
@@ -20,6 +21,8 @@ namespace Book.Models
         }
     
         public int cate_id { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 1)]
         public string cate_name { get; set; }
     
         public virtual ICollection<tbl_book> tbl_book { get; set; }

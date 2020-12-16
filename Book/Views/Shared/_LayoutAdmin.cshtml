@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Dashboard</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row">
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="height:900px">
+
+            <div style="width:100%" class="container list-group">
+
+                <div class="list-group-item">
+                    @Html.ActionLink("Category", "ShowCategory", "Admin", new { @class = "list-group-item" })
+                </div>
+
+                <div class="list-group-item">
+                    @Html.ActionLink("Publisher", "ShowPublisher", "Admin", new { @class = "list-group-item" })
+                </div>
+
+                <div class="list-group-item">
+                    @Html.ActionLink("Author", "ShowAuthor", "Admin", new { @class = "list-group-item" })
+                </div>
+
+                <div class="list-group-item">
+                    @Html.ActionLink("Book", "ShowBook", "Admin", new { @class = "list-group-item" })
+                </div>
+
+                <div class="list-group-item">
+                    @Html.ActionLink("Order", "ShowOrder", "Admin", new { @class = "list-group-item" })
+                </div>
+
+                <div class="list-group-item">
+                    @Html.ActionLink("Shipper", "ShowShipper", "Admin", new { @class = "list-group-item" })
+                </div>
+
+                <br />
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("Log out", "Logout", "Account")
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height:900px">
+
+            @RenderBody()
+
+        </div>
+
+    </div>
+</body>
+</html>

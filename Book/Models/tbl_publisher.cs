@@ -11,7 +11,8 @@ namespace Book.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_publisher
     {
         public tbl_publisher()
@@ -20,6 +21,8 @@ namespace Book.Models
         }
     
         public int pu_id { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 1)]
         public string pu_name { get; set; }
         public string pu_description { get; set; }
     

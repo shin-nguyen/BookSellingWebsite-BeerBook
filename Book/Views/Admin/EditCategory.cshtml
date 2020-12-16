@@ -1,0 +1,50 @@
+﻿@model Book.Models.tbl_category
+
+@{
+    ViewBag.Title = "EditCategory";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit Category</h2>
+
+@if (ViewBag.msg != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong> @ViewBag.msg
+    </div>
+}
+else if (ViewBag.msg1 != null)
+{
+    <div class="alert alert-success">
+        <strong>Success!</strong> @ViewBag.msg1
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.cate_id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cate_name, "Category Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cate_name)
+                @Html.ValidationMessageFor(model => model.cate_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back", "ShowCategory", "Admin")
+</div>
