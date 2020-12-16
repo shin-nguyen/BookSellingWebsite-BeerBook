@@ -1,4 +1,4 @@
-﻿<!doctype html>
+﻿    <!doctype html>
 <html class="no-js" lang="zxx">
 
 <!-- index28:48-->
@@ -54,7 +54,7 @@
                     <div class="col-lg-3 col-md-4">
                         <div class="header-top-left">
                             <ul class="phone-wrap">
-                                <li><span>Telephone Enquiry:</span><a href="#">(+123) 123 321 345</a></li>
+                                <li><span>Telephone Enquiry:</span><a> (+123) 123 321 345</a></li>
                             </ul>
                         </div>
                     </div>
@@ -64,12 +64,24 @@
                         <div class="header-top-right">
                             <ul class="ht-menu">
                                 <!-- Begin Login-Register Area -->
-                                <li>
-                                    @Html.ActionLink("Login", "Login", "Account")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Register", "Register", "Account")
-                                </li>
+                                @if (Session["user_id"] == null)
+                                {
+                                    <li>
+                                        @Html.ActionLink("Login", "Login", "Account")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Register", "Register", "Account")
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        @Html.ActionLink("Logout", "Logout", "Account")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Your Account", "YourAccount", "HomeScreen")
+                                    </li>
+                                }
                                 <!-- Login-Register End Here -->
                             </ul>
                         </div>
@@ -178,7 +190,7 @@
                     <div class="col-lg-3">
                         <div class="logo pb-sm-30 pb-xs-30">
                             <a href="@Url.Action("Index","HomeScreen")">
-                                <img src="~/Assets/images/logo.png" alt="" style="height: 100%; width: 100%;">
+                                <img src="~/Assets/images/logo.png" alt="" style="height: 50%; width: 50%;">
                             </a>
                         </div>
                     </div>

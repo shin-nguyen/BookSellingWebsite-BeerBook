@@ -235,6 +235,7 @@
     <Content Include="Assets\css\slick.css" />
     <Content Include="Assets\css\venobox.css" />
     <Content Include="Assets\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="Assets\images\avtTemp.jpg" />
     <Content Include="Assets\images\banner\1.jpg" />
     <Content Include="Assets\images\banner\2.jpg" />
     <Content Include="Assets\images\favicon.png" />
@@ -356,6 +357,7 @@
     <Content Include="Views\Admin\BookOfAuthor.cshtml" />
     <Content Include="Views\Admin\EditAuthor.cshtml" />
     <Content Include="Views\HomeScreen\Index.cshtml" />
+    <Content Include="Views\HomeScreen\YourAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
