@@ -47,6 +47,8 @@
           <Property Name="book_fk_auid" Type="int" />
           <Property Name="book_fk_puid" Type="int" />
           <Property Name="book_fk_cateid" Type="int" />
+          <Property Name="book_quantity" Type="int" />
+          <Property Name="book_img" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_cart">
           <Key>
@@ -372,6 +374,8 @@
           <NavigationProperty Name="tbl_category" Relationship="Self.FK__tbl_book__book_f__4AB81AF0" FromRole="tbl_book" ToRole="tbl_category" />
           <NavigationProperty Name="tbl_cart" Relationship="Self.FK__tbl_cart__cart_f__5165187F" FromRole="tbl_book" ToRole="tbl_cart" />
           <NavigationProperty Name="tbl_order" Relationship="Self.FK__tbl_order__order__571DF1D5" FromRole="tbl_book" ToRole="tbl_order" />
+          <Property Name="book_quantity" Type="Int32" />
+          <Property Name="book_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_cart">
           <Key>
@@ -697,6 +701,8 @@
           <EntitySetMapping Name="tbl_book">
             <EntityTypeMapping TypeName="dbbookModel.tbl_book">
               <MappingFragment StoreEntitySet="tbl_book">
+                <ScalarProperty Name="book_img" ColumnName="book_img" />
+                <ScalarProperty Name="book_quantity" ColumnName="book_quantity" />
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
                 <ScalarProperty Name="book_name" ColumnName="book_name" />
                 <ScalarProperty Name="book_description" ColumnName="book_description" />

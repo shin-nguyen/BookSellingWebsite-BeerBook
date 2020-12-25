@@ -35,8 +35,8 @@
                 <th>ID</th>
                 <th>NAME</th>
                 <th>DESCRIPTIOM</th>
+                <th>Number Of Books</th>
                 <th>View All Books</th>
-                <th></th>
                 <th></th>
             </tr>
 
@@ -49,9 +49,12 @@
                     <td>@item.pu_id</td>
                     <td>@item.pu_name</td>
                     <td>@item.pu_description</td>
+                    <td>@item.tbl_book.Count()</td>
                     <td><a class="btn btn-info btn-sm" href="@Url.Action("BookOfPublisher", new { id=item.pu_id })">Books of this Publisher</a></td>
-                    <td><a class="btn btn-warning btn-sm" href="@Url.Action("EditPublisher", new { id=item.pu_id })">Edit</a></td>
-                    <td><a class="btn btn-danger btn-sm" href="@Url.Action("DeletePublisher", new { id=item.pu_id })">Delete</a></td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditPublisher", new { id = item.pu_id }) |
+                        @Html.ActionLink("Delete", "DeletePublisher", new { id = item.pu_id })
+                    </td>
                 </tr>
             }
 

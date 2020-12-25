@@ -507,5 +507,213 @@ namespace Book.Controllers
         }
         //Author------------------------------------------------------------------------------------------------------------------------------
 
+
+        //Book--------------------------------------------------------------------------------------------------------------------------------
+        //ShowBook
+        [HttpGet]
+        public ActionResult ShowBook()
+        {
+            if (Session["ad_id"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            List<tbl_book> li = db.tbl_book.OrderBy(x => x.book_id).ToList();
+            return View(li);
+        }
+        [HttpPost]
+        public ActionResult ShowBook(string search)
+        {
+            if (search == null)
+            {
+                return RedirectToAction("ShowBook");
+            }
+
+            List<tbl_book> li = db.tbl_book.Where(x => x.book_name.Contains(search)).OrderBy(x => x.book_id).ToList();
+            return View(li);
+        }
+        //ShowBook//AddBook
+        [HttpGet]
+        public ActionResult AddBook()
+        {
+            if (Session["ad_id"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            List<tbl_category> li1 = db.tbl_category.ToList();
+            List<tbl_publisher> li2 = db.tbl_publisher.ToList();
+            List<tbl_author> li3 = db.tbl_author.ToList();
+            ViewBag.li1 = new SelectList(li1, "cate_id", "cate_name");
+            ViewBag.li2 = new SelectList(li2, "pu_id", "pu_name");
+            ViewBag.li3 = new SelectList(li3, "au_id", "au_name");
+
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddBook(tbl_book b, HttpPostedFileBase img, string description)
+        {
+            tbl_book bk = db.tbl_book.Where(x => x.book_name == b.book_name).SingleOrDefault();
+
+            List<tbl_category> li1 = db.tbl_category.ToList();
+            List<tbl_publisher> li2 = db.tbl_publisher.ToList();
+            List<tbl_author> li3 = db.tbl_author.ToList();
+            ViewBag.li1 = new SelectList(li1, "cate_id", "cate_name");
+            ViewBag.li2 = new SelectList(li2, "pu_id", "pu_name");
+            ViewBag.li3 = new SelectList(li3, "au_id", "au_name");
+
+            if (bk == null)
+            {
+                if (ModelState.IsValid)
+                {
+                    tbl_book book = new tbl_book();
+                    book.book_name = b.book_name;
+                    book.book_description = description;
+                    book.book_price = b.book_price;
+                    book.book_fk_auid = b.book_fk_auid;
+                    book.book_fk_cateid = b.book_fk_cateid;
+                    book.book_fk_puid = b.book_fk_puid;
+                    book.book_quantity = b.book_quantity;
+
+                    if (img != null && System.IO.Path.GetFileName(img.FileName) != "")
+                    {
+                        string extension = System.IO.Path.GetExtension(img.FileName);
+                        if (extension == ".jpg" || extension == ".png")
+                        {
+                            string filename = System.IO.Path.GetFileName(img.FileName);
+                            string urlImage = Server.MapPath("~/Assets/images/" + filename);
+                            img.SaveAs(urlImage);
+
+                            book.book_img = filename;
+                        }
+                        else
+                        {
+                            ViewBag.msg = "File image is invalid!";
+                            return View();
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.msg = "Please upload an image!";
+                        return View();
+                    }
+
+                    db.tbl_book.Add(book);
+                    db.SaveChanges();
+
+                    ViewBag.msg1 = "This book has been added!";
+                }
+                else
+                {
+                    ViewBag.msg = "";
+                }
+            }
+            else
+            {
+                ViewBag.msg = "This book already exists!";
+            }
+            return View();
+        }
+        //ShowBook//EditBook
+        [HttpGet]
+        public ActionResult EditBook(int? id)
+        {
+            if (Session["ad_id"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (id == null)
+            {
+                return RedirectToAction("ShowBook");
+            }
+
+            List<tbl_category> li1 = db.tbl_category.ToList();
+            List<tbl_publisher> li2 = db.tbl_publisher.ToList();
+            List<tbl_author> li3 = db.tbl_author.ToList();
+            ViewBag.li1 = new SelectList(li1, "cate_id", "cate_name");
+            ViewBag.li2 = new SelectList(li2, "pu_id", "pu_name");
+            ViewBag.li3 = new SelectList(li3, "au_id", "au_name");
+
+            tbl_book b = db.tbl_book.Where(x => x.book_id == id).SingleOrDefault();
+
+            return View(b);
+        }
+        [HttpPost]
+        public ActionResult EditBook(tbl_book b, int? id, string description, HttpPostedFileBase img)
+        {
+            tbl_book bk = db.tbl_book.Where(x => x.book_name == b.book_name && x.book_id != id).SingleOrDefault();
+
+            List<tbl_category> li1 = db.tbl_category.ToList();
+            List<tbl_publisher> li2 = db.tbl_publisher.ToList();
+            List<tbl_author> li3 = db.tbl_author.ToList();
+            ViewBag.li1 = new SelectList(li1, "cate_id", "cate_name");
+            ViewBag.li2 = new SelectList(li2, "pu_id", "pu_name");
+            ViewBag.li3 = new SelectList(li3, "au_id", "au_name");
+
+            if (bk== null)
+            {
+                tbl_book book = db.tbl_book.Where(x => x.book_id == id).SingleOrDefault();
+                
+                if (img != null && System.IO.Path.GetFileName(img.FileName) != "")
+                {
+                    string extension = System.IO.Path.GetExtension(img.FileName);
+                    if (extension == ".jpg" || extension == ".png")
+                    {
+                        string filename = System.IO.Path.GetFileName(img.FileName);
+                        string urlImage = Server.MapPath("~/Assets/images/" + filename);
+                        img.SaveAs(urlImage);
+
+                        book.book_img = filename;
+                    }
+                    else
+                    {
+                        ViewBag.msg = "File image is invalid!";
+                        return View(book);
+                    }
+                }
+
+                book.book_name = b.book_name;
+                book.book_price = b.book_price;
+                book.book_quantity = b.book_quantity;
+                book.book_description = description;
+                book.book_fk_auid = b.book_fk_auid;
+                book.book_fk_cateid = b.book_fk_cateid;
+                book.book_fk_puid = b.book_fk_puid;
+                db.tbl_book.AddOrUpdate(book);
+                db.SaveChanges();
+                ViewBag.msg1 = "This book had been editted!";
+            }
+
+            tbl_book bo = db.tbl_book.Where(x => x.book_id == id).SingleOrDefault();
+            return View(bo);
+        }
+        //ShowBook//DeleteBook
+        public ActionResult DeleteBook(int? id)
+        {
+            if (Session["ad_id"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            if (id == null)
+            {
+                return RedirectToAction("ShowBook");
+            }
+
+            try
+            {
+                tbl_book bk = db.tbl_book.Where(x => x.book_id == id).SingleOrDefault();
+                db.tbl_book.Remove(bk);
+                db.SaveChanges();
+            }
+            catch { }
+
+            return RedirectToAction("ShowBook");
+        }
+
+
+        //Book--------------------------------------------------------------------------------------------------------------------------------
+
     }
 }

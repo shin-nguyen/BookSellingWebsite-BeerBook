@@ -53,6 +53,8 @@
     <NavigationProperty Name="tbl_category" Relationship="Self.FK__tbl_book__book_f__4AB81AF0" FromRole="tbl_book" ToRole="tbl_category" />
     <NavigationProperty Name="tbl_cart" Relationship="Self.FK__tbl_cart__cart_f__5165187F" FromRole="tbl_book" ToRole="tbl_cart" />
     <NavigationProperty Name="tbl_order" Relationship="Self.FK__tbl_order__order__571DF1D5" FromRole="tbl_book" ToRole="tbl_order" />
+    <Property Name="book_quantity" Type="Int32" />
+    <Property Name="book_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tbl_cart">
     <Key>

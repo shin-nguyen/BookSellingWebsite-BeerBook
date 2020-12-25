@@ -34,8 +34,8 @@
             <tr>
                 <th>ID</th>
                 <th>NAME</th>
+                <th>Number Of Books</th>
                 <th>View All Books</th>
-                <th></th>
                 <th></th>
             </tr>
 
@@ -47,9 +47,12 @@
                 <tr>
                     <td>@item.cate_id</td>
                     <td>@item.cate_name</td>
+                    <td>@item.tbl_book.Count()</td>
                     <td><a class="btn btn-info btn-sm" href="@Url.Action("BookOfCategory", new { id=item.cate_id })">Books of this Category</a></td>
-                    <td><a class="btn btn-warning btn-sm" href="@Url.Action("EditCategory", new { id=item.cate_id })">Edit</a></td>
-                    <td><a class="btn btn-danger btn-sm" href="@Url.Action("DeleteCategory", new { id=item.cate_id })">Delete</a></td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditCategory", new { id = item.cate_id }) |
+                        @Html.ActionLink("Delete", "DeleteCategory", new { id = item.cate_id })
+                    </td>
                 </tr>
             }
 

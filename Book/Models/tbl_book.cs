@@ -27,6 +27,8 @@ namespace Book.Models
         public Nullable<int> book_fk_auid { get; set; }
         public Nullable<int> book_fk_puid { get; set; }
         public Nullable<int> book_fk_cateid { get; set; }
+        public Nullable<int> book_quantity { get; set; }
+        public string book_img { get; set; }
     
         public virtual tbl_author tbl_author { get; set; }
         public virtual tbl_avtofbook tbl_avtofbook { get; set; }

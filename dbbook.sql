@@ -104,3 +104,6 @@ insert into tbl_customer values ('Nghia Dang','0364956694', 'Thu Duc, TP.HCM', 3
 insert into tbl_customer values ('Tuan Nhan', '0547327432', 'Thu Duc, TP.HCM', 2)
 go
 
+
+--
+alter table tbl_book add book_img nvarchar(max);

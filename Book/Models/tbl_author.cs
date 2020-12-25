@@ -11,8 +11,7 @@ namespace Book.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_author
     {
         public tbl_author()
@@ -21,8 +20,6 @@ namespace Book.Models
         }
     
         public int au_id { get; set; }
-        [Required]
-        [StringLength(50, MinimumLength = 1)]
         public string au_name { get; set; }
         public string au_description { get; set; }
     

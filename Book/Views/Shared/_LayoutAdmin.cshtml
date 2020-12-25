@@ -15,6 +15,10 @@
             <div style="width:100%" class="container list-group">
 
                 <div class="list-group-item">
+                    @Html.ActionLink("Dashboard", "Index", "Admin", new { @class = "list-group-item" })
+                </div>
+
+                <div class="list-group-item">
                     @Html.ActionLink("Category", "ShowCategory", "Admin", new { @class = "list-group-item" })
                 </div>
 

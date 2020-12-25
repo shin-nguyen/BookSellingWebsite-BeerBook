@@ -19,6 +19,9 @@
             Price
         </th>
         <th>
+            Quantity
+        </th>
+        <th>
             Author
         </th>
         <th>
@@ -42,10 +45,20 @@
                 @Html.DisplayFor(modelItem => item.book_price)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.book_quantity)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.tbl_author.au_name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.tbl_avtofbook.avtofbook_id)
+                @if (item.book_img == "-1")
+                {
+                    <img src="~/Assets/images/avtTemp.jpg" style="width:60px; height:80px" />
+                }
+                else
+                {
+                    <img src="~/Assets/images/@item.book_img" style="width:60px; height:80px" />
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.tbl_category.cate_name)

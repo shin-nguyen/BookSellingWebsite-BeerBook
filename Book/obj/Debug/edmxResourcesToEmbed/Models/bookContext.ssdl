@@ -42,6 +42,8 @@
     <Property Name="book_fk_auid" Type="int" />
     <Property Name="book_fk_puid" Type="int" />
     <Property Name="book_fk_cateid" Type="int" />
+    <Property Name="book_quantity" Type="int" />
+    <Property Name="book_img" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tbl_cart">
     <Key>

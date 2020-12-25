@@ -35,8 +35,8 @@
                 <th>ID</th>
                 <th>NAME</th>
                 <th>DESCRIPTIOM</th>
+                <th>Number Of Books</th>
                 <th>View All Books</th>
-                <th></th>
                 <th></th>
             </tr>
 
@@ -49,9 +49,12 @@
                     <td>@item.au_id</td>
                     <td>@item.au_name</td>
                     <td>@item.au_description</td>
+                    <td>@item.tbl_book.Count()</td>
                     <td><a class="btn btn-info btn-sm" href="@Url.Action("BookOfAuthor", new { id=item.au_id })">Books of this Author</a></td>
-                    <td><a class="btn btn-warning btn-sm" href="@Url.Action("EditAuthor", new { id=item.au_id })">Edit</a></td>
-                    <td><a class="btn btn-danger btn-sm" href="@Url.Action("DeleteAuthor", new { id=item.au_id })">Delete</a></td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditAuthor", new { id = item.au_id }) |
+                        @Html.ActionLink("Delete", "DeleteAuthor", new { id = item.au_id })
+                    </td>
                 </tr>
             }
 

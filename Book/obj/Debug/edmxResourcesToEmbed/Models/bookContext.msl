@@ -39,6 +39,8 @@
     <EntitySetMapping Name="tbl_book">
       <EntityTypeMapping TypeName="dbbookModel.tbl_book">
         <MappingFragment StoreEntitySet="tbl_book">
+          <ScalarProperty Name="book_img" ColumnName="book_img" />
+          <ScalarProperty Name="book_quantity" ColumnName="book_quantity" />
           <ScalarProperty Name="book_id" ColumnName="book_id" />
           <ScalarProperty Name="book_name" ColumnName="book_name" />
           <ScalarProperty Name="book_description" ColumnName="book_description" />
