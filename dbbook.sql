@@ -107,6 +107,7 @@ go
 
 --
 alter table tbl_book add book_img nvarchar(max);
+alter table tbl_book add book_quantity int;
 
 --
 --
