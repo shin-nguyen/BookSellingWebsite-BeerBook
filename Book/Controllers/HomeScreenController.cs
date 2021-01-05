@@ -13,7 +13,11 @@ namespace Book.Controllers
         // GET: HomeScreen
         public ActionResult Index()
         {
-            return View();
+            List<tbl_book> books = db.tbl_book.OrderBy(x => x.book_id).ToList();
+            var top5books = (from tbl_book in books
+                             orderby tbl_book.book_id descending
+                             select tbl_book).Take(5);
+            return View(top5books);
         }
 
         //YourAccount

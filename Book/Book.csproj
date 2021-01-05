@@ -245,17 +245,9 @@
     <Content Include="Assets\images\icon\shipping\4.png" />
     <Content Include="Assets\images\logo.png" />
     <Content Include="Assets\images\payment\1.png" />
-    <Content Include="Assets\images\products\1.jpg" />
-    <Content Include="Assets\images\products\2.jpg" />
-    <Content Include="Assets\images\products\3.jpg" />
-    <Content Include="Assets\images\products\4.jpg" />
-    <Content Include="Assets\images\products\5.jpg" />
-    <Content Include="Assets\images\products\6.jpg" />
-    <Content Include="Assets\images\products\7.jpg" />
-    <Content Include="Assets\images\products\dacnhantam.jpg" />
-    <Content Include="Assets\images\products\dragonball.jpg" />
-    <Content Include="Assets\images\products\onepunchman.jpg" />
-    <Content Include="Assets\images\slider\1.jpg" />
+    <Content Include="Assets\images\slider\banner1.jpg" />
+    <Content Include="Assets\images\slider\banner2.jpg" />
+    <Content Include="Assets\images\slider\banner3.jpg" />
     <Content Include="Assets\js\ajax-mail.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\imagesloaded.pkgd.min.js" />
@@ -364,6 +356,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\images\products\" />
     <Folder Include="Views\AvatarOfBook\" />
     <Folder Include="Views\AvatarOfProduct\" />
   </ItemGroup>

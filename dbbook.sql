@@ -107,8 +107,7 @@ go
 
 --
 alter table tbl_book add book_img nvarchar(max);
-alter table tbl_book add book_quantity int;
-
+ALTER TABLE dbo.tbl_book ADD book_quantity INT;
 --
 --
 --

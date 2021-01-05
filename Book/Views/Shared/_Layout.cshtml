@@ -87,97 +87,6 @@
                         </div>
                     </div>
                     <!-- Header Top Right Area End Here -->
-                    <!-- Modal Login Begin -->
-                    <div class="modal" id="LoginForm">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <!-- Login Form s-->
-                                    <form action="#">
-                                        <div class="login-form">
-                                            <h4 class="login-title">Login</h4>
-                                            <div class="row">
-                                                <div class="col-md-12 col-12 mb-20">
-                                                    <label>Email Address*</label>
-                                                    <input class="mb-0" type="email" placeholder="Email Address">
-                                                </div>
-                                                <div class="col-12 mb-20">
-                                                    <label>Password</label>
-                                                    <input class="mb-0" type="password" placeholder="Password">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
-                                                        <input type="checkbox" id="remember_me">
-                                                        <label for="remember_me">Remember me</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
-                                                    <a href="#"> Forgotten pasaword?</a>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <button class="register-button mt-0">Login</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <!-- Login form end -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Model Login End -->
-                    <!-- Model Register Begin -->
-                    <div class="modal" id="RegisterForm">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <!-- Register Form s-->
-                                    <form action="#">
-                                        <div class="login-form">
-                                            <h4 class="login-title">Register</h4>
-                                            <div class="row">
-                                                <div class="col-md-6 col-12 mb-20">
-                                                    <label>First Name</label>
-                                                    <input class="mb-0" type="text" placeholder="First Name">
-                                                </div>
-                                                <div class="col-md-6 col-12 mb-20">
-                                                    <label>Last Name</label>
-                                                    <input class="mb-0" type="text" placeholder="Last Name">
-                                                </div>
-                                                <div class="col-md-12 mb-20">
-                                                    <label>Email Address*</label>
-                                                    <input class="mb-0" type="email" placeholder="Email Address">
-                                                </div>
-                                                <div class="col-md-6 mb-20">
-                                                    <label>Password</label>
-                                                    <input class="mb-0" type="password" placeholder="Password">
-                                                </div>
-                                                <div class="col-md-6 mb-20">
-                                                    <label>Confirm Password</label>
-                                                    <input class="mb-0" type="password" placeholder="Confirm Password">
-                                                </div>
-                                                <div class="col-12">
-                                                    <button class="register-button mt-0">Register</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <!-- Register form end -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Model Register End -->
                 </div>
             </div>
         </div>
@@ -190,7 +99,7 @@
                     <div class="col-lg-3">
                         <div class="logo pb-sm-30 pb-xs-30">
                             <a href="@Url.Action("Index","HomeScreen")">
-                                <img src="~/Assets/images/logo.png" alt="" style="height: 50%; width: 50%;">
+                                <img src="~/assets/images/logo.png" alt="" style="height: 50%; width: 50%;">
                             </a>
                         </div>
                     </div>
@@ -206,14 +115,6 @@
                         <!-- Begin Header Middle Right Area -->
                         <div class="header-middle-right">
                             <ul class="hm-menu">
-                                <!-- Begin Header Middle Wishlist Area -->
-                                <li class="hm-wishlist">
-                                    <a href="wishlist.html">
-                                        <span class="cart-item-count wishlist-item-count">0</span>
-                                        <i class="fa fa-heart-o"></i>
-                                    </a>
-                                </li>
-                                <!-- Header Middle Wishlist Area End Here -->
                                 <!-- Begin Header Mini Cart Area -->
                                 <li class="hm-minicart">
                                     <div class="hm-minicart-trigger">
@@ -227,8 +128,8 @@
                                     <div class="minicart">
                                         <p class="minicart-total">SUBTOTAL: <span>80.00$</span></p>
                                         <div class="minicart-button">
-                                            @Html.ActionLink("View Cart", "ShoppingCart", "Home", new { @class = "li-button li-button-fullwidth li-button-dark" })
-                                            @Html.ActionLink("Check Out", "CheckOut", "Home", new { @class = "li-button li-button-fullwidth li-button-dark" })
+                                            @Html.ActionLink("View Cart", "ShoppingCart", "HomeScreen", new { @class = "li-button li-button-fullwidth li-button-dark" })
+                                            @Html.ActionLink("Check Out", "CheckOut", "HomeScreen", new { @class = "li-button li-button-fullwidth li-button-dark" })
                                         </div>
                                     </div>
                                 </li>
@@ -252,9 +153,9 @@
                             <nav>
                                 <ul>
                                     <li>@Html.ActionLink("Home", "Index", "HomeScreen")</li>
-                                    <li>@Html.ActionLink("Shop", "Shop", "Home")</li>
-                                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                    <li>@Html.ActionLink("Shop", "Shop", "HomeScreen")</li>
+                                    <li>@Html.ActionLink("About", "About", "HomeScreen")</li>
+                                    <li>@Html.ActionLink("Contact", "Contact", "HomeScreen")</li>
                                 </ul>
                             </nav>
                         </div>
@@ -355,7 +256,7 @@
                             <!-- Begin Footer Logo Area -->
                             <div class="col-lg-4 col-md-6">
                                 <div class="footer-logo">
-                                    <img src="~/Assets/images/logo.png" alt="Footer Logo" style="height: 100%; width: 100%;">
+                                    <img src="~/assets/images/logo.png" alt="" style="height: 50%; width: 50%;">
                                     <p class="info">
                                         We are a team of designers and developers that create high quality HTML Template & Woocommerce, Shopify Theme.
                                     </p>
@@ -446,143 +347,7 @@
                 </div>
             </div>
             <!-- Footer Static Middle Area End Here -->
-            <!-- Begin Footer Static Bottom Area -->
-            <div class="footer-static-bottom pt-55 pb-55">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!-- Begin Footer Payment Area -->
-                            <div class="copyright text-center">
-                                <a href="#">
-                                    <img src="~/assets/images/icon/shipping/1.png" alt="">
-                                </a>
-                            </div>
-                            <!-- Footer Payment Area End Here -->
-                            <!-- Begin Copyright Area -->
-                            <!-- <div class="copyright text-center pt-25">
-                                <span><a href="https://www.templatespoint.net" target="_blank">Templates Point</a></span>
-                            </div> -->
-                            <!-- Copyright Area End Here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer Static Bottom Area End Here -->
         </div>
-        <!-- Footer Area End Here -->
-        <!-- Begin Quick View | Modal Area -->
-        <div class="modal fade modal-wrapper" id="exampleModalCenter">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="modal-inner-area row">
-                            <div class="col-lg-5 col-md-6 col-sm-6">
-                                <!-- Product Details Left -->
-                                <div class="product-details-left">
-                                    <div class="product-details-images slider-navigation-1">
-                                        <div class="lg-image">
-                                            <img src="~/assets/images/product/large-size/1.jpg" alt="product image">
-                                        </div>
-                                        <div class="lg-image">
-                                            <img src="~/assets/images/product/large-size/2.jpg" alt="product image">
-                                        </div>
-                                        <div class="lg-image">
-                                            <img src="~/assets/images/product/large-size/3.jpg" alt="product image">
-                                        </div>
-                                        <div class="lg-image">
-                                            <img src="~/assets/images/product/large-size/4.jpg" alt="product image">
-                                        </div>
-                                        <div class="lg-image">
-                                            <img src="~/assets/images/product/large-size/5.jpg" alt="product image">
-                                        </div>
-                                        <div class="lg-image">
-                                            <img src="~/assets/images/product/large-size/6.jpg" alt="product image">
-                                        </div>
-                                    </div>
-                                    <div class="product-details-thumbs slider-thumbs-1">
-                                        <div class="sm-image"><img src="~/assets/images/product/small-size/1.jpg" alt="product image thumb"></div>
-                                        <div class="sm-image"><img src="~/assets/images/product/small-size/2.jpg" alt="product image thumb"></div>
-                                        <div class="sm-image"><img src="~/assets/images/product/small-size/3.jpg" alt="product image thumb"></div>
-                                        <div class="sm-image"><img src="~/assets/images/product/small-size/4.jpg" alt="product image thumb"></div>
-                                        <div class="sm-image"><img src="~/assets/images/product/small-size/5.jpg" alt="product image thumb"></div>
-                                        <div class="sm-image"><img src="~/assets/images/product/small-size/6.jpg" alt="product image thumb"></div>
-                                    </div>
-                                </div>
-                                <!--// Product Details Left -->
-                            </div>
-
-                            <div class="col-lg-7 col-md-6 col-sm-6">
-                                <div class="product-details-view-content pt-60">
-                                    <div class="product-info">
-                                        <h2>Today is a good day Framed poster</h2>
-                                        <span class="product-details-ref">Reference: demo_15</span>
-                                        <div class="rating-box pt-20">
-                                            <ul class="rating rating-with-review-item">
-                                                <li><i class="fa fa-star-o"></i></li>
-                                                <li><i class="fa fa-star-o"></i></li>
-                                                <li><i class="fa fa-star-o"></i></li>
-                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                <li class="review-item"><a href="#">Read Review</a></li>
-                                                <li class="review-item"><a href="#">Write Review</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="price-box pt-20">
-                                            <span class="new-price new-price-2">$57.98</span>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>
-                                                <span>
-                                                    100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div class="product-variants">
-                                            <div class="produt-variants-size">
-                                                <label>Dimension</label>
-                                                <select class="nice-select">
-                                                    <option value="1" title="S" selected="selected">40x60cm</option>
-                                                    <option value="2" title="M">60x90cm</option>
-                                                    <option value="3" title="L">80x120cm</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="single-add-to-cart">
-                                            <form action="#" class="cart-quantity">
-                                                <div class="quantity">
-                                                    <label>Quantity</label>
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="1" type="text">
-                                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                    </div>
-                                                </div>
-                                                <button class="add-to-cart" type="submit">Add to cart</button>
-                                            </form>
-                                        </div>
-                                        <div class="product-additional-info pt-25">
-                                            <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
-                                            <div class="product-social-sharing pt-25">
-                                                <ul>
-                                                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
-                                                    <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Quick View | Modal Area End Here -->
     </div>
     <!-- Body Wrapper End Here -->
     <!-- jQuery-V1.12.4 -->
