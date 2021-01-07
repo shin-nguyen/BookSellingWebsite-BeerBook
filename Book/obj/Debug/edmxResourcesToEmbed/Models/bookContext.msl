@@ -11,15 +11,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_author">
-      <EntityTypeMapping TypeName="dbbookModel.tbl_author">
-        <MappingFragment StoreEntitySet="tbl_author">
-          <ScalarProperty Name="au_id" ColumnName="au_id" />
-          <ScalarProperty Name="au_name" ColumnName="au_name" />
-          <ScalarProperty Name="au_description" ColumnName="au_description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_avtofbook">
       <EntityTypeMapping TypeName="dbbookModel.tbl_avtofbook">
         <MappingFragment StoreEntitySet="tbl_avtofbook">
@@ -79,26 +70,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_order">
-      <EntityTypeMapping TypeName="dbbookModel.tbl_order">
-        <MappingFragment StoreEntitySet="tbl_order">
-          <ScalarProperty Name="order_fk_cusid" ColumnName="order_fk_cusid" />
-          <ScalarProperty Name="order_fk_bookid" ColumnName="order_fk_bookid" />
-          <ScalarProperty Name="order_time" ColumnName="order_time" />
-          <ScalarProperty Name="amount" ColumnName="amount" />
-          <ScalarProperty Name="order_stt_fk" ColumnName="order_stt_fk" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_publisher">
-      <EntityTypeMapping TypeName="dbbookModel.tbl_publisher">
-        <MappingFragment StoreEntitySet="tbl_publisher">
-          <ScalarProperty Name="pu_id" ColumnName="pu_id" />
-          <ScalarProperty Name="pu_name" ColumnName="pu_name" />
-          <ScalarProperty Name="pu_description" ColumnName="pu_description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_role">
       <EntityTypeMapping TypeName="dbbookModel.tbl_role">
         <MappingFragment StoreEntitySet="tbl_role">
@@ -113,6 +84,41 @@
         <MappingFragment StoreEntitySet="tbl_status">
           <ScalarProperty Name="stt_id" ColumnName="stt_id" />
           <ScalarProperty Name="stt_name" ColumnName="stt_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_orderdetail">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_orderdetail">
+        <MappingFragment StoreEntitySet="tbl_orderdetail">
+          <ScalarProperty Name="order_book_amount" ColumnName="order_book_amount" />
+          <ScalarProperty Name="order_fk_bookid" ColumnName="order_fk_bookid" />
+          <ScalarProperty Name="order_fk_orderid" ColumnName="order_fk_orderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_order">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_order">
+        <MappingFragment StoreEntitySet="tbl_order">
+          <ScalarProperty Name="order_stt_fk" ColumnName="order_stt_fk" />
+          <ScalarProperty Name="order_time" ColumnName="order_time" />
+          <ScalarProperty Name="order_fk_cusid" ColumnName="order_fk_cusid" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_publisher">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_publisher">
+        <MappingFragment StoreEntitySet="tbl_publisher">
+          <ScalarProperty Name="pu_name" ColumnName="pu_name" />
+          <ScalarProperty Name="pu_id" ColumnName="pu_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_author">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_author">
+        <MappingFragment StoreEntitySet="tbl_author">
+          <ScalarProperty Name="au_name" ColumnName="au_name" />
+          <ScalarProperty Name="au_id" ColumnName="au_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

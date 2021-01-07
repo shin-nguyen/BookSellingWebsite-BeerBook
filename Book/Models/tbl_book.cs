@@ -17,7 +17,7 @@ namespace Book.Models
         public tbl_book()
         {
             this.tbl_cart = new HashSet<tbl_cart>();
-            this.tbl_order = new HashSet<tbl_order>();
+            this.tbl_orderdetail = new HashSet<tbl_orderdetail>();
         }
     
         public int book_id { get; set; }
@@ -30,11 +30,11 @@ namespace Book.Models
         public Nullable<int> book_quantity { get; set; }
         public string book_img { get; set; }
     
-        public virtual tbl_author tbl_author { get; set; }
         public virtual tbl_avtofbook tbl_avtofbook { get; set; }
-        public virtual tbl_publisher tbl_publisher { get; set; }
         public virtual tbl_category tbl_category { get; set; }
         public virtual ICollection<tbl_cart> tbl_cart { get; set; }
-        public virtual ICollection<tbl_order> tbl_order { get; set; }
+        public virtual ICollection<tbl_orderdetail> tbl_orderdetail { get; set; }
+        public virtual tbl_publisher tbl_publisher { get; set; }
+        public virtual tbl_author tbl_author { get; set; }
     }
 }
