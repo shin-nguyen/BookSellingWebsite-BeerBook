@@ -21,7 +21,6 @@ namespace Book.Models
     
         public int au_id { get; set; }
         public string au_name { get; set; }
-        public string au_description { get; set; }
     
         public virtual ICollection<tbl_book> tbl_book { get; set; }
     }
