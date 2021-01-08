@@ -144,7 +144,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\AuthorsController.cs" />
-    <Compile Include="Controllers\Api\AvatarOfBookController.cs" />
     <Compile Include="Controllers\Api\BookForSellerController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\Api\PublishersController.cs" />

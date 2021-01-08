@@ -31,6 +31,7 @@ namespace Book.Models
         [Required]
         public int AuthorID { get; set; }
 
+        public string Image { get; set; }
         public byte[] ImageFile { get; set; }
     }
 }

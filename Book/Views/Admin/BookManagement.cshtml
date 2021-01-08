@@ -40,7 +40,7 @@
                 {
                     title: "Tittle",
                     data: "Name",
-                    width: "20%",
+                    width: "15%",
                     render: function (data) {
                         return data;
                     },
@@ -48,33 +48,20 @@
                 },
                 {
                     title: "Image",
-                    data: "BookID",
-                    width: "11%",
+                    data: "Image",
+                    width: "10%",
                     render: function (data) {
-                        //var markup = "<img id='avatar-preview' class='img-thumbnail' style='width: 100px; height: 100px; object-fit: cover' src='/api/AvatarOfBook/GetAvatarOfBook?bookID=" + data + "'/>";
-                        var markup = "<img id='avatar-preview' class='img-thumbnail' style='width: 100px; height: 100px; object-fit: cover' src='/Assets/images/avtTemp.jpg'/>";
+                        var markup = "<img id='avatar-preview' class='img-thumbnail' style='width: 100px; height: 100px; object-fit: cover' src='/Assets/images/" + data + "'/>";
                         return markup;
                     },
                 },
                 {
-                    title: "Mode",
-                    data: "Status",
-                    width: "5%",
-                    render: function (data, type, book) {
-
-                        var isChecked = "checked";
-
-                        if (book.Status == false)
-                            isChecked = "";
-
-                        var markup =
-                            "<label class='switch'>"
-                            + "<input type='checkbox' class='success check-status' " + isChecked + " data-book-id=" + book.BookID + ">"
-                            + "<span class='slider round'></span>"
-                            + "</label>";
-
-                        return markup;
-                    },
+                    tittl: "Description",
+                    data: "Description",
+                    width: "25%",
+                    render: function (data) {
+                        return data;
+                    }
                 },
                 {
                     title: "Author",
@@ -117,10 +104,10 @@
                     },
                 },
                 {
-                    title: "Detail",
+                    title: "",
                     data: "BookID",
                     render: function (data) {
-                        var markup = "<button class='btn btn-default' style = 'background-color:#d36e25; color:white' js-modify' data-book-id=" + data + ">"
+                        var markup = "<button class='btn btn-default js-modify' style = 'background-color:#d36e25; color:white' data-book-id=" + data + ">"
                             + "Modify</button>";
                         return markup;
                     },
@@ -140,24 +127,8 @@
                 }
             });
 
-            $("#table-books").on("click", ".check-status", function () {
-                var checkbox = $(this);
-
-                var status = false;
-
-                if (checkbox.is(':checked')) {
-                    status = true;
-                }
-
-                $.ajax({
-                    url: "/api/BookForSeller/ModifyStatus?bookID=" + checkbox.attr("data-book-id") + "&status=" + status,
-                    method: "Get",
-                });
-
-            });
-
             $("#table-books").on("click", ".js-modify", function () {
-                window.location.href = '/Admin/UpdateBook?bookID=' + $(this).attr("data-book-id");
+                window.location.href = '/Book/UpdateBook?bookID=' + $(this).attr("data-book-id");
             });
 
 
@@ -223,3 +194,4 @@
         
 
 </script>
+

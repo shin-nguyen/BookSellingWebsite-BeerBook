@@ -68,14 +68,16 @@ namespace Book.Controllers
                         return View();
                     }
 
-                    //bookVM.ImageFile = new byte[imageFile.ContentLength];
-                    //imageFile.InputStream.Read(bookVM.ImageFile, 0, imageFile.ContentLength);
+                    string fileName = System.IO.Path.GetFileName(imageFile.FileName);
+                    string UrlImage = Server.MapPath("~/Assets/images/" + fileName);
+                    imageFile.SaveAs(UrlImage);
+                    bookVM.Image = fileName;
 
-                    var httpPostedFile = imageFile;
-                    BinaryReader reader = new BinaryReader(httpPostedFile.InputStream);
-                    var imageFile1 = reader.ReadBytes(httpPostedFile.ContentLength);
-                    bookVM.ImageFile = imageFile1;
-
+                }
+                else
+                {
+                    ViewBag.error = "Required .jpg file!";
+                    return View();
                 }
 
 
@@ -90,15 +92,11 @@ namespace Book.Controllers
                     nb.book_price = bookVM.Price;
                     nb.book_quantity = bookVM.Quantity;
                     nb.book_status = true;
+                    nb.book_img = bookVM.Image;
                     _context.tbl_book.Add(nb);
                     _context.SaveChanges();
 
-                    int nbId = _context.tbl_book.Where(x => x.book_name == bookVM.Name).SingleOrDefault().book_id;
-                    tbl_avtofbook avtofbook = new tbl_avtofbook();
-                    avtofbook.avtofbook_id = nbId;
-                    avtofbook.avtofbook_img = bookVM.ImageFile;
-                    _context.tbl_avtofbook.Add(avtofbook);
-                    _context.SaveChanges();
+                    
 
                     ViewBag.success = "";
                 }

@@ -32,6 +32,7 @@ namespace Book.Models.DTO
             this.AuthorName = book.tbl_author.au_name;
             this.Quantity = (int)book.book_quantity;
             this.Status = (bool)book.book_status;
+            this.Image = book.book_img;
         }
 
         public int BookID { get; set; }
