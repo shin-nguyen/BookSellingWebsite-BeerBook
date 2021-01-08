@@ -18,7 +18,7 @@ namespace Book.Models
         public int cart_fk_bookid { get; set; }
         public Nullable<int> cart_book_amount { get; set; }
     
-        public virtual tbl_book tbl_book { get; set; }
         public virtual tbl_customer tbl_customer { get; set; }
+        public virtual tbl_book tbl_book { get; set; }
     }
 }

@@ -1,0 +1,225 @@
+﻿
+
+@{
+    ViewBag.Title = "BOOK MANAGEMENT";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/DataTables/css/dataTables.bootstrap.min.css" />
+<link rel="stylesheet" href="~/Content/Seller.css" type="text/css" />
+
+<div class="form-group" id="book-management-area">
+    <br />
+    <a href="/Book/AddNewBook" class="btn btn-default" style="background-color:#d36e25; color:white">
+        Add New Book
+    </a>
+    <br />
+    <br />
+
+    <div>
+        <table id="table-books" class="table table-bordered">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootbox.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+
+<script>
+        $(document).ready(function () {
+            var table;
+            var columns = [
+                {
+                    title: "Tittle",
+                    data: "Name",
+                    width: "20%",
+                    render: function (data) {
+                        return data;
+                    },
+
+                },
+                {
+                    title: "Image",
+                    data: "BookID",
+                    width: "11%",
+                    render: function (data) {
+                        //var markup = "<img id='avatar-preview' class='img-thumbnail' style='width: 100px; height: 100px; object-fit: cover' src='/api/AvatarOfBook/GetAvatarOfBook?bookID=" + data + "'/>";
+                        var markup = "<img id='avatar-preview' class='img-thumbnail' style='width: 100px; height: 100px; object-fit: cover' src='/Assets/images/avtTemp.jpg'/>";
+                        return markup;
+                    },
+                },
+                {
+                    title: "Mode",
+                    data: "Status",
+                    width: "5%",
+                    render: function (data, type, book) {
+
+                        var isChecked = "checked";
+
+                        if (book.Status == false)
+                            isChecked = "";
+
+                        var markup =
+                            "<label class='switch'>"
+                            + "<input type='checkbox' class='success check-status' " + isChecked + " data-book-id=" + book.BookID + ">"
+                            + "<span class='slider round'></span>"
+                            + "</label>";
+
+                        return markup;
+                    },
+                },
+                {
+                    title: "Author",
+                    data: "AuthorName",
+                    width: "10%",
+                    render: function (data) {
+                        return data;
+                    },
+                },
+                {
+                    title: "Publisher",
+                    data: "PublisherName",
+                    width: "10%",
+                    render: function (data) {
+                        return data;
+                    },
+                },
+                {
+                    title: "Category",
+                    data: "CategoryName",
+                    width: "10%",
+                    render: function (data) {
+                        return data;
+                    },
+                },
+                {
+                    title: "Quantity",
+                    data: "Quantity",
+                    width: "7%",
+                    render: function (data) {
+                        return data;
+                    },
+                },
+                {
+                    title: "Price",
+                    width: "7%",
+                    data: "Price",
+                    render: function (data) {
+                        return data;
+                    },
+                },
+                {
+                    title: "Detail",
+                    data: "BookID",
+                    render: function (data) {
+                        var markup = "<button class='btn btn-default' style = 'background-color:#d36e25; color:white' js-modify' data-book-id=" + data + ">"
+                            + "Modify</button>";
+                        return markup;
+                    },
+                }
+            ];
+
+            table = CreateNewDataTable("#table-books", "/api/BookforSeller", columns);
+
+
+            $("#table-books tbody").on("click", "tr", function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+            $("#table-books").on("click", ".check-status", function () {
+                var checkbox = $(this);
+
+                var status = false;
+
+                if (checkbox.is(':checked')) {
+                    status = true;
+                }
+
+                $.ajax({
+                    url: "/api/BookForSeller/ModifyStatus?bookID=" + checkbox.attr("data-book-id") + "&status=" + status,
+                    method: "Get",
+                });
+
+            });
+
+            $("#table-books").on("click", ".js-modify", function () {
+                window.location.href = '/Admin/UpdateBook?bookID=' + $(this).attr("data-book-id");
+            });
+
+
+        });
+
+        function CreateNewDataTable(idOfTable, urlToApi, columns) {
+            var table = $(idOfTable).DataTable({
+                ajax: {
+                    url: urlToApi,
+                    dataSrc: "",
+                },
+                columns: columns,
+                scrollY: 280,
+                scrollX: false,
+                scroller: true,
+                deferRender: true,
+            });
+
+            return table;
+        }
+
+
+        jQuery.fn.serializeJSON = function () {
+            var json = {};
+
+            jQuery.map(jQuery(this).serializeArray(), function (n) {
+                var _ = n.name.indexOf('[');
+
+                if (_ > -1) {
+                    var o = json,
+                        _name;
+
+                    _name = n.name.replace(/\]/gi, '').split('[');
+
+                    for (var i = 0, len = _name.length; i < len; i++) {
+                        if (i == len - 1) {
+                            if (o[_name[i]]) {
+                                if (typeof o[_name[i]] == 'string') {
+                                    o[_name[i]] = [o[_name[i]]];
+                                }
+
+                                o[_name[i]].push(n.value);
+                            } else {
+                                o[_name[i]] = n.value || '';
+                            }
+                        } else {
+                            o = o[_name[i]] = o[_name[i]] || {};
+                        }
+                    }
+                } else if (json[n.name] !== undefined) {
+                    if (!json[n.name].push) {
+                        json[n.name] = [json[n.name]];
+                    }
+
+                    json[n.name].push(n.value || '');
+                } else {
+                    json[n.name] = n.value || '';
+                }
+            });
+
+            return json;
+        };
+        
+
+</script>

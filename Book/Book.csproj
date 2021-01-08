@@ -144,8 +144,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\AuthorsController.cs" />
+    <Compile Include="Controllers\Api\AvatarOfBookController.cs" />
+    <Compile Include="Controllers\Api\BookForSellerController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\Api\PublishersController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeScreenController.cs" />
     <Compile Include="Controllers\ShipController.cs" />
@@ -167,8 +170,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bookContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookForSellerViewModel.cs" />
+    <Compile Include="Models\BookVM.cs" />
     <Compile Include="Models\Cyptop.cs" />
     <Compile Include="Models\DTO\AuthorsDto.cs" />
+    <Compile Include="Models\DTO\BookDto.cs" />
+    <Compile Include="Models\DTO\BookForSellerDto.cs" />
     <Compile Include="Models\DTO\CategoryDto.cs" />
     <Compile Include="Models\DTO\PublisherDto.cs" />
     <Compile Include="Models\RegisterClass.cs" />
@@ -247,11 +254,15 @@
     <Content Include="Assets\images\banner\1.jpg" />
     <Content Include="Assets\images\banner\2.jpg" />
     <Content Include="Assets\images\favicon.png" />
+    <Content Include="Assets\images\giet-con-chim-nhai.jpg" />
+    <Content Include="Assets\images\hai-the-gioi.jpg" />
+    <Content Include="Assets\images\hanhtrinhvephuongdong.jpg" />
     <Content Include="Assets\images\icon\shipping\1.png" />
     <Content Include="Assets\images\icon\shipping\2.png" />
     <Content Include="Assets\images\icon\shipping\3.png" />
     <Content Include="Assets\images\icon\shipping\4.png" />
     <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\nha-gia-kim.jpg" />
     <Content Include="Assets\images\payment\1.png" />
     <Content Include="Assets\images\products\1.jpg" />
     <Content Include="Assets\images\products\2.jpg" />
@@ -289,6 +300,7 @@
     <Content Include="Assets\js\waypoints.min.js" />
     <Content Include="Assets\js\wow.min.js" />
     <Content Include="Assets\style.css" />
+    <Content Include="Content\Account.css" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -452,6 +464,8 @@
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\resources\images\adminIcon.png" />
+    <Content Include="Content\select2.min.css" />
+    <Content Include="Content\Seller.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -602,6 +616,8 @@
     <Content Include="Views\Shared\_AdminInfo.cshtml" />
     <Content Include="Views\Admin\PublisherManagement.cshtml" />
     <Content Include="Views\Admin\AuthorManagement.cshtml" />
+    <Content Include="Views\Admin\BookManagement.cshtml" />
+    <Content Include="Views\Book\AddNewBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

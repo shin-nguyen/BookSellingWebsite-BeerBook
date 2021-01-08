@@ -28,7 +28,6 @@ namespace Book.Models
         public DbSet<tbl_account> tbl_account { get; set; }
         public DbSet<tbl_avtofbook> tbl_avtofbook { get; set; }
         public DbSet<tbl_avtofcus> tbl_avtofcus { get; set; }
-        public DbSet<tbl_book> tbl_book { get; set; }
         public DbSet<tbl_cart> tbl_cart { get; set; }
         public DbSet<tbl_category> tbl_category { get; set; }
         public DbSet<tbl_customer> tbl_customer { get; set; }
@@ -38,5 +37,6 @@ namespace Book.Models
         public DbSet<tbl_order> tbl_order { get; set; }
         public DbSet<tbl_publisher> tbl_publisher { get; set; }
         public DbSet<tbl_author> tbl_author { get; set; }
+        public DbSet<tbl_book> tbl_book { get; set; }
     }
 }

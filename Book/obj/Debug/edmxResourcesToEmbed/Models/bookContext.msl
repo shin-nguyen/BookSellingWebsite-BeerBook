@@ -27,21 +27,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_book">
-      <EntityTypeMapping TypeName="dbbookModel.tbl_book">
-        <MappingFragment StoreEntitySet="tbl_book">
-          <ScalarProperty Name="book_img" ColumnName="book_img" />
-          <ScalarProperty Name="book_quantity" ColumnName="book_quantity" />
-          <ScalarProperty Name="book_id" ColumnName="book_id" />
-          <ScalarProperty Name="book_name" ColumnName="book_name" />
-          <ScalarProperty Name="book_description" ColumnName="book_description" />
-          <ScalarProperty Name="book_price" ColumnName="book_price" />
-          <ScalarProperty Name="book_fk_auid" ColumnName="book_fk_auid" />
-          <ScalarProperty Name="book_fk_puid" ColumnName="book_fk_puid" />
-          <ScalarProperty Name="book_fk_cateid" ColumnName="book_fk_cateid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_cart">
       <EntityTypeMapping TypeName="dbbookModel.tbl_cart">
         <MappingFragment StoreEntitySet="tbl_cart">
@@ -119,6 +104,22 @@
         <MappingFragment StoreEntitySet="tbl_author">
           <ScalarProperty Name="au_name" ColumnName="au_name" />
           <ScalarProperty Name="au_id" ColumnName="au_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_book">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_book">
+        <MappingFragment StoreEntitySet="tbl_book">
+          <ScalarProperty Name="book_status" ColumnName="book_status" />
+          <ScalarProperty Name="book_img" ColumnName="book_img" />
+          <ScalarProperty Name="book_quantity" ColumnName="book_quantity" />
+          <ScalarProperty Name="book_fk_cateid" ColumnName="book_fk_cateid" />
+          <ScalarProperty Name="book_fk_puid" ColumnName="book_fk_puid" />
+          <ScalarProperty Name="book_fk_auid" ColumnName="book_fk_auid" />
+          <ScalarProperty Name="book_price" ColumnName="book_price" />
+          <ScalarProperty Name="book_description" ColumnName="book_description" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

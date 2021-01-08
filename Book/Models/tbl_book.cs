@@ -29,12 +29,18 @@ namespace Book.Models
         public Nullable<int> book_fk_cateid { get; set; }
         public Nullable<int> book_quantity { get; set; }
         public string book_img { get; set; }
+        public Nullable<bool> book_status { get; set; }
     
+        public virtual tbl_author tbl_author { get; set; }
         public virtual tbl_avtofbook tbl_avtofbook { get; set; }
+        public virtual tbl_publisher tbl_publisher { get; set; }
         public virtual tbl_category tbl_category { get; set; }
         public virtual ICollection<tbl_cart> tbl_cart { get; set; }
         public virtual ICollection<tbl_orderdetail> tbl_orderdetail { get; set; }
-        public virtual tbl_publisher tbl_publisher { get; set; }
-        public virtual tbl_author tbl_author { get; set; }
+        public object Category { get; internal set; }
+        public object Producer { get; internal set; }
+        public object ProductID { get; internal set; }
+        public string Name { get; internal set; }
+        public object BookID { get; internal set; }
     }
 }
