@@ -1,0 +1,28 @@
+﻿nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+    nav ul > li > a {
+        display: block;
+        padding: 15px 20px; /*tren duoi - trai phai*/
+        text-decoration: none;
+    }
+
+        nav ul > li > a:hover {
+            background-color: brown;
+            color: white;
+            text-decoration: underline;
+        }
+/* css submenu*/
+.subcontent {
+    display: none;
+    position: absolute;
+    width: 150px;
+}
+
+.submenu:hover .subcontent {
+    display: block;
+}

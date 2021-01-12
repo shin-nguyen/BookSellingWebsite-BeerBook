@@ -19,7 +19,6 @@ namespace Book.Controllers
                              select tbl_book).Take(5);
             return View(top5books);
         }
-
         //YourAccount
         public ActionResult YourAccount()
         {
@@ -33,6 +32,21 @@ namespace Book.Controllers
 
             return View(c);
         }
+        public ActionResult Store()
+        {
+            var viewModel = new ViewModel();
 
+            viewModel.allProducts = db.Database.SqlQuery<tbl_book>("Sp_Product_List").ToList();
+
+            return View(viewModel);
+        }
+        public ActionResult Category(int id)
+        {
+            var model = new ViewModel();
+            model.category = db.Database.SqlQuery<tbl_category>("Sp_Catagory_Details @id = {0}", id).Single();
+            model.allProductsOfCategory = db.Database.SqlQuery<tbl_book>("Sp_Product_List_Of_Category @categoryID = {0}", id).ToList();
+           
+            return View(model);
+        }
     }
 }

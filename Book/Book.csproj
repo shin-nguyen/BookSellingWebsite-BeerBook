@@ -148,9 +148,11 @@
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\Api\PublishersController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeScreenController.cs" />
     <Compile Include="Controllers\ShipController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,6 +173,8 @@
     </Compile>
     <Compile Include="Models\BookForSellerViewModel.cs" />
     <Compile Include="Models\BookVM.cs" />
+    <Compile Include="Models\Consts\RoleIds.cs" />
+    <Compile Include="Models\Consts\SessionNames.cs" />
     <Compile Include="Models\Cyptop.cs" />
     <Compile Include="Models\DTO\AuthorsDto.cs" />
     <Compile Include="Models\DTO\BookDto.cs" />
@@ -217,6 +221,8 @@
     <Compile Include="Models\tbl_status.cs">
       <DependentUpon>bookContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Models\ViewModels\Customer\CustomerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +248,7 @@
     <Content Include="Assets\css\magnific-popup.css" />
     <Content Include="Assets\css\material-design-iconic-font.min.css" />
     <Content Include="Assets\css\meanmenu.css" />
+    <Content Include="Assets\css\nav.css" />
     <Content Include="Assets\css\nice-select.css" />
     <Content Include="Assets\css\owl.carousel.min.css" />
     <Content Include="Assets\css\owl.video.play.png" />
@@ -252,6 +259,7 @@
     <Content Include="Assets\images\avtTemp.jpg" />
     <Content Include="Assets\images\banner\1.jpg" />
     <Content Include="Assets\images\banner\2.jpg" />
+    <Content Include="Assets\images\cart-icon.png" />
     <Content Include="Assets\images\favicon.png" />
     <Content Include="Assets\images\giet-con-chim-nhai.jpg" />
     <Content Include="Assets\images\hai-the-gioi.jpg" />
@@ -261,6 +269,7 @@
     <Content Include="Assets\images\icon\shipping\3.png" />
     <Content Include="Assets\images\icon\shipping\4.png" />
     <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\LogoThanhPham.jpg" />
     <Content Include="Assets\images\nha-gia-kim.jpg" />
     <Content Include="Assets\images\payment\1.png" />
     <Content Include="Assets\images\products\1.jpg" />
@@ -617,9 +626,15 @@
     <Content Include="Views\Admin\AuthorManagement.cshtml" />
     <Content Include="Views\Admin\BookManagement.cshtml" />
     <Content Include="Views\Book\AddNewBook.cshtml" />
+    <Content Include="Views\HomeScreen\ListOfCategory.cshtml" />
+    <Content Include="Views\HomeScreen\Category.cshtml" />
+    <Content Include="Views\HomeScreen\Store.cshtml" />
+    <Content Include="Views\ShoppingCart\BagCart.cshtml" />
+    <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

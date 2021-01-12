@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="~/assets/css/responsive.css">
     <!-- Modernizr js -->
     <script src="~/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="~/assets/css/nav.css">
 </head>
 <body>
     <!-- Begin Header Area -->
@@ -188,6 +189,7 @@
                 <div class="row">
                     <!-- Begin Header Logo Area -->
                     <div class="col-lg-3">
+                        <h1></h1>
                         <div class="logo pb-sm-30 pb-xs-30">
                             <a href="@Url.Action("Index","HomeScreen")">
                                 <img src="~/Assets/images/logo.png" alt="" style="height: 50%; width: 50%;">
@@ -219,7 +221,7 @@
                                     <div class="minicart">
                                         <p class="minicart-total">SUBTOTAL: <span>80.00$</span></p>
                                         <div class="minicart-button">
-                                            @Html.ActionLink("View Cart", "ShoppingCart", "Home", new { @class = "li-button li-button-fullwidth li-button-dark" })
+                                            @Html.ActionLink("ShowToCart", "ShoppingCart", "HomeScreen", new { @class = "li-button li-button-fullwidth li-button-dark" })
                                             @Html.ActionLink("Check Out", "CheckOut", "Home", new { @class = "li-button li-button-fullwidth li-button-dark" })
                                         </div>
                                     </div>
@@ -244,9 +246,16 @@
                             <nav>
                                 <ul>
                                     <li>@Html.ActionLink("Home", "Index", "HomeScreen")</li>
-                                    <li>@Html.ActionLink("Shop", "Shop", "Home")</li>
+                                    @*<li>@Html.ActionLink("Book Category", "Shop", "Home")</li>*@
+                                <li class="submenu">
+                                    @*<a href="@Url.Action("Store", "HomeScreen")">Danh mục sản phẩm</a>*@
+                                    <a href="@Url.Action("Store", "HomeScreen")">Shop</a>
+                                    @RenderPage("/Views/HomeScreen/ListOfCategory.cshtml")
+                                    
+                                </li>
                                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                    <li>@Html.ActionLink("Liên hệ", "Contact", "Home")</li>
+                                   
                                 </ul>
                             </nav>
                         </div>
@@ -354,12 +363,12 @@
                                 </div>
                                 <ul class="des">
                                     <li>
-                                        <span>Address: </span>
-                                        UTE
+                                        <span>Địa chỉ liên lạc: </span>
+                                        ......
                                     </li>
                                     <li>
                                         <span>Phone: </span>
-                                        <a href="#">(+123) 123 321 345</a>
+                                        <a href="#">1273</a>
                                     </li>
                                     <li>
                                         <span>Email: </span>
