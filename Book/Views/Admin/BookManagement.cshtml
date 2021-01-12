@@ -107,8 +107,17 @@
                     title: "",
                     data: "BookID",
                     render: function (data) {
-                        var markup = "<button class='btn btn-default js-modify' style = 'background-color:#d36e25; color:white' data-book-id=" + data + ">"
-                            + "Modify</button>";
+                        var markup = "<button class='btn btn-warning jsModify' style = 'background-color:white; color:#d36e25' data-book-id=" + data + ">"
+                            + "Edit</button>";
+                        return markup;
+                    },
+                },
+                {
+                    title: "",
+                    data: "BookID",
+                    render: function (data) {
+                        var markup = "<button style='color:white;' class='btn-warning jsDelete' data-book-id=" + data + ">"
+                            + "Delete</button>";
                         return markup;
                     },
                 }
@@ -127,9 +136,30 @@
                 }
             });
 
-            $("#table-books").on("click", ".js-modify", function () {
-                window.location.href = '/Book/UpdateBook?bookID=' + $(this).attr("data-book-id");
+            $("#table-books").on("click", ".jsModify", function () {
+                window.location.href = '/Book/UpdateBook?id=' + $(this).attr("data-book-id");
             });
+
+            $("#table-books").on("click", ".jsDelete", function () {
+                var button1 = $(this);
+
+                $.ajax({
+                    url: "/api/BookForSeller?bookID=" + button1.attr("data-book-id"),
+                    method: "Get",
+                    success: function (response) {
+                        if (response.InOrderOrCart) {
+                            bootbox.alert("You can not delete this book, because some carts or orders contain it.");
+                        } else {
+                            bootbox.confirm("Are you sure you want to delete book " + button1.attr("data-book-id"), function (result) {
+                                if (result) {
+                                    window.location.href = '/Book/DeleteBook?id=' + response.BookID;
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+
 
 
         });

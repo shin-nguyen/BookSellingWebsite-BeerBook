@@ -52,12 +52,13 @@ namespace Book.Controllers
                     }
                     else if (acc.acc_role_fk == 2)
                     {
-                        Session["ship_id"] = acc.acc_id;
+
+                        Session["ship_id"] = acc.tbl_customer.FirstOrDefault().cus_id;
                         return RedirectToAction("Index", "Ship");
                     }
                     else
                     {
-                        Session["user_id"] = acc.acc_id;
+                        Session["user_id"] = acc.tbl_customer.FirstOrDefault().cus_id;
                         return RedirectToAction("Index", "HomeScreen");
                     }
                 }

@@ -33,7 +33,17 @@ namespace Book.Models.DTO
             this.Quantity = (int)book.book_quantity;
             this.Status = (bool)book.book_status;
             this.Image = book.book_img;
+
+            if (book.tbl_orderdetail.Count() > 0 || book.tbl_cart.Count() > 0)
+            {
+                this.InOrderOrCart = true;
+            }
+            else
+            {
+                this.InOrderOrCart = false;
+            }
         }
+        public bool InOrderOrCart { get; set; }
 
         public int BookID { get; set; }
 
