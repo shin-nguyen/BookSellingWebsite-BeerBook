@@ -1,0 +1,51 @@
+﻿@model Book.Models.tbl_customer
+
+@{
+    ViewBag.Title = "YourAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Account</h2>
+
+<p>
+    <img src="~/Assets/images/avtTemp.jpg" width="200px" height="200px" />
+    <dt>
+        @Html.ActionLink("Change Avatar", "ChangerAvatar", "HomeScreen")
+
+    </dt>
+</p>
+<br />
+<div>
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            Full Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cus_name)
+        </dd>
+
+        <dt>
+            Phone Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cus_phone)
+        </dd>
+
+        <dt>
+            Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cus_address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit Your Profile", "EditProfile", new { id = Model.cus_id }) |
+    @Html.ActionLink("Change Password", "ChangePassword", "Account")
+</p>

@@ -1,0 +1,32 @@
+﻿
+@using Book.Models
+@{
+    int adid = (int)Session["ad_id"];
+
+    dbbookEntities db = new dbbookEntities();
+    tbl_account admin = db.tbl_account.Where(x => x.acc_id == adid).SingleOrDefault();
+}
+
+
+@if (admin != null)
+{
+    <div class="row">
+
+        <div class="col-md-4">
+            <img src="~/Content/resources/images/adminIcon.png" class="img-circle" style="width: 12%;" />
+            <span> <b>Welcome :</b> @admin.acc_username</span>
+        </div>
+
+        <div class="col-md-4" style="margin-top: 15px;">
+
+            <span><b>@ViewBag.Title</b></span>
+
+        </div>
+
+        <div class="col-md-4" style="margin-top: 15px;">
+            <span> <b>Date :</b> @DateTime.Now</span>
+        </div>
+
+    </div>
+}
+
