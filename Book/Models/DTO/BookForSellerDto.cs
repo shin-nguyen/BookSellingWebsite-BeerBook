@@ -33,7 +33,18 @@ namespace Book.Models.DTO
             this.Quantity = (int)book.book_quantity;
             this.Status = (bool)book.book_status;
             this.Image = book.book_img;
+
+            if (book.tbl_orderdetail.Count() > 0 || book.tbl_cart.Count() > 0)
+            {
+                this.InOrderOrCart = true;
+            }
+            else
+            {
+                this.InOrderOrCart = false;
+            }
         }
+
+        public bool InOrderOrCart { get; set; }
 
         public int BookID { get; set; }
 
@@ -66,33 +77,5 @@ namespace Book.Models.DTO
         public int AuthorID { get; set; }
         public string AuthorName { get; set; }
 
-
-        public tbl_book CreateModel()
-        {
-            tbl_book book = new tbl_book();
-
-            book.book_name = this.Name;
-            book.book_description = this.Description;
-            book.book_fk_cateid = this.CategoryID;
-            book.book_price = this.Price;
-            book.book_fk_puid = this.PublisherID;
-            book.book_fk_auid = this.AuthorID;
-            book.book_quantity = this.Quantity;
-            book.book_status = this.Status;
-
-            return book;
-        }
-
-        public void UpdateModel(tbl_book book)
-        {
-            book.book_name = this.Name;
-            book.book_description = this.Description;
-            book.book_fk_cateid = this.CategoryID;
-            book.book_price = this.Price;
-            book.book_fk_puid = this.PublisherID;
-            book.book_quantity = this.Quantity;
-            book.book_fk_auid = this.AuthorID;
-            book.book_status = this.Status;
-        }
     }
 }

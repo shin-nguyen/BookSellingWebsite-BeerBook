@@ -1,7 +1,7 @@
 ﻿@model Book.Models.BookVM
 
 @{
-    ViewBag.Title = "ADD NEW BOOK";
+    ViewBag.Title = "EDIT BOOk";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -18,13 +18,14 @@ else if (ViewBag.success != null)
     </div>
 }
 
-@using (Html.BeginForm("AddNewBook", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UpdateBook", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -44,7 +45,7 @@ else if (ViewBag.success != null)
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <textarea class="form-control" id="description" name="description" rows="6"></textarea>
+                <textarea class="form-control" id="description" name="description" rows="6">@Model.Description</textarea>
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,11 +58,12 @@ else if (ViewBag.success != null)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImageFile, "Image", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="imageFile" id="imageFile" />
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img id="avatar-preview" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover" src="~/Assets/images/@Model.Image" />
+                <input type="file" name="imageFile" id="imageFile" />
             </div>
         </div>
 
@@ -91,7 +93,7 @@ else if (ViewBag.success != null)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" style="background-color:#d36e25; color:white" />
+                <input type="submit" value="Save" class="btn btn-default" style="background-color:#d36e25; color:white"/>
             </div>
         </div>
     </div>

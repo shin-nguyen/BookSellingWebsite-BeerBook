@@ -45,5 +45,7 @@ namespace Book.Models.DTO
 
         [Required]
         public byte[] ImageFile { get; set; }
+
+        public bool InOrderOrCart { get; set; }
     }
 }
