@@ -18,12 +18,12 @@ namespace Book.Controllers
         // add item vao gio hang
         public ActionResult AddtoCart(int id)
         {
-            if (Session[SessionNames.CustomerID] == null)
+            if (Session["user_id"] == null)
             {
-                return RedirectToAction("Login", "Account", new { RoleId = RoleIds.Customer });
+                return RedirectToAction("Index", "HomeScreen");
             }
 
-            int userid = Convert.ToInt32(Session[SessionNames.CustomerID]);
+            int userid = Convert.ToInt32(Session["user_id"]);
 
             var product = this._db.tbl_book.Find(id);
 
@@ -56,14 +56,14 @@ namespace Book.Controllers
         // trang gio hang
         public ActionResult ShowToCart()
         {
-            int userid = Convert.ToInt32(Session[SessionNames.CustomerID]);
+            int userid = Convert.ToInt32(Session["user_id"]);
             List<tbl_cart> cart = _db.tbl_cart.Where(x => x.cart_fk_cusid == userid).ToList();
             return View(cart);
         }
         //
         public ActionResult Update_Quantity_Cart(int ID_Product, int quantity)
         {
-            int userid = Convert.ToInt32(Session[SessionNames.CustomerID]);
+            int userid = Convert.ToInt32(Session["user_id"]);
             tbl_cart cart = _db.tbl_cart.Where(x => x.cart_fk_cusid == userid && x.cart_fk_bookid == ID_Product).SingleOrDefault();
 
             var product = this._db.tbl_book.Find(ID_Product);
@@ -81,7 +81,7 @@ namespace Book.Controllers
         //
         public ActionResult RemoveCart(int id)
         {
-            int userid = Convert.ToInt32(Session[SessionNames.CustomerID]);
+            int userid = Convert.ToInt32(Session["user_id"]);
             tbl_cart cart = _db.tbl_cart.Where(x => x.cart_fk_cusid == userid && x.cart_fk_bookid == id).SingleOrDefault();
             _db.tbl_cart.Remove(cart);
             _db.SaveChanges();
@@ -89,7 +89,7 @@ namespace Book.Controllers
         }
         public ActionResult RemoveAllCart()
         {
-            int userid = Convert.ToInt32(Session[SessionNames.CustomerID]);
+            int userid = Convert.ToInt32(Session["user_id"]);
             List<tbl_cart> cart = _db.tbl_cart.Where(x => x.cart_fk_cusid == userid).ToList();
             foreach (var i in cart)
             {
@@ -103,7 +103,7 @@ namespace Book.Controllers
 
         public ActionResult CreateAnOrder()
         {
-            int customerID = Convert.ToInt32(Session[SessionNames.CustomerID]);
+            int customerID = Convert.ToInt32(Session["user_id"]);
 
             var carts = this._db.tbl_cart.Where(c => c.cart_fk_cusid == customerID).ToList();
 
@@ -116,16 +116,16 @@ namespace Book.Controllers
                     throw new Exception("Invalid amount of products inserting to orders");
             }
 
-            int noOfRowEffected = this._db.Database.ExecuteSqlCommand("Insert into Orders(CustomerID) Values(" + customerID + ")");
+            int noOfRowEffected = this._db.Database.ExecuteSqlCommand("Insert into tbl_order(order_fk_cusid) Values(" + customerID + ")");
 
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
         //
         public PartialViewResult BagCart()
         {
-            if (Session[SessionNames.CustomerID] != null)
+            if(Session["user_id"] == null)
             {
-                int userid = Convert.ToInt32(Session[SessionNames.CustomerID]);
+                int userid = Convert.ToInt32(Session["user_id"]);
                 var amount = (from i in _db.tbl_cart
                               where i.cart_fk_cusid == userid
                               select (int?)i.cart_book_amount).Sum() ?? 0;

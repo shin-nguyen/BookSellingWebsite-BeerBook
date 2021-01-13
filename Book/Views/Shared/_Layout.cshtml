@@ -209,22 +209,11 @@
                         <div class="header-middle-right">
                             <ul class="hm-menu">
                                 <!-- Begin Header Mini Cart Area -->
-                                <li class="hm-minicart">
-                                    <div class="hm-minicart-trigger">
-                                        <span class="item-icon"></span>
-                                        <span class="item-text">
-                                            80.00$
-                                            <span class="cart-item-count">2</span>
-                                        </span>
-                                    </div>
-                                    <span></span>
-                                    <div class="minicart">
-                                        <p class="minicart-total">SUBTOTAL: <span>80.00$</span></p>
-                                        <div class="minicart-button">
-                                            @Html.ActionLink("ShowToCart", "ShoppingCart", "HomeScreen", new { @class = "li-button li-button-fullwidth li-button-dark" })
-                                            @Html.ActionLink("Check Out", "CheckOut", "Home", new { @class = "li-button li-button-fullwidth li-button-dark" })
-                                        </div>
-                                    </div>
+                                <li>
+                                    <a href="@Url.Action("ShowToCart", "ShoppingCart")">
+                                        <img src="@Url.Content("~/Assets/images/cart-icon.png")" style="height:50px; width: 50px; padding-top: 10px" />
+                                    </a>
+                                    @Html.Action("BagCart", "ShoppingCart")
                                 </li>
                                 <!-- Header Mini Cart Area End Here -->
                             </ul>
