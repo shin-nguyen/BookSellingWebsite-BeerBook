@@ -22,5 +22,6 @@ namespace Book.Models
         public virtual tbl_customer tbl_customer { get; set; }
         public virtual tbl_status tbl_status { get; set; }
         public virtual tbl_orderdetail tbl_orderdetail { get; set; }
+        public virtual ICollection<tbl_orderdetail> ProductsOfOrders { get; set; }
     }
 }

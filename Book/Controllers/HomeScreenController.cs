@@ -40,6 +40,7 @@ namespace Book.Controllers
 
             return View(viewModel);
         }
+
         public ActionResult Category(int id)
         {
             var model = new ViewModel();
@@ -48,5 +49,29 @@ namespace Book.Controllers
            
             return View(model);
         }
+
+        public ActionResult ProductsOfSearch(string search = "")
+        {
+            ViewBag.search = search;
+            if (search == "" || search == null)
+            {
+                var model = new ViewModel();
+                model.productsOfSearch = (from i in db.tbl_book
+                                          where i.book_name.Contains(search)
+                                          where i.book_status == true
+                                          select i).OrderBy(p => p.book_name).ToList();
+                return View(model);
+            }
+            else
+            {
+                var model = new ViewModel();
+                model.productsOfSearch = (from i in db.tbl_book
+                                          where i.book_name.Contains(search)
+                                          where i.book_status == true
+                                          select i).OrderBy(p => p.book_name).ToList();
+                return View(model);
+            }
+        }
+
     }
 }

@@ -11,6 +11,7 @@ namespace Book.Models
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
     
     public partial class dbbookEntities : DbContext
@@ -38,5 +39,37 @@ namespace Book.Models
         public DbSet<tbl_publisher> tbl_publisher { get; set; }
         public DbSet<tbl_author> tbl_author { get; set; }
         public DbSet<tbl_book> tbl_book { get; set; }
+        public virtual int CancelAnOrder(Nullable<int> orderID, Nullable<int> stateCanceled, ObjectParameter isSuccess)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("orderID", orderID) :
+                new ObjectParameter("orderID", typeof(int));
+
+            var stateCanceledParameter = stateCanceled.HasValue ?
+                new ObjectParameter("stateCanceled", stateCanceled) :
+                new ObjectParameter("stateCanceled", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CancelAnOrder", orderIDParameter, stateCanceledParameter, isSuccess);
+        }
+        public virtual int DeleteAnOrder(Nullable<int> orderID, Nullable<int> stateCanceled, ObjectParameter isSuccess)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("orderID", orderID) :
+                new ObjectParameter("orderID", typeof(int));
+
+            var stateCanceledParameter = stateCanceled.HasValue ?
+                new ObjectParameter("stateCanceled", stateCanceled) :
+                new ObjectParameter("stateCanceled", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAnOrder", orderIDParameter, stateCanceledParameter, isSuccess);
+        }
+        public virtual ObjectResult<Nullable<int>> SPGetTotalOrderCost(Nullable<int> orderID)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("orderID", orderID) :
+                new ObjectParameter("orderID", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SPGetTotalOrderCost", orderIDParameter);
+        }
     }
 }

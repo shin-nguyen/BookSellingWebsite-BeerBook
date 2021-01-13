@@ -147,6 +147,7 @@
     <Compile Include="Controllers\Api\AvatarOfProductController.cs" />
     <Compile Include="Controllers\Api\BookForSellerController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
+    <Compile Include="Controllers\Api\OrdersController.cs" />
     <Compile Include="Controllers\Api\PublishersController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -174,11 +175,14 @@
     </Compile>
     <Compile Include="Models\BookForSellerViewModel.cs" />
     <Compile Include="Models\BookVM.cs" />
+    <Compile Include="Models\Consts\OrderStates.cs" />
     <Compile Include="Models\Cyptop.cs" />
     <Compile Include="Models\DTO\AuthorsDto.cs" />
     <Compile Include="Models\DTO\BookDto.cs" />
     <Compile Include="Models\DTO\BookForSellerDto.cs" />
     <Compile Include="Models\DTO\CategoryDto.cs" />
+    <Compile Include="Models\DTO\OrderDto.cs" />
+    <Compile Include="Models\DTO\ProductsOfOrderDto.cs" />
     <Compile Include="Models\DTO\PublisherDto.cs" />
     <Compile Include="Models\RegisterClass.cs" />
     <Compile Include="Models\tbl_account.cs">
@@ -630,6 +634,7 @@
     <Content Include="Views\ShoppingCart\BagCart.cshtml" />
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
     <Content Include="Views\Book\UpdateBook.cshtml" />
+    <Content Include="Views\HomeScreen\ProductsOfSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
