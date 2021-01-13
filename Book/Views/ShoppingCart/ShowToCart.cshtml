@@ -35,7 +35,7 @@ else
                             @Html.DisplayFor(modelItem => item.tbl_book.book_name)
                         </td>
                         <td>
-                            <img src="/Api/AvatarOfProduct/GetAvatarOfProduct?productID=@item.cart_fk_bookid" style="width: 150px; height:150px; object-fit: cover;" />
+                            <img src="~/assets/images/@item.tbl_book.book_img" style="width:220px; height:294px" />
                         </td>
                         <td>
                             @item.tbl_book.book_price &nbsp;VNĐ

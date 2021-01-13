@@ -144,6 +144,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\AuthorsController.cs" />
+    <Compile Include="Controllers\Api\AvatarOfProductController.cs" />
     <Compile Include="Controllers\Api\BookForSellerController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\Api\PublishersController.cs" />
@@ -173,8 +174,6 @@
     </Compile>
     <Compile Include="Models\BookForSellerViewModel.cs" />
     <Compile Include="Models\BookVM.cs" />
-    <Compile Include="Models\Consts\RoleIds.cs" />
-    <Compile Include="Models\Consts\SessionNames.cs" />
     <Compile Include="Models\Cyptop.cs" />
     <Compile Include="Models\DTO\AuthorsDto.cs" />
     <Compile Include="Models\DTO\BookDto.cs" />
@@ -269,7 +268,6 @@
     <Content Include="Assets\images\icon\shipping\3.png" />
     <Content Include="Assets\images\icon\shipping\4.png" />
     <Content Include="Assets\images\logo.png" />
-    <Content Include="Assets\images\LogoThanhPham.jpg" />
     <Content Include="Assets\images\nha-gia-kim.jpg" />
     <Content Include="Assets\images\payment\1.png" />
     <Content Include="Assets\images\products\1.jpg" />
@@ -635,6 +633,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AvatarOfProduct\" />
     <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>

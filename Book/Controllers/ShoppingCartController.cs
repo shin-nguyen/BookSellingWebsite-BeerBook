@@ -1,5 +1,4 @@
 ﻿using Book.Models;
-using Book.Models.Consts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -20,7 +19,7 @@ namespace Book.Controllers
         {
             if (Session["user_id"] == null)
             {
-                return RedirectToAction("Index", "HomeScreen");
+                return RedirectToAction("Login", "Account");
             }
 
             int userid = Convert.ToInt32(Session["user_id"]);

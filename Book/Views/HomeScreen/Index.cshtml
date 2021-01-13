@@ -79,12 +79,13 @@
                                 <a href="#">
                                     @if (item.book_img == "-1")
                                     {
-                                        <img src="~/Assets/images/avtTemp.jpg" style="width:220px; height:294px" />
+                                        <img src="~/assets/images/avttemp.jpg" style="width:220px; height:294px" />
                                     }
                                     else
                                     {
-                                        <img src="~/Assets/images/@item.book_img" style="width:220px; height:294px" />
+                                        <img src="~/assets/images/@item.book_img" style="width:220px; height:294px" />
                                     }
+                                    @*<img src="/Api/AvatarOfProduct/GetAvatarOfProduct?ProductId= @item.book_id" style="width:220px; height:294px" />*@
                                 </a>
                                 <span class="sticker">New</span>
                             </div>
