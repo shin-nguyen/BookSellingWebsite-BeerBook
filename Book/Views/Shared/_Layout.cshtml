@@ -1,4 +1,6 @@
-﻿    <!doctype html>
+﻿@{ List<Book.Models.tbl_category> categories = new Book.Models.ViewModel().allCategories(); }
+
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <!-- index28:48-->
@@ -237,15 +239,18 @@
                                 <ul>
                                     <li>@Html.ActionLink("Home", "Index", "HomeScreen")</li>
                                     @*<li>@Html.ActionLink("Book Category", "Shop", "Home")</li>*@
-                                <li class="submenu">
-                                    @*<a href="@Url.Action("Store", "HomeScreen")">Danh mục sản phẩm</a>*@
-                                    <a href="@Url.Action("Store", "HomeScreen")">Shop</a>
-                                    @RenderPage("/Views/HomeScreen/ListOfCategory.cshtml")
-                                    
-                                </li>
-                                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                                    <li>@Html.ActionLink("Liên hệ", "Contact", "Home")</li>
-                                   
+                                    <li class="dropdown-holder">
+                                        <a href="@Url.Action("Store", "HomeScreen")">Shop</a>
+                                        <ul class="hb-dropdown">
+                                            @foreach (var items in categories)
+                                            {
+                                                <li><a href="@Url.Action("Category", "HomeScreen", new { id = items.cate_id })">@items.cate_name</a></li>       
+                                            }
+                                        </ul>
+                                    </li>
+                                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+
                                 </ul>
                             </nav>
                         </div>

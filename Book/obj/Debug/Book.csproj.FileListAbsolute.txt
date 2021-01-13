@@ -799,3 +799,5 @@ C:\Users\FPTSHOP\Desktop\BookSellingWebsite-BeerBook\Book\obj\Debug\Book.csproj.
 C:\Users\FPTSHOP\Desktop\BookSellingWebsite-BeerBook\Book\obj\Debug\Book.csproj.CopyComplete
 C:\Users\FPTSHOP\Desktop\BookSellingWebsite-BeerBook\Book\obj\Debug\Book.dll
 C:\Users\FPTSHOP\Desktop\BookSellingWebsite-BeerBook\Book\obj\Debug\Book.pdb
+E:\GITHUB\BookSellingWebsite-BeerBook\Book\bin\PayPal.dll
+E:\GITHUB\BookSellingWebsite-BeerBook\Book\bin\PayPal.xml
