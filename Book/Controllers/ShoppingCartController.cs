@@ -122,7 +122,7 @@ namespace Book.Controllers
         //
         public PartialViewResult BagCart()
         {
-            if(Session["user_id"] == null)
+            if(Session["user_id"] != null)
             {
                 int userid = Convert.ToInt32(Session["user_id"]);
                 var amount = (from i in _db.tbl_cart
