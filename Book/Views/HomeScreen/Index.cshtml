@@ -96,7 +96,7 @@
                                             <a href="#">Studio Design</a>
                                         </h5>
                                     </div>
-                                    <h4><a class="product_name" href="single-product.html">@Html.DisplayFor(modelItem => item.book_name)</a></h4>
+                                    <h4><a class="product_name" href="@Url.Action("Details", "HomeScreen", new { id = item.book_id})">@Html.DisplayFor(modelItem => item.book_name)</a></h4>
                                     <div class="price-box">
                                         <span class="new-price">@Html.DisplayFor(modelItem => item.book_price)<span>.đ</span></span>
                                     </div>
@@ -104,7 +104,7 @@
                                 <div class="add-actions">
                                     <ul class="add-actions-link">
                                         <li class="add-cart active"><a href="/ShoppingCart/AddtoCart/@item.book_id">Add to cart</a></li>
-                                        <li><a href="#" title="view"><i class="fa fa-eye"></i></a></li>
+                                        <li><a href="@Url.Action("Details", "HomeScreen", new { id = item.book_id})" title="view"><i class="fa fa-eye"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -171,40 +171,40 @@
                     @foreach (var item in Model)
                     {
                         <!-- single-product-wrap start -->
-                        <div class="single-product-wrap" style=" width: 18.5%; margin-right: 1.5%;">
-                            <div class="product-image">
-                                <a href="#">
-                                    @if (item.book_img == "-1")
-                                    {
-                                        <img src="~/Assets/images/avtTemp.jpg" style="width:220px; height:294px" />
-                                    }
-                                    else
-                                    {
-                                        <img src="~/Assets/images/@item.book_img" style="width:220px; height:294px" />
-                                    }
-                                </a>
-                                <span class="sticker">New</span>
+                    <div class="single-product-wrap" style=" width: 18.5%; margin-right: 1.5%;">
+                        <div class="product-image">
+                            <a href="#">
+                                @if (item.book_img == "-1")
+                                {
+                                    <img src="~/Assets/images/avtTemp.jpg" style="width:220px; height:294px" />
+                                }
+                                else
+                                {
+                                    <img src="~/Assets/images/@item.book_img" style="width:220px; height:294px" />
+                                }
+                            </a>
+                            <span class="sticker">New</span>
+                        </div>
+                        <div class="product_desc">
+                            <div class="product_desc_info">
+                                <div class="product-review">
+                                    <h5 class="manufacturer">
+                                        <a href="#">Studio Design</a>
+                                    </h5>
+                                </div>
+                                <h4><a class="product_name" href="@Url.Action("Details", "HomeScreen", new { id = item.book_id})">@Html.DisplayFor(modelItem => item.book_name)</a></h4>
+                                <div class="price-box">
+                                    <span class="new-price">@Html.DisplayFor(modelItem => item.book_price)<span>.đ</span></span>
+                                </div>
                             </div>
-                            <div class="product_desc">
-                                <div class="product_desc_info">
-                                    <div class="product-review">
-                                        <h5 class="manufacturer">
-                                            <a href="#">Studio Design</a>
-                                        </h5>
-                                    </div>
-                                    <h4><a class="product_name" href="single-product.html">@Html.DisplayFor(modelItem => item.book_name)</a></h4>
-                                    <div class="price-box">
-                                        <span class="new-price">@Html.DisplayFor(modelItem => item.book_price)<span>.đ</span></span>
-                                    </div>
-                                </div>
-                                <div class="add-actions">
-                                    <ul class="add-actions-link">
-                                        <li class="add-cart active"><a href="/ShoppingCart/AddtoCart/@item.book_id">Add to cart</a></li>
-                                        <li><a href="#" title="view"><i class="fa fa-eye"></i></a></li>
-                                    </ul>
-                                </div>
+                            <div class="add-actions">
+                                <ul class="add-actions-link">
+                                    <li class="add-cart active"><a href="/ShoppingCart/AddtoCart/@item.book_id">Add to cart</a></li>
+                                    <li><a href="@Url.Action("Details", "HomeScreen", new { id = item.book_id})" title="view"><i class="fa fa-eye"></i></a></li>
+                                </ul>
                             </div>
                         </div>
+                    </div>
                         <!-- single-product-wrap end -->
                     }
                 </div>

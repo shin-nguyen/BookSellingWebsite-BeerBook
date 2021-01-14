@@ -49,6 +49,13 @@ namespace Book.Controllers
            
             return View(model);
         }
+        public ActionResult Details(int id)
+        {
+            var product = db.Database.SqlQuery<tbl_book>("Sp_Product_Details @id = {0}", id).Single();
+
+            return View(product);
+        }
+
 
         public ActionResult ProductsOfSearch(string search = "")
         {

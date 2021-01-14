@@ -241,7 +241,7 @@
                                     @*<li>@Html.ActionLink("Book Category", "Shop", "Home")</li>*@
                                     <li class="dropdown-holder">
                                         <a href="@Url.Action("Store", "HomeScreen")">Shop</a>
-                                        <ul class="hb-dropdown">
+                                        <ul class="hb-dropdown" style="background-color:white">
                                             @foreach (var items in categories)
                                             {
                                                 <li><a href="@Url.Action("Category", "HomeScreen", new { id = items.cate_id })">@items.cate_name</a></li>       

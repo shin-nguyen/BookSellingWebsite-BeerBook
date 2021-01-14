@@ -34,7 +34,7 @@ namespace Book.Models.DTO
             this.Status = (bool)book.book_status;
             this.Image = book.book_img;
 
-            if (book.tbl_orderdetail.Count() > 0 || book.tbl_cart.Count() > 0)
+            if (book.tbl_oderdetail.Count() > 0 || book.tbl_cart.Count() > 0)
             {
                 this.InOrderOrCart = true;
             }

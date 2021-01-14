@@ -50,7 +50,7 @@ namespace Book.Controllers
                 _db.SaveChanges();
             }
 
-            return RedirectToAction("ShowToCart", "ShoppingCart");
+            return RedirectToAction("Index", "HomeScreen");
         }
         // trang gio hang
         public ActionResult ShowToCart()
@@ -115,9 +115,29 @@ namespace Book.Controllers
                     throw new Exception("Invalid amount of products inserting to orders");
             }
 
-            int noOfRowEffected = this._db.Database.ExecuteSqlCommand("Insert into tbl_order(order_fk_cusid) Values(" + customerID + ")");
+            var order = new tbl_order();
+            order.order_fk_cusid = customerID;
+            DateTime now = Convert.ToDateTime(DateTime.Now.ToString("HH:mm:ss"));
+            order.order_time = now;
+            order.order_stt_fk = 1;
+            _db.tbl_order.Add(order);
+            _db.SaveChanges();
 
-            return RedirectToAction("ShowToCart", "ShoppingCart");
+            var orderid = _db.tbl_order.Where(x => x.order_fk_cusid == customerID && x.order_time == now).SingleOrDefault().order_id;
+
+            foreach(var i in carts)
+            {
+                var od = new tbl_oderdetail();
+                od.od_fk_orderid = orderid;
+                od.od_fk_bookid = i.cart_fk_bookid;
+                od.od_book_amount = i.cart_book_amount;
+                _db.tbl_oderdetail.Add(od);
+                _db.SaveChanges();
+            }
+
+            //int noOfRowEffected = this._db.Database.ExecuteSqlCommand("Insert into tbl_order(order_fk_cusid) Values(" + customerID + ")");
+
+            return RedirectToAction("RemoveAllCart", "ShoppingCart");
         }
         //
         public PartialViewResult BagCart()

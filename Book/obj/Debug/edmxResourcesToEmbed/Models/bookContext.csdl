@@ -150,7 +150,6 @@
       <End Role="tbl_customer" EntitySet="tbl_customer" />
       <End Role="tbl_cart" EntitySet="tbl_cart" />
     </AssociationSet>
-    <EntitySet Name="tbl_orderdetail" EntityType="dbbookModel.tbl_orderdetail" />
     <EntitySet Name="tbl_order" EntityType="dbbookModel.tbl_order" />
     <AssociationSet Name="FK__tbl_order__order__5CD6CB2B" Association="dbbookModel.FK__tbl_order__order__5CD6CB2B">
       <End Role="tbl_customer" EntitySet="tbl_customer" />
@@ -159,10 +158,6 @@
     <AssociationSet Name="FK__tbl_order__order__5DCAEF64" Association="dbbookModel.FK__tbl_order__order__5DCAEF64">
       <End Role="tbl_status" EntitySet="tbl_status" />
       <End Role="tbl_order" EntitySet="tbl_order" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tbl_order__order__60A75C0F" Association="dbbookModel.FK__tbl_order__order__60A75C0F">
-      <End Role="tbl_order" EntitySet="tbl_order" />
-      <End Role="tbl_orderdetail" EntitySet="tbl_orderdetail" />
     </AssociationSet>
     <EntitySet Name="tbl_publisher" EntityType="dbbookModel.tbl_publisher" />
     <EntitySet Name="tbl_author" EntityType="dbbookModel.tbl_author" />
@@ -187,21 +182,16 @@
       <End Role="tbl_book" EntitySet="tbl_book" />
       <End Role="tbl_cart" EntitySet="tbl_cart" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_order__order__619B8048" Association="dbbookModel.FK__tbl_order__order__619B8048">
+    <EntitySet Name="tbl_oderdetail" EntityType="dbbookModel.tbl_oderdetail" />
+    <AssociationSet Name="FK__tbl_oderd__od_fk__5DCAEF64" Association="dbbookModel.FK__tbl_oderd__od_fk__5DCAEF64">
       <End Role="tbl_book" EntitySet="tbl_book" />
-      <End Role="tbl_orderdetail" EntitySet="tbl_orderdetail" />
+      <End Role="tbl_oderdetail" EntitySet="tbl_oderdetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_oderd__od_fk__5CD6CB2B" Association="dbbookModel.FK__tbl_oderd__od_fk__5CD6CB2B">
+      <End Role="tbl_order" EntitySet="tbl_order" />
+      <End Role="tbl_oderdetail" EntitySet="tbl_oderdetail" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="tbl_orderdetail">
-    <Key>
-      <PropertyRef Name="order_fk_orderid" />
-    </Key>
-    <Property Name="order_fk_orderid" Type="Int32" Nullable="false" />
-    <Property Name="order_fk_bookid" Type="Int32" />
-    <Property Name="order_book_amount" Type="Int32" />
-    <NavigationProperty Name="tbl_order" Relationship="dbbookModel.FK__tbl_order__order__60A75C0F" FromRole="tbl_orderdetail" ToRole="tbl_order" />
-    <NavigationProperty Name="tbl_book" Relationship="dbbookModel.FK__tbl_order__order__619B8048" FromRole="tbl_orderdetail" ToRole="tbl_book" />
-  </EntityType>
   <EntityType Name="tbl_order">
     <Key>
       <PropertyRef Name="order_id" />
@@ -212,7 +202,7 @@
     <Property Name="order_stt_fk" Type="Int32" />
     <NavigationProperty Name="tbl_customer" Relationship="dbbookModel.FK__tbl_order__order__5CD6CB2B" FromRole="tbl_order" ToRole="tbl_customer" />
     <NavigationProperty Name="tbl_status" Relationship="dbbookModel.FK__tbl_order__order__5DCAEF64" FromRole="tbl_order" ToRole="tbl_status" />
-    <NavigationProperty Name="tbl_orderdetail" Relationship="dbbookModel.FK__tbl_order__order__60A75C0F" FromRole="tbl_order" ToRole="tbl_orderdetail" />
+    <NavigationProperty Name="tbl_oderdetail" Relationship="dbbookModel.FK__tbl_oderd__od_fk__5CD6CB2B" FromRole="tbl_order" ToRole="tbl_oderdetail" />
   </EntityType>
   <Association Name="FK__tbl_order__order__5CD6CB2B">
     <End Type="dbbookModel.tbl_customer" Role="tbl_customer" Multiplicity="0..1" />
@@ -235,18 +225,6 @@
       </Principal>
       <Dependent Role="tbl_order">
         <PropertyRef Name="order_stt_fk" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tbl_order__order__60A75C0F">
-    <End Type="dbbookModel.tbl_order" Role="tbl_order" Multiplicity="1" />
-    <End Type="dbbookModel.tbl_orderdetail" Role="tbl_orderdetail" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_order">
-        <PropertyRef Name="order_id" />
-      </Principal>
-      <Dependent Role="tbl_orderdetail">
-        <PropertyRef Name="order_fk_orderid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -285,7 +263,7 @@
     <NavigationProperty Name="tbl_publisher" Relationship="dbbookModel.FK__tbl_book__book_f__49C3F6B7" FromRole="tbl_book" ToRole="tbl_publisher" />
     <NavigationProperty Name="tbl_category" Relationship="dbbookModel.FK__tbl_book__book_f__4AB81AF0" FromRole="tbl_book" ToRole="tbl_category" />
     <NavigationProperty Name="tbl_cart" Relationship="dbbookModel.FK__tbl_cart__cart_f__5165187F" FromRole="tbl_book" ToRole="tbl_cart" />
-    <NavigationProperty Name="tbl_orderdetail" Relationship="dbbookModel.FK__tbl_order__order__619B8048" FromRole="tbl_book" ToRole="tbl_orderdetail" />
+    <NavigationProperty Name="tbl_oderdetail" Relationship="dbbookModel.FK__tbl_oderd__od_fk__5DCAEF64" FromRole="tbl_book" ToRole="tbl_oderdetail" />
   </EntityType>
   <Association Name="FK__tbl_book__book_f__48CFD27E">
     <End Type="dbbookModel.tbl_author" Role="tbl_author" Multiplicity="0..1" />
@@ -347,15 +325,38 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_order__order__619B8048">
-    <End Type="dbbookModel.tbl_book" Role="tbl_book" Multiplicity="0..1" />
-    <End Type="dbbookModel.tbl_orderdetail" Role="tbl_orderdetail" Multiplicity="*" />
+  <EntityType Name="tbl_oderdetail">
+    <Key>
+      <PropertyRef Name="od_fk_orderid" />
+      <PropertyRef Name="od_fk_bookid" />
+    </Key>
+    <Property Name="od_fk_orderid" Type="Int32" Nullable="false" />
+    <Property Name="od_fk_bookid" Type="Int32" Nullable="false" />
+    <Property Name="od_book_amount" Type="Int32" />
+    <NavigationProperty Name="tbl_book" Relationship="dbbookModel.FK__tbl_oderd__od_fk__5DCAEF64" FromRole="tbl_oderdetail" ToRole="tbl_book" />
+    <NavigationProperty Name="tbl_order" Relationship="dbbookModel.FK__tbl_oderd__od_fk__5CD6CB2B" FromRole="tbl_oderdetail" ToRole="tbl_order" />
+  </EntityType>
+  <Association Name="FK__tbl_oderd__od_fk__5DCAEF64">
+    <End Type="dbbookModel.tbl_book" Role="tbl_book" Multiplicity="1" />
+    <End Type="dbbookModel.tbl_oderdetail" Role="tbl_oderdetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbl_book">
         <PropertyRef Name="book_id" />
       </Principal>
-      <Dependent Role="tbl_orderdetail">
-        <PropertyRef Name="order_fk_bookid" />
+      <Dependent Role="tbl_oderdetail">
+        <PropertyRef Name="od_fk_bookid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_oderd__od_fk__5CD6CB2B">
+    <End Type="dbbookModel.tbl_order" Role="tbl_order" Multiplicity="1" />
+    <End Type="dbbookModel.tbl_oderdetail" Role="tbl_oderdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="tbl_oderdetail">
+        <PropertyRef Name="od_fk_orderid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

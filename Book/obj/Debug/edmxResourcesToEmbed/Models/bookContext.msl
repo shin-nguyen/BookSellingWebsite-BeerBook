@@ -72,15 +72,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_orderdetail">
-      <EntityTypeMapping TypeName="dbbookModel.tbl_orderdetail">
-        <MappingFragment StoreEntitySet="tbl_orderdetail">
-          <ScalarProperty Name="order_book_amount" ColumnName="order_book_amount" />
-          <ScalarProperty Name="order_fk_bookid" ColumnName="order_fk_bookid" />
-          <ScalarProperty Name="order_fk_orderid" ColumnName="order_fk_orderid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_order">
       <EntityTypeMapping TypeName="dbbookModel.tbl_order">
         <MappingFragment StoreEntitySet="tbl_order">
@@ -120,6 +111,15 @@
           <ScalarProperty Name="book_description" ColumnName="book_description" />
           <ScalarProperty Name="book_name" ColumnName="book_name" />
           <ScalarProperty Name="book_id" ColumnName="book_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_oderdetail">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_oderdetail">
+        <MappingFragment StoreEntitySet="tbl_oderdetail">
+          <ScalarProperty Name="od_book_amount" ColumnName="od_book_amount" />
+          <ScalarProperty Name="od_fk_bookid" ColumnName="od_fk_bookid" />
+          <ScalarProperty Name="od_fk_orderid" ColumnName="od_fk_orderid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -67,6 +67,13 @@ namespace Book.Controllers
             }
             return View();
         }
-
+        public ActionResult OrderManagement()
+        {
+            if(Session["ad_id"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return View();
+        }
     }
 }

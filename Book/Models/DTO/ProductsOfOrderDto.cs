@@ -11,11 +11,11 @@ namespace Book.Models.DTO
         {
         }
 
-        public ProductsOfOrderDto(tbl_orderdetail productsOfOrder)
+        public ProductsOfOrderDto(tbl_oderdetail productsOfOrder)
         {
-            this.OrderID = productsOfOrder.order_fk_orderid;
-            this.ProductID =Convert.ToInt32(productsOfOrder.order_fk_bookid);
-            this.amount = productsOfOrder.order_book_amount;
+            this.OrderID = productsOfOrder.od_fk_orderid;
+            this.ProductID =Convert.ToInt32(productsOfOrder.od_fk_bookid);
+            this.amount = productsOfOrder.od_book_amount;
         }
         public int OrderID { get; set; }
         public int ProductID { get; set; }

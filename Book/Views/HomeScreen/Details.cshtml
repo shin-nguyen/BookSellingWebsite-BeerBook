@@ -1,0 +1,47 @@
+﻿@model Book.Models.tbl_book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div style="margin: 1rem 5rem 2rem;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name </th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr sstyle="color: black">
+                    <td>
+                        @*@Html.DisplayFor(modelItem => Model.book_name )*@
+                        @Model.book_name
+                    </td>
+                    <td>
+                        <img src="~/assets/images/@Model.book_img" style="width:220px; height:294px" />
+                    </td>
+                    <td>
+                        @Model.book_price &nbsp;VNĐ
+                    </td>
+                    <td>
+                        @Model.book_description
+                    </td>
+                    <td>
+                       @Model.book_fk_auid
+                    </td>
+                </tr>
+        </tbody>
+        <tfoot>
+            
+
+        </tfoot>
+    </table>
+    <a href="/ShoppingCart/AddtoCart/@Model.book_id"><h4>Add to cart</h4></a>
+    <a href="@Url.Action("Store", "HomeScreen")"><h1 style="font-size: 25px;">Go to store</h1></a>
+</div>

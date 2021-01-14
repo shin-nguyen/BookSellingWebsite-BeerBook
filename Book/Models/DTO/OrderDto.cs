@@ -21,7 +21,7 @@ namespace Book.Models.DTO
             this.Status = Convert.ToInt32(order.tbl_status);
 
             this.ProductOfOrderDtos = new List<ProductsOfOrderDto>();
-            foreach (var product in order.ProductsOfOrders)
+            foreach (var product in order.tbl_oderdetail)
             {
                 this.ProductOfOrderDtos.Add(new ProductsOfOrderDto(product));
             }
