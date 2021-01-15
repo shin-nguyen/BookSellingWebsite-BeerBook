@@ -6,7 +6,7 @@
 }
 
 <h2>Details</h2>
-<div style="margin: 1rem 5rem 2rem;">
+@*<div style="margin: 1rem 5rem 2rem;">
     <table class="table">
         <thead>
             <tr>
@@ -20,7 +20,6 @@
         <tbody>
                 <tr sstyle="color: black">
                     <td>
-                        @*@Html.DisplayFor(modelItem => Model.book_name )*@
                         @Model.book_name
                     </td>
                     <td>
@@ -33,7 +32,7 @@
                         @Model.book_description
                     </td>
                     <td>
-                       @Model.book_fk_auid
+                        @Model.tbl_author.au_name
                     </td>
                 </tr>
         </tbody>
@@ -44,4 +43,27 @@
     </table>
     <a href="/ShoppingCart/AddtoCart/@Model.book_id"><h4>Add to cart</h4></a>
     <a href="@Url.Action("Store", "HomeScreen")"><h1 style="font-size: 25px;">Go to store</h1></a>
+</div>*@
+
+<div class="container">
+
+
+    <h1 class="text-left  text-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.book_name</h1>
+    <div class="row">
+        <div class="col-md-5">
+            <img src="~/assets/images/@Model.book_img" style="width:220px; height:294px" />
+        </div>
+        <div class="col-md-5">
+            <h3>
+                <ul>
+                    <li>@Model.book_description</li>
+                    <li>Price: @Model.book_price đ</li>
+                    <li>Author: @Model.tbl_author.au_name</li>
+                </ul>
+            </h3>
+            <p>
+                <a href="/ShoppingCart/AddtoCart/@Model.book_id" class="add-cart active">Add to cart</a>
+            </p>
+        </div>
+    </div>
 </div>

@@ -51,7 +51,7 @@ namespace Book.Controllers
         }
         public ActionResult Details(int id)
         {
-            var product = db.Database.SqlQuery<tbl_book>("Sp_Product_Details @id = {0}", id).Single();
+            var product = db.tbl_book.Where(x => x.book_id == id).SingleOrDefault();
 
             return View(product);
         }
