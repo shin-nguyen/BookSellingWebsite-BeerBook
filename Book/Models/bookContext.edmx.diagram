@@ -10,16 +10,9 @@
         <EntityTypeShape EntityType="dbbookModel.tbl_avtofcus" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbbookModel.tbl_cart" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="dbbookModel.tbl_category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbbookModel.tbl_customer" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="dbbookModel.tbl_role" Width="1.5" PointX="1.5" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="dbbookModel.tbl_status" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="dbbookModel.FK__tbl_accou__acc_r__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="dbbookModel.FK__tbl_custo__cus_a__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="dbbookModel.avtofcusFK" ManuallyRouted="false" />
-        <AssociationConnector Association="dbbookModel.FK__tbl_cart__cart_f__5070F446" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="dbbookModel.tbl_order" Width="1.5" PointX="5.25" PointY="7.125" />
-        <AssociationConnector Association="dbbookModel.FK__tbl_order__order__5CD6CB2B" />
-        <AssociationConnector Association="dbbookModel.FK__tbl_order__order__5DCAEF64" />
         <EntityTypeShape EntityType="dbbookModel.tbl_publisher" Width="1.5" PointX="0.75" PointY="7.875" />
         <EntityTypeShape EntityType="dbbookModel.tbl_author" Width="1.5" PointX="0.75" PointY="4.875" />
         <EntityTypeShape EntityType="dbbookModel.tbl_book" Width="1.5" PointX="3" PointY="3.5" />
@@ -30,7 +23,14 @@
         <AssociationConnector Association="dbbookModel.FK__tbl_cart__cart_f__5165187F" />
         <EntityTypeShape EntityType="dbbookModel.tbl_oderdetail" Width="1.5" PointX="7.5" PointY="5.5" />
         <AssociationConnector Association="dbbookModel.FK__tbl_oderd__od_fk__5DCAEF64" />
-        <AssociationConnector Association="dbbookModel.FK__tbl_oderd__od_fk__5CD6CB2B" />
+        <EntityTypeShape EntityType="dbbookModel.tbl_customer" Width="1.5" PointX="3" PointY="11" />
+        <AssociationConnector Association="dbbookModel.FK__tbl_custo__cus_a__5812160E" />
+        <AssociationConnector Association="dbbookModel.avtofcusFK" />
+        <AssociationConnector Association="dbbookModel.FK__tbl_cart__cart_f__5629CD9C" />
+        <EntityTypeShape EntityType="dbbookModel.tbl_order" Width="1.5" PointX="5.25" PointY="8" />
+        <AssociationConnector Association="dbbookModel.FK__tbl_order__order__5AEE82B9" />
+        <AssociationConnector Association="dbbookModel.FK__tbl_oderd__od_fk__59063A47" />
+        <AssociationConnector Association="dbbookModel.FK__tbl_order__order__5BE2A6F2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

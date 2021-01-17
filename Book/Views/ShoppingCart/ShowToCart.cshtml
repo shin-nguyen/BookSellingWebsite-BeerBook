@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Book.Models.tbl_cart>
+@using Book.Models
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -63,9 +64,9 @@ else
                 </tr>
                 <tr>
                     <td colspan="5" style="text-align: right;">
-                        <br /> 
-                        <a href="@Url.Action("CreateAnOrder", "ShoppingCart")"
-                                  style="background: green; color:white; padding:13px 14px;border:none; margin:1px; border-radius:6px"> Order</a>
+                        <br />
+                        <a href="@Url.Action("CreateAnOrder", "ShoppingCart", new { @id = 1})"
+                           style="background: green; color:white; padding:13px 14px;border:none; margin:1px; border-radius:6px"> Order</a>
                         <a href="@Url.Action("PaymentWithPaypal", "Paypal")">Thanh toán bằng Paypal( Để đây để test)</a>
                     </td>
                 </tr>

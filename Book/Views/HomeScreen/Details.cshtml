@@ -5,65 +5,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-@*<div style="margin: 1rem 5rem 2rem;">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name </th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Author</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr sstyle="color: black">
-                    <td>
-                        @Model.book_name
-                    </td>
-                    <td>
-                        <img src="~/assets/images/@Model.book_img" style="width:220px; height:294px" />
-                    </td>
-                    <td>
-                        @Model.book_price &nbsp;VNĐ
-                    </td>
-                    <td>
-                        @Model.book_description
-                    </td>
-                    <td>
-                        @Model.tbl_author.au_name
-                    </td>
-                </tr>
-        </tbody>
-        <tfoot>
-            
 
-        </tfoot>
-    </table>
-    <a href="/ShoppingCart/AddtoCart/@Model.book_id"><h4>Add to cart</h4></a>
-    <a href="@Url.Action("Store", "HomeScreen")"><h1 style="font-size: 25px;">Go to store</h1></a>
-</div>*@
-
-<div class="container">
+@*<div class="container">
 
 
-    <h1 class="text-left  text-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.book_name</h1>
-    <div class="row">
-        <div class="col-md-5">
-            <img src="~/assets/images/@Model.book_img" style="width:220px; height:294px" />
+        <h1 class="text-left  text-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.book_name</h1>
+        <div class="row">
+            <div class="col-md-5">
+                <img src="~/assets/images/@Model.book_img" style="width:220px; height:294px" />
+            </div>
+            <div class="col-md-5">
+                <h3>
+                    <ul>
+                        <li>@Model.book_description</li>
+                        <li>Price: @Model.book_price đ</li>
+                        <li>Author: @Model.tbl_author.au_name</li>
+                    </ul>
+                </h3>
+                <p>
+                    <a href="/ShoppingCart/AddtoCart/@Model.book_id" class="add-cart active">Add to cart</a>
+                </p>
+            </div>
         </div>
-        <div class="col-md-5">
-            <h3>
-                <ul>
-                    <li>@Model.book_description</li>
-                    <li>Price: @Model.book_price đ</li>
-                    <li>Author: @Model.tbl_author.au_name</li>
-                </ul>
-            </h3>
-            <p>
-                <a href="/ShoppingCart/AddtoCart/@Model.book_id" class="add-cart active">Add to cart</a>
-            </p>
+    </div>*@
+
+<br />
+<main class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <div class="left-column">
+                <img src="~/assets/images/@Model.book_img" style="width:440px; height:588px; border:10px solid #ffbb00;">
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="right-column">
+                <div class="product-description">
+                    <span style="color:#ffbb00">@Model.tbl_category.cate_name | </span>
+                    <span style="color:#ffbb00">@Model.tbl_publisher.pu_name</span>
+                    <br />
+                    <br />
+                    <h1>@Model.book_name</h1>
+                    <p><b>@Model.tbl_author.au_name</b></p>
+                    <p>@Model.book_description</p>
+
+                    <div class="product-price">
+                        <h6>
+                            <br />
+                            <span>Price: @Model.book_price đ&nbsp;&nbsp;</span>
+                            <hr />
+                            <a href="/ShoppingCart/AddtoCart/@Model.book_id" class="add-cart active">Add to cart</a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</main>

@@ -44,17 +44,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_customer">
-      <EntityTypeMapping TypeName="dbbookModel.tbl_customer">
-        <MappingFragment StoreEntitySet="tbl_customer">
-          <ScalarProperty Name="cus_id" ColumnName="cus_id" />
-          <ScalarProperty Name="cus_name" ColumnName="cus_name" />
-          <ScalarProperty Name="cus_phone" ColumnName="cus_phone" />
-          <ScalarProperty Name="cus_address" ColumnName="cus_address" />
-          <ScalarProperty Name="cus_acc_fk" ColumnName="cus_acc_fk" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_role">
       <EntityTypeMapping TypeName="dbbookModel.tbl_role">
         <MappingFragment StoreEntitySet="tbl_role">
@@ -69,16 +58,6 @@
         <MappingFragment StoreEntitySet="tbl_status">
           <ScalarProperty Name="stt_id" ColumnName="stt_id" />
           <ScalarProperty Name="stt_name" ColumnName="stt_name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_order">
-      <EntityTypeMapping TypeName="dbbookModel.tbl_order">
-        <MappingFragment StoreEntitySet="tbl_order">
-          <ScalarProperty Name="order_stt_fk" ColumnName="order_stt_fk" />
-          <ScalarProperty Name="order_time" ColumnName="order_time" />
-          <ScalarProperty Name="order_fk_cusid" ColumnName="order_fk_cusid" />
-          <ScalarProperty Name="order_id" ColumnName="order_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -120,6 +99,30 @@
           <ScalarProperty Name="od_book_amount" ColumnName="od_book_amount" />
           <ScalarProperty Name="od_fk_bookid" ColumnName="od_fk_bookid" />
           <ScalarProperty Name="od_fk_orderid" ColumnName="od_fk_orderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_customer">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_customer">
+        <MappingFragment StoreEntitySet="tbl_customer">
+          <ScalarProperty Name="cus_mail" ColumnName="cus_mail" />
+          <ScalarProperty Name="cus_acc_fk" ColumnName="cus_acc_fk" />
+          <ScalarProperty Name="cus_address" ColumnName="cus_address" />
+          <ScalarProperty Name="cus_phone" ColumnName="cus_phone" />
+          <ScalarProperty Name="cus_name" ColumnName="cus_name" />
+          <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_order">
+      <EntityTypeMapping TypeName="dbbookModel.tbl_order">
+        <MappingFragment StoreEntitySet="tbl_order">
+          <ScalarProperty Name="order_isPaid" ColumnName="order_isPaid" />
+          <ScalarProperty Name="order_address" ColumnName="order_address" />
+          <ScalarProperty Name="order_stt_fk" ColumnName="order_stt_fk" />
+          <ScalarProperty Name="order_time" ColumnName="order_time" />
+          <ScalarProperty Name="order_fk_cusid" ColumnName="order_fk_cusid" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

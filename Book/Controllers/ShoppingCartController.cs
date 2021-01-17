@@ -100,11 +100,12 @@ namespace Book.Controllers
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
 
-        public ActionResult CreateAnOrder()
+        public ActionResult CreateAnOrder(int id)
         {
             int customerID = Convert.ToInt32(Session["user_id"]);
 
             var carts = this._db.tbl_cart.Where(c => c.cart_fk_cusid == customerID).ToList();
+            var address = this._db.tbl_customer.Where(x => x.cus_id == customerID).SingleOrDefault().cus_address;
 
             if (carts.Count() == 0)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -120,6 +121,15 @@ namespace Book.Controllers
             DateTime now = Convert.ToDateTime(DateTime.Now.ToString("HH:mm:ss"));
             order.order_time = now;
             order.order_stt_fk = 1;
+            order.order_address = address;
+            if (id == 1)
+            {
+                order.order_isPaid = true;
+            }
+            else
+            {
+                order.order_isPaid = false;
+            }
             _db.tbl_order.Add(order);
             _db.SaveChanges();
 

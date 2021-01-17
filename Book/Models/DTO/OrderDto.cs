@@ -13,24 +13,24 @@ namespace Book.Models.DTO
         {
             this.ProductOfOrderDtos = new List<ProductsOfOrderDto>();
         }
-        public OrderDto(tbl_order order)
-        {
-            this.OrderID = order.order_id;
-            this.CustomerID = Convert.ToInt32(order.order_fk_cusid);
-            this.OrderTime = Convert.ToDateTime(order.order_time);
-            this.Status = Convert.ToInt32(order.tbl_status);
+        //public OrderDto(tbl_order order)
+        //{
+        //    this.OrderID = order.order_id;
+        //    this.CustomerID = Convert.ToInt32(order.order_fk_cusid);
+        //    this.OrderTime = Convert.ToDateTime(order.order_time);
+        //    this.Status = Convert.ToInt32(order.tbl_status);
 
-            this.ProductOfOrderDtos = new List<ProductsOfOrderDto>();
-            foreach (var product in order.tbl_oderdetail)
-            {
-                this.ProductOfOrderDtos.Add(new ProductsOfOrderDto(product));
-            }
+        //    this.ProductOfOrderDtos = new List<ProductsOfOrderDto>();
+        //    foreach (var product in order.tbl_oderdetail)
+        //    {
+        //        this.ProductOfOrderDtos.Add(new ProductsOfOrderDto(product));
+        //    }
 
-            var totalOrderCost = new dbbookEntities().SPGetTotalOrderCost(order.order_id);
+        //    var totalOrderCost = new dbbookEntities().SPGetTotalOrderCost(order.order_id);
 
-            this.TotalOrderCost = totalOrderCost.ToArray()[0];
+        //    this.TotalOrderCost = totalOrderCost.ToArray()[0];
 
-        }
+        //}
 
         [Required]
         public int OrderID { get; set; }

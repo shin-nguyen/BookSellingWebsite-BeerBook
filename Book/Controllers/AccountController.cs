@@ -100,8 +100,9 @@ namespace Book.Controllers
                         int acc_id = db.tbl_account.Where(x => x.acc_username == r.Username).SingleOrDefault().acc_id;
                         tbl_customer cus = new tbl_customer();
                         cus.cus_name = r.Name;
+                        cus.cus_mail = r.Mail;
                         cus.cus_phone = r.Phone;
-                        cus.cus_address = r.Address;
+                        cus.cus_address = r.Address + ", " + r.District + ", " + r.City;
                         cus.cus_acc_fk = acc_id;
                         db.tbl_customer.Add(cus);
                         db.SaveChanges();

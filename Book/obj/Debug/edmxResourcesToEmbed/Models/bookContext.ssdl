@@ -70,6 +70,7 @@
     <Property Name="cus_phone" Type="nvarchar" MaxLength="12" Nullable="false" />
     <Property Name="cus_address" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="cus_acc_fk" Type="int" />
+    <Property Name="cus_mail" Type="nchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="tbl_oderdetail">
     <Key>
@@ -88,6 +89,8 @@
     <Property Name="order_fk_cusid" Type="int" />
     <Property Name="order_time" Type="datetime" />
     <Property Name="order_stt_fk" Type="int" />
+    <Property Name="order_address" Type="nvarchar(max)" />
+    <Property Name="order_isPaid" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_publisher">
     <Key>
@@ -135,7 +138,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_accou__acc_r__286302EC">
+  <Association Name="FK__tbl_accou__acc_r__5070F446">
     <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="0..1" />
     <End Role="tbl_account" Type="Self.tbl_account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -147,7 +150,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_book__book_f__2B3F6F97">
+  <Association Name="FK__tbl_book__book_f__534D60F1">
     <End Role="tbl_author" Type="Self.tbl_author" Multiplicity="0..1" />
     <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
     <ReferentialConstraint>
@@ -159,7 +162,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_book__book_f__2C3393D0">
+  <Association Name="FK__tbl_book__book_f__5441852A">
     <End Role="tbl_publisher" Type="Self.tbl_publisher" Multiplicity="0..1" />
     <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
     <ReferentialConstraint>
@@ -171,7 +174,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_book__book_f__2D27B809">
+  <Association Name="FK__tbl_book__book_f__5535A963">
     <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="0..1" />
     <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="*" />
     <ReferentialConstraint>
@@ -183,7 +186,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_cart__cart_f__2E1BDC42">
+  <Association Name="FK__tbl_cart__cart_f__5629CD9C">
     <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
     <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
     <ReferentialConstraint>
@@ -195,7 +198,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_cart__cart_f__2F10007B">
+  <Association Name="FK__tbl_cart__cart_f__571DF1D5">
     <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="1" />
     <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
     <ReferentialConstraint>
@@ -207,7 +210,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_custo__cus_a__300424B4">
+  <Association Name="FK__tbl_custo__cus_a__5812160E">
     <End Role="tbl_account" Type="Self.tbl_account" Multiplicity="0..1" />
     <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -219,7 +222,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_oderd__od_fk__5CD6CB2B">
+  <Association Name="FK__tbl_oderd__od_fk__59063A47">
     <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="1" />
     <End Role="tbl_oderdetail" Type="Self.tbl_oderdetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -231,7 +234,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_oderd__od_fk__5DCAEF64">
+  <Association Name="FK__tbl_oderd__od_fk__59FA5E80">
     <End Role="tbl_book" Type="Self.tbl_book" Multiplicity="1" />
     <End Role="tbl_oderdetail" Type="Self.tbl_oderdetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -243,7 +246,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_order__order__30F848ED">
+  <Association Name="FK__tbl_order__order__5AEE82B9">
     <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="0..1" />
     <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
     <ReferentialConstraint>
@@ -255,7 +258,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_order__order__31EC6D26">
+  <Association Name="FK__tbl_order__order__5BE2A6F2">
     <End Role="tbl_status" Type="Self.tbl_status" Multiplicity="0..1" />
     <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
     <ReferentialConstraint>
@@ -289,47 +292,47 @@
       <End Role="tbl_customer" EntitySet="tbl_customer" />
       <End Role="tbl_avtofcus" EntitySet="tbl_avtofcus" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_accou__acc_r__286302EC" Association="Self.FK__tbl_accou__acc_r__286302EC">
+    <AssociationSet Name="FK__tbl_accou__acc_r__5070F446" Association="Self.FK__tbl_accou__acc_r__5070F446">
       <End Role="tbl_role" EntitySet="tbl_role" />
       <End Role="tbl_account" EntitySet="tbl_account" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_book__book_f__2B3F6F97" Association="Self.FK__tbl_book__book_f__2B3F6F97">
+    <AssociationSet Name="FK__tbl_book__book_f__534D60F1" Association="Self.FK__tbl_book__book_f__534D60F1">
       <End Role="tbl_author" EntitySet="tbl_author" />
       <End Role="tbl_book" EntitySet="tbl_book" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_book__book_f__2C3393D0" Association="Self.FK__tbl_book__book_f__2C3393D0">
+    <AssociationSet Name="FK__tbl_book__book_f__5441852A" Association="Self.FK__tbl_book__book_f__5441852A">
       <End Role="tbl_publisher" EntitySet="tbl_publisher" />
       <End Role="tbl_book" EntitySet="tbl_book" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_book__book_f__2D27B809" Association="Self.FK__tbl_book__book_f__2D27B809">
+    <AssociationSet Name="FK__tbl_book__book_f__5535A963" Association="Self.FK__tbl_book__book_f__5535A963">
       <End Role="tbl_category" EntitySet="tbl_category" />
       <End Role="tbl_book" EntitySet="tbl_book" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_cart__cart_f__2E1BDC42" Association="Self.FK__tbl_cart__cart_f__2E1BDC42">
+    <AssociationSet Name="FK__tbl_cart__cart_f__5629CD9C" Association="Self.FK__tbl_cart__cart_f__5629CD9C">
       <End Role="tbl_customer" EntitySet="tbl_customer" />
       <End Role="tbl_cart" EntitySet="tbl_cart" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_cart__cart_f__2F10007B" Association="Self.FK__tbl_cart__cart_f__2F10007B">
+    <AssociationSet Name="FK__tbl_cart__cart_f__571DF1D5" Association="Self.FK__tbl_cart__cart_f__571DF1D5">
       <End Role="tbl_book" EntitySet="tbl_book" />
       <End Role="tbl_cart" EntitySet="tbl_cart" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_custo__cus_a__300424B4" Association="Self.FK__tbl_custo__cus_a__300424B4">
+    <AssociationSet Name="FK__tbl_custo__cus_a__5812160E" Association="Self.FK__tbl_custo__cus_a__5812160E">
       <End Role="tbl_account" EntitySet="tbl_account" />
       <End Role="tbl_customer" EntitySet="tbl_customer" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_oderd__od_fk__5CD6CB2B" Association="Self.FK__tbl_oderd__od_fk__5CD6CB2B">
+    <AssociationSet Name="FK__tbl_oderd__od_fk__59063A47" Association="Self.FK__tbl_oderd__od_fk__59063A47">
       <End Role="tbl_order" EntitySet="tbl_order" />
       <End Role="tbl_oderdetail" EntitySet="tbl_oderdetail" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_oderd__od_fk__5DCAEF64" Association="Self.FK__tbl_oderd__od_fk__5DCAEF64">
+    <AssociationSet Name="FK__tbl_oderd__od_fk__59FA5E80" Association="Self.FK__tbl_oderd__od_fk__59FA5E80">
       <End Role="tbl_book" EntitySet="tbl_book" />
       <End Role="tbl_oderdetail" EntitySet="tbl_oderdetail" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_order__order__30F848ED" Association="Self.FK__tbl_order__order__30F848ED">
+    <AssociationSet Name="FK__tbl_order__order__5AEE82B9" Association="Self.FK__tbl_order__order__5AEE82B9">
       <End Role="tbl_customer" EntitySet="tbl_customer" />
       <End Role="tbl_order" EntitySet="tbl_order" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_order__order__31EC6D26" Association="Self.FK__tbl_order__order__31EC6D26">
+    <AssociationSet Name="FK__tbl_order__order__5BE2A6F2" Association="Self.FK__tbl_order__order__5BE2A6F2">
       <End Role="tbl_status" EntitySet="tbl_status" />
       <End Role="tbl_order" EntitySet="tbl_order" />
     </AssociationSet>

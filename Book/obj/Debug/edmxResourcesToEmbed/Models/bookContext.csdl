@@ -9,7 +9,7 @@
     <Property Name="acc_password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="acc_role_fk" Type="Int32" />
     <NavigationProperty Name="tbl_role" Relationship="Self.FK__tbl_accou__acc_r__3A81B327" FromRole="tbl_account" ToRole="tbl_role" />
-    <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_custo__cus_a__3D5E1FD2" FromRole="tbl_account" ToRole="tbl_customer" />
+    <NavigationProperty Name="tbl_customer" Relationship="dbbookModel.FK__tbl_custo__cus_a__5812160E" FromRole="tbl_account" ToRole="tbl_customer" />
   </EntityType>
   <EntityType Name="tbl_avtofbook">
     <Key>
@@ -25,7 +25,7 @@
     </Key>
     <Property Name="avtofcus_id" Type="Int32" Nullable="false" />
     <Property Name="avtofcus_img" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="tbl_customer" Relationship="Self.avtofcusFK" FromRole="tbl_avtofcus" ToRole="tbl_customer" />
+    <NavigationProperty Name="tbl_customer" Relationship="dbbookModel.avtofcusFK" FromRole="tbl_avtofcus" ToRole="tbl_customer" />
   </EntityType>
   <EntityType Name="tbl_cart">
     <Key>
@@ -35,8 +35,8 @@
     <Property Name="cart_fk_cusid" Type="Int32" Nullable="false" />
     <Property Name="cart_fk_bookid" Type="Int32" Nullable="false" />
     <Property Name="cart_book_amount" Type="Int32" />
-    <NavigationProperty Name="tbl_customer" Relationship="Self.FK__tbl_cart__cart_f__5070F446" FromRole="tbl_cart" ToRole="tbl_customer" />
     <NavigationProperty Name="tbl_book" Relationship="dbbookModel.FK__tbl_cart__cart_f__5165187F" FromRole="tbl_cart" ToRole="tbl_book" />
+    <NavigationProperty Name="tbl_customer" Relationship="dbbookModel.FK__tbl_cart__cart_f__5629CD9C" FromRole="tbl_cart" ToRole="tbl_customer" />
   </EntityType>
   <EntityType Name="tbl_category">
     <Key>
@@ -45,20 +45,6 @@
     <Property Name="cate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="cate_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tbl_book" Relationship="dbbookModel.FK__tbl_book__book_f__4AB81AF0" FromRole="tbl_category" ToRole="tbl_book" />
-  </EntityType>
-  <EntityType Name="tbl_customer">
-    <Key>
-      <PropertyRef Name="cus_id" />
-    </Key>
-    <Property Name="cus_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cus_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cus_phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cus_address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cus_acc_fk" Type="Int32" />
-    <NavigationProperty Name="tbl_account" Relationship="Self.FK__tbl_custo__cus_a__3D5E1FD2" FromRole="tbl_customer" ToRole="tbl_account" />
-    <NavigationProperty Name="tbl_avtofcus" Relationship="Self.avtofcusFK" FromRole="tbl_customer" ToRole="tbl_avtofcus" />
-    <NavigationProperty Name="tbl_cart" Relationship="Self.FK__tbl_cart__cart_f__5070F446" FromRole="tbl_customer" ToRole="tbl_cart" />
-    <NavigationProperty Name="tbl_order" Relationship="dbbookModel.FK__tbl_order__order__5CD6CB2B" FromRole="tbl_customer" ToRole="tbl_order" />
   </EntityType>
   <EntityType Name="tbl_role">
     <Key>
@@ -75,7 +61,7 @@
     </Key>
     <Property Name="stt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="stt_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tbl_order" Relationship="dbbookModel.FK__tbl_order__order__5DCAEF64" FromRole="tbl_status" ToRole="tbl_order" />
+    <NavigationProperty Name="tbl_order" Relationship="dbbookModel.FK__tbl_order__order__5BE2A6F2" FromRole="tbl_status" ToRole="tbl_order" />
   </EntityType>
   <Association Name="FK__tbl_accou__acc_r__3A81B327">
     <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="0..1" />
@@ -89,75 +75,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_custo__cus_a__3D5E1FD2">
-    <End Role="tbl_account" Type="Self.tbl_account" Multiplicity="0..1" />
-    <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_account">
-        <PropertyRef Name="acc_id" />
-      </Principal>
-      <Dependent Role="tbl_customer">
-        <PropertyRef Name="cus_acc_fk" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="avtofcusFK">
-    <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
-    <End Role="tbl_avtofcus" Type="Self.tbl_avtofcus" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_customer">
-        <PropertyRef Name="cus_id" />
-      </Principal>
-      <Dependent Role="tbl_avtofcus">
-        <PropertyRef Name="avtofcus_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tbl_cart__cart_f__5070F446">
-    <End Role="tbl_customer" Type="Self.tbl_customer" Multiplicity="1" />
-    <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_customer">
-        <PropertyRef Name="cus_id" />
-      </Principal>
-      <Dependent Role="tbl_cart">
-        <PropertyRef Name="cart_fk_cusid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="dbbookEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tbl_account" EntityType="Self.tbl_account" />
     <EntitySet Name="tbl_avtofbook" EntityType="Self.tbl_avtofbook" />
     <EntitySet Name="tbl_avtofcus" EntityType="Self.tbl_avtofcus" />
     <EntitySet Name="tbl_cart" EntityType="Self.tbl_cart" />
     <EntitySet Name="tbl_category" EntityType="Self.tbl_category" />
-    <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" />
     <EntitySet Name="tbl_role" EntityType="Self.tbl_role" />
     <EntitySet Name="tbl_status" EntityType="Self.tbl_status" />
     <AssociationSet Name="FK__tbl_accou__acc_r__3A81B327" Association="Self.FK__tbl_accou__acc_r__3A81B327">
       <End Role="tbl_role" EntitySet="tbl_role" />
       <End Role="tbl_account" EntitySet="tbl_account" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tbl_custo__cus_a__3D5E1FD2" Association="Self.FK__tbl_custo__cus_a__3D5E1FD2">
-      <End Role="tbl_account" EntitySet="tbl_account" />
-      <End Role="tbl_customer" EntitySet="tbl_customer" />
-    </AssociationSet>
-    <AssociationSet Name="avtofcusFK" Association="Self.avtofcusFK">
-      <End Role="tbl_customer" EntitySet="tbl_customer" />
-      <End Role="tbl_avtofcus" EntitySet="tbl_avtofcus" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tbl_cart__cart_f__5070F446" Association="Self.FK__tbl_cart__cart_f__5070F446">
-      <End Role="tbl_customer" EntitySet="tbl_customer" />
-      <End Role="tbl_cart" EntitySet="tbl_cart" />
-    </AssociationSet>
-    <EntitySet Name="tbl_order" EntityType="dbbookModel.tbl_order" />
-    <AssociationSet Name="FK__tbl_order__order__5CD6CB2B" Association="dbbookModel.FK__tbl_order__order__5CD6CB2B">
-      <End Role="tbl_customer" EntitySet="tbl_customer" />
-      <End Role="tbl_order" EntitySet="tbl_order" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tbl_order__order__5DCAEF64" Association="dbbookModel.FK__tbl_order__order__5DCAEF64">
-      <End Role="tbl_status" EntitySet="tbl_status" />
-      <End Role="tbl_order" EntitySet="tbl_order" />
     </AssociationSet>
     <EntitySet Name="tbl_publisher" EntityType="dbbookModel.tbl_publisher" />
     <EntitySet Name="tbl_author" EntityType="dbbookModel.tbl_author" />
@@ -187,47 +115,33 @@
       <End Role="tbl_book" EntitySet="tbl_book" />
       <End Role="tbl_oderdetail" EntitySet="tbl_oderdetail" />
     </AssociationSet>
-    <AssociationSet Name="FK__tbl_oderd__od_fk__5CD6CB2B" Association="dbbookModel.FK__tbl_oderd__od_fk__5CD6CB2B">
+    <EntitySet Name="tbl_customer" EntityType="dbbookModel.tbl_customer" />
+    <AssociationSet Name="FK__tbl_custo__cus_a__5812160E" Association="dbbookModel.FK__tbl_custo__cus_a__5812160E">
+      <End Role="tbl_account" EntitySet="tbl_account" />
+      <End Role="tbl_customer" EntitySet="tbl_customer" />
+    </AssociationSet>
+    <AssociationSet Name="avtofcusFK" Association="dbbookModel.avtofcusFK">
+      <End Role="tbl_customer" EntitySet="tbl_customer" />
+      <End Role="tbl_avtofcus" EntitySet="tbl_avtofcus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_cart__cart_f__5629CD9C" Association="dbbookModel.FK__tbl_cart__cart_f__5629CD9C">
+      <End Role="tbl_customer" EntitySet="tbl_customer" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <EntitySet Name="tbl_order" EntityType="dbbookModel.tbl_order" />
+    <AssociationSet Name="FK__tbl_order__order__5AEE82B9" Association="dbbookModel.FK__tbl_order__order__5AEE82B9">
+      <End Role="tbl_customer" EntitySet="tbl_customer" />
+      <End Role="tbl_order" EntitySet="tbl_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_oderd__od_fk__59063A47" Association="dbbookModel.FK__tbl_oderd__od_fk__59063A47">
       <End Role="tbl_order" EntitySet="tbl_order" />
       <End Role="tbl_oderdetail" EntitySet="tbl_oderdetail" />
     </AssociationSet>
+    <AssociationSet Name="FK__tbl_order__order__5BE2A6F2" Association="dbbookModel.FK__tbl_order__order__5BE2A6F2">
+      <End Role="tbl_status" EntitySet="tbl_status" />
+      <End Role="tbl_order" EntitySet="tbl_order" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="tbl_order">
-    <Key>
-      <PropertyRef Name="order_id" />
-    </Key>
-    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="order_fk_cusid" Type="Int32" />
-    <Property Name="order_time" Type="DateTime" Precision="3" />
-    <Property Name="order_stt_fk" Type="Int32" />
-    <NavigationProperty Name="tbl_customer" Relationship="dbbookModel.FK__tbl_order__order__5CD6CB2B" FromRole="tbl_order" ToRole="tbl_customer" />
-    <NavigationProperty Name="tbl_status" Relationship="dbbookModel.FK__tbl_order__order__5DCAEF64" FromRole="tbl_order" ToRole="tbl_status" />
-    <NavigationProperty Name="tbl_oderdetail" Relationship="dbbookModel.FK__tbl_oderd__od_fk__5CD6CB2B" FromRole="tbl_order" ToRole="tbl_oderdetail" />
-  </EntityType>
-  <Association Name="FK__tbl_order__order__5CD6CB2B">
-    <End Type="dbbookModel.tbl_customer" Role="tbl_customer" Multiplicity="0..1" />
-    <End Type="dbbookModel.tbl_order" Role="tbl_order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_customer">
-        <PropertyRef Name="cus_id" />
-      </Principal>
-      <Dependent Role="tbl_order">
-        <PropertyRef Name="order_fk_cusid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tbl_order__order__5DCAEF64">
-    <End Type="dbbookModel.tbl_status" Role="tbl_status" Multiplicity="0..1" />
-    <End Type="dbbookModel.tbl_order" Role="tbl_order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_status">
-        <PropertyRef Name="stt_id" />
-      </Principal>
-      <Dependent Role="tbl_order">
-        <PropertyRef Name="order_stt_fk" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="tbl_publisher">
     <Key>
       <PropertyRef Name="pu_id" />
@@ -334,7 +248,7 @@
     <Property Name="od_fk_bookid" Type="Int32" Nullable="false" />
     <Property Name="od_book_amount" Type="Int32" />
     <NavigationProperty Name="tbl_book" Relationship="dbbookModel.FK__tbl_oderd__od_fk__5DCAEF64" FromRole="tbl_oderdetail" ToRole="tbl_book" />
-    <NavigationProperty Name="tbl_order" Relationship="dbbookModel.FK__tbl_oderd__od_fk__5CD6CB2B" FromRole="tbl_oderdetail" ToRole="tbl_order" />
+    <NavigationProperty Name="tbl_order" Relationship="dbbookModel.FK__tbl_oderd__od_fk__59063A47" FromRole="tbl_oderdetail" ToRole="tbl_order" />
   </EntityType>
   <Association Name="FK__tbl_oderd__od_fk__5DCAEF64">
     <End Type="dbbookModel.tbl_book" Role="tbl_book" Multiplicity="1" />
@@ -348,7 +262,84 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tbl_oderd__od_fk__5CD6CB2B">
+  <EntityType Name="tbl_customer">
+    <Key>
+      <PropertyRef Name="cus_id" />
+    </Key>
+    <Property Name="cus_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cus_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cus_phone" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="cus_address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="cus_acc_fk" Type="Int32" />
+    <Property Name="cus_mail" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tbl_account" Relationship="dbbookModel.FK__tbl_custo__cus_a__5812160E" FromRole="tbl_customer" ToRole="tbl_account" />
+    <NavigationProperty Name="tbl_avtofcus" Relationship="dbbookModel.avtofcusFK" FromRole="tbl_customer" ToRole="tbl_avtofcus" />
+    <NavigationProperty Name="tbl_cart" Relationship="dbbookModel.FK__tbl_cart__cart_f__5629CD9C" FromRole="tbl_customer" ToRole="tbl_cart" />
+    <NavigationProperty Name="tbl_order" Relationship="dbbookModel.FK__tbl_order__order__5AEE82B9" FromRole="tbl_customer" ToRole="tbl_order" />
+  </EntityType>
+  <Association Name="FK__tbl_custo__cus_a__5812160E">
+    <End Type="dbbookModel.tbl_account" Role="tbl_account" Multiplicity="0..1" />
+    <End Type="dbbookModel.tbl_customer" Role="tbl_customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_account">
+        <PropertyRef Name="acc_id" />
+      </Principal>
+      <Dependent Role="tbl_customer">
+        <PropertyRef Name="cus_acc_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="avtofcusFK">
+    <End Type="dbbookModel.tbl_customer" Role="tbl_customer" Multiplicity="1" />
+    <End Type="dbbookModel.tbl_avtofcus" Role="tbl_avtofcus" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_customer">
+        <PropertyRef Name="cus_id" />
+      </Principal>
+      <Dependent Role="tbl_avtofcus">
+        <PropertyRef Name="avtofcus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_cart__cart_f__5629CD9C">
+    <End Type="dbbookModel.tbl_customer" Role="tbl_customer" Multiplicity="1" />
+    <End Type="dbbookModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_customer">
+        <PropertyRef Name="cus_id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="cart_fk_cusid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbl_order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_fk_cusid" Type="Int32" />
+    <Property Name="order_time" Type="DateTime" Precision="3" />
+    <Property Name="order_stt_fk" Type="Int32" />
+    <Property Name="order_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="order_isPaid" Type="Boolean" />
+    <NavigationProperty Name="tbl_customer" Relationship="dbbookModel.FK__tbl_order__order__5AEE82B9" FromRole="tbl_order" ToRole="tbl_customer" />
+    <NavigationProperty Name="tbl_oderdetail" Relationship="dbbookModel.FK__tbl_oderd__od_fk__59063A47" FromRole="tbl_order" ToRole="tbl_oderdetail" />
+    <NavigationProperty Name="tbl_status" Relationship="dbbookModel.FK__tbl_order__order__5BE2A6F2" FromRole="tbl_order" ToRole="tbl_status" />
+  </EntityType>
+  <Association Name="FK__tbl_order__order__5AEE82B9">
+    <End Type="dbbookModel.tbl_customer" Role="tbl_customer" Multiplicity="0..1" />
+    <End Type="dbbookModel.tbl_order" Role="tbl_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_customer">
+        <PropertyRef Name="cus_id" />
+      </Principal>
+      <Dependent Role="tbl_order">
+        <PropertyRef Name="order_fk_cusid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_oderd__od_fk__59063A47">
     <End Type="dbbookModel.tbl_order" Role="tbl_order" Multiplicity="1" />
     <End Type="dbbookModel.tbl_oderdetail" Role="tbl_oderdetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -357,6 +348,18 @@
       </Principal>
       <Dependent Role="tbl_oderdetail">
         <PropertyRef Name="od_fk_orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_order__order__5BE2A6F2">
+    <End Type="dbbookModel.tbl_status" Role="tbl_status" Multiplicity="0..1" />
+    <End Type="dbbookModel.tbl_order" Role="tbl_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_status">
+        <PropertyRef Name="stt_id" />
+      </Principal>
+      <Dependent Role="tbl_order">
+        <PropertyRef Name="order_stt_fk" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
