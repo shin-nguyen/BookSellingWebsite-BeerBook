@@ -13,7 +13,7 @@ namespace Book.Controllers.Api
 {
     public class OrdersController : ApiController
     {
-        dbbookEntities _context;
+        //dbbookEntities _context;
 
         //public OrdersController()
         //{

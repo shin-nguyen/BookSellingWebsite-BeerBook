@@ -1,4 +1,5 @@
-﻿using Book.Models;
+﻿using Book.helper;
+using Book.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -121,6 +122,19 @@ namespace Book.Controllers
             }
             catch
             {
+            }
+           
+            try
+            {
+                GMailer gm = new GMailer();
+                string body = "Dear " + r.Name + " !"
+                                + "\n" + "Thanks for your interest in us. Your account has been successfully activated, you can use it to shop now. "
+                                + "\n" + "Wish you have a great experience! ";
+                gm.SendMail(r.Mail, "Wellcom to BeerBook!", body);
+            }
+            catch
+            {
+
             }
             return View();
         }

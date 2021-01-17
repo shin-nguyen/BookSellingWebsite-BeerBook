@@ -65,9 +65,12 @@ else
                 <tr>
                     <td colspan="5" style="text-align: right;">
                         <br />
-                        <a href="@Url.Action("CreateAnOrder", "ShoppingCart", new { @id = 1})"
+                        <a href="@Url.Action("CreateAnOrder", "ShoppingCart", new { @id = 0})"
                            style="background: green; color:white; padding:13px 14px;border:none; margin:1px; border-radius:6px"> Order</a>
-                        <a href="@Url.Action("PaymentWithPaypal", "Paypal")">Thanh toán bằng Paypal( Để đây để test)</a>
+                        <a href="@Url.Action("PaymentWithPaypal", "Paypal")"
+                           style="background: green; color:white; padding:13px 14px;border:none; margin:1px; border-radius:6px">Paypal</a>
+                        <a href="@Url.Action("PaymentWithMomo", "Momo")"
+                           style="background: green; color:white; padding:13px 14px;border:none; margin:1px; border-radius:6px">Momo</a>
                     </td>
                 </tr>
 

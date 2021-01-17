@@ -154,6 +154,7 @@
     <Compile Include="Controllers\Api\PublishersController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\MomoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeScreenController.cs" />
     <Compile Include="Controllers\PaypalController.cs" />
@@ -163,7 +164,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="helper\Configuration.cs" />
+    <Compile Include="helper\GMailer.cs" />
     <Compile Include="helper\Logger.cs" />
+    <Compile Include="helper\MoMoSecurity.cs" />
+    <Compile Include="helper\PaymentRequest.cs" />
     <Compile Include="Models\bookContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

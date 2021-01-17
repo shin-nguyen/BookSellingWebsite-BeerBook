@@ -1,4 +1,5 @@
 ﻿using Book.helper;
+using Book.Models;
 using PayPal.Api;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Book.Controllers
     public class PaypalController : Controller
     {
         private Payment payment;
+        double exchange_rate = 23000;
 
         // GET: Paypal
         public ActionResult Index()
@@ -75,23 +77,41 @@ namespace Book.Controllers
                 Logger.Log("Error" + ex.Message);
                 //return View("FailureView");
             }
-            return View("SuccessView");
+            return  RedirectToAction("CreateAnOrder", "ShoppingCart", new { id = 1 });
         }
 
         private Payment CreatePayment(APIContext apiContext, string redirectUrl)
         {
+            dbbookEntities _db = new dbbookEntities();
+            int userid = Convert.ToInt32(Session["user_id"]);
+            List<tbl_cart> cart = _db.tbl_cart.Where(x => x.cart_fk_cusid == userid).ToList();
+            double cart_total = 0;
+            foreach (var item in cart)
+            {
+                double tmp = Convert.ToDouble(Convert.ToDouble(item.tbl_book.book_price) * Convert.ToDouble(item.cart_book_amount));
+                cart_total += tmp;
+            }
+
             var itemList = new ItemList() { items = new List<Item>() };
+
             //Các giá trị bao gồm danh sách sản phẩm, thông tin đơn hàng
             //Sẽ được thay đổi bằng hành vi thao tác mua hàng trên website
-            itemList.items.Add(new Item()
+            foreach (var item in cart)
             {
-                //Thông tin đơn hàng
-                name = "Item Name",
-                currency = "USD",
-                price = "5",
-                quantity = "1",
-                sku = "sku"
-            });
+                var item_name = item.tbl_book.book_name;
+                var item_quantity = item.cart_book_amount.ToString();
+                var item_price = Math.Round(Convert.ToDouble(item.tbl_book.book_price) / exchange_rate, 2).ToString();
+                itemList.items.Add(new Item()
+                {
+                    //Thông tin đơn hàng
+                    name = item_name,
+                    currency = "USD",
+                    price = item_price,
+                    quantity = item_quantity,
+                    sku = "sku"
+                });
+            }
+
             //Hình thức thanh toán qua paypal
             var payer = new Payer() { payment_method = "paypal" };
             // Configure Redirect Urls here with RedirectUrls object
@@ -101,17 +121,19 @@ namespace Book.Controllers
                 return_url = redirectUrl
             };
             //các thông tin trong đơn hàng
+            var subtotal = Math.Round(cart_total / exchange_rate, 2).ToString();
             var details = new Details()
             {
                 tax = "1",
                 shipping = "1",
-                subtotal = "5"
+                subtotal = subtotal
             };
             //Đơn vị tiền tệ và tổng đơn hàng cần thanh toán
+            var total = (Convert.ToDouble(details.subtotal) + Convert.ToDouble(details.tax) + Convert.ToDouble(details.shipping)).ToString();
             var amount = new Amount()
             {
                 currency = "USD",
-                total = "7", // Total must be equal to sum of shipping, tax and subtotal.
+                total = total, // Total must be equal to sum of shipping, tax and subtotal.
                 details = details
             };
             var transactionList = new List<Transaction>();

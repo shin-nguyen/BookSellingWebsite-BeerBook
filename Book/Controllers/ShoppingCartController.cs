@@ -1,4 +1,5 @@
-﻿using Book.Models;
+﻿using Book.helper;
+using Book.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -146,6 +147,20 @@ namespace Book.Controllers
             }
 
             //int noOfRowEffected = this._db.Database.ExecuteSqlCommand("Insert into tbl_order(order_fk_cusid) Values(" + customerID + ")");
+
+            try
+            {
+                GMailer gm = new GMailer();
+                tbl_customer cus = _db.tbl_customer.Where(x => x.cus_id == customerID).SingleOrDefault();
+                string body = "Dear " + cus.cus_name + " !" + "\n" +
+                                "Thanks for your interest in us. You have successfully ordered. Please follow your mail to track order status." + "\n" +
+                                "Wish you have a great experience! ";
+                gm.SendMail(cus.cus_name, "Thanks for order!", body);
+            }
+            catch
+            {
+
+            }
 
             return RedirectToAction("RemoveAllCart", "ShoppingCart");
         }
