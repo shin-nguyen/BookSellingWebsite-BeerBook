@@ -11,6 +11,10 @@ namespace Book.Controllers
         // GET: Ship
         public ActionResult Index()
         {
+            if (Session["ship_id"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
     }

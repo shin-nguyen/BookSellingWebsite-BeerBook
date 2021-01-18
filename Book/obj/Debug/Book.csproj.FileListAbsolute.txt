@@ -983,3 +983,5 @@ C:\Users\84364\Desktop\b3\BookSellingWebsite-BeerBook\Book\obj\Debug\Book.csproj
 C:\Users\84364\Desktop\b3\BookSellingWebsite-BeerBook\Book\obj\Debug\Book.csproj.CopyComplete
 C:\Users\84364\Desktop\b3\BookSellingWebsite-BeerBook\Book\obj\Debug\Book.dll
 C:\Users\84364\Desktop\b3\BookSellingWebsite-BeerBook\Book\obj\Debug\Book.pdb
+C:\Users\84364\Desktop\b2\BookSellingWebsite-BeerBook\Book\bin\PayPal.dll
+C:\Users\84364\Desktop\b2\BookSellingWebsite-BeerBook\Book\bin\PayPal.xml

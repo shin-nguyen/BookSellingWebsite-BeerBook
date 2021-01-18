@@ -150,13 +150,13 @@
     <Compile Include="Controllers\Api\AvatarOfProductController.cs" />
     <Compile Include="Controllers\Api\BookForSellerController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
-    <Compile Include="Controllers\Api\OrdersController.cs" />
     <Compile Include="Controllers\Api\PublishersController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\MomoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeScreenController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PaypalController.cs" />
     <Compile Include="Controllers\ShipController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -191,8 +191,6 @@
     <Compile Include="Models\DTO\BookDto.cs" />
     <Compile Include="Models\DTO\BookForSellerDto.cs" />
     <Compile Include="Models\DTO\CategoryDto.cs" />
-    <Compile Include="Models\DTO\OrderDto.cs" />
-    <Compile Include="Models\DTO\ProductsOfOrderDto.cs" />
     <Compile Include="Models\DTO\PublisherDto.cs" />
     <Compile Include="Models\RegisterClass.cs" />
     <Compile Include="Models\tbl_account.cs">
@@ -649,6 +647,13 @@
     <Content Include="Views\Paypal\SuccessView.cshtml" />
     <Content Include="Views\Admin\OrderManagement.cshtml" />
     <Content Include="Views\HomeScreen\Details.cshtml" />
+    <Content Include="Views\Order\OrderOfCus.cshtml" />
+    <Content Include="Views\Order\OrderDetail.cshtml" />
+    <Content Include="Views\Shared\_LayoutShip.cshtml" />
+    <Content Include="Views\Shared\_ShipInfo.cshtml" />
+    <Content Include="Views\Order\OrderOfShip.cshtml" />
+    <Content Include="Views\Order\OrderDetail1.cshtml" />
+    <Content Include="Views\Order\OrderDetail2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

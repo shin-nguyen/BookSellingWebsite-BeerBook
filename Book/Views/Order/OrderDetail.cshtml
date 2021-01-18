@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Book.Models.tbl_oderdetail>
+@using Book.Models
+@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Order In @Model.FirstOrDefault().tbl_order.order_time</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Book:
+        </th>
+        <th>
+            Amount:
+        </th>
+        <th>
+            Unit Price:
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_book.book_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.od_book_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_book.book_price)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @{
+        int total = 0;
+        foreach (var i in Model)
+        {
+            total += (int)i.tbl_book.book_price;
+        }
+
+        <b>Total Bill: @total d</b>
+        <br />
+        @Html.ActionLink("Back to List", "OrderOfCus")
+    }
+</div>
+

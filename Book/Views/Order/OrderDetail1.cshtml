@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Book.Models.tbl_oderdetail>
+@using Book.Models
+@{
+    ViewBag.Title = "OrderDetail1";
+    Layout = "~/Views/Shared/_LayoutShip.cshtml";
+}
+
+<h3><i>Order In:</i> @Model.FirstOrDefault().tbl_order.order_time</h3>
+<h3><i>Customer:</i> @Model.FirstOrDefault().tbl_order.tbl_customer.cus_name - Phone: @Model.FirstOrDefault().tbl_order.tbl_customer.cus_phone</h3>
+<h3><i>Address:</i> @Model.FirstOrDefault().tbl_order.order_address</h3>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Book:
+        </th>
+        <th>
+            Amount:
+        </th>
+        <th>
+            Unit Price:
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_book.book_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.od_book_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_book.book_price)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @{
+        if (Model.FirstOrDefault().tbl_order.order_isPaid == true)
+        {
+            <h3>Total Bill: 0 d</h3>
+        }
+        else
+        {
+            int total = 0;
+            foreach (var i in Model)
+            {
+                total += (int)i.tbl_book.book_price;
+            }
+            <h3>Total Bill: @total d</h3>
+        }
+    }
+    <br />
+    @Html.ActionLink("Back to List", "OrderOfShip")
+</div>

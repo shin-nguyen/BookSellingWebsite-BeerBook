@@ -73,7 +73,10 @@ namespace Book.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            return View();
+
+            List<tbl_order> ods = this._context.tbl_order.OrderBy(x => x.order_stt_fk).ToList();
+
+            return View(ods);
         }
     }
 }

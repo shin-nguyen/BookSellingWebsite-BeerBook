@@ -15,27 +15,31 @@
             <div style="width:100%; height:900px; background-color:#d36e25" class="container list-group">
 
                 <div class="list-group-item">
-                    @Html.ActionLink("Index", "Index", "Admin")
+                    <a class="btn btn-warning" href="@Url.Action("Index","Admin")">Index</a>
                 </div>
 
                 <div class="list-group-item">
-                    @Html.ActionLink("Category", "CategoryManagement", "Admin")
+                    <a class="btn btn-warning" href="@Url.Action("CategoryManagement","Admin")">Category</a>
                 </div>
 
                 <div class="list-group-item">
-                    @Html.ActionLink("Publisher", "PublisherManagement", "Admin")
+                    <a class="btn btn-warning" href="@Url.Action("PublisherManagement","Admin")">Publisher</a>
                 </div>
 
                 <div class="list-group-item">
-                    @Html.ActionLink("Author", "AuthorManagement", "Admin")
+                    <a class="btn btn-warning" href="@Url.Action("AuthorManagement","Admin")">Author</a>
                 </div>
 
                 <div class="list-group-item">
-                    @Html.ActionLink("Book", "BookManagement", "Admin")
+                    <a class="btn btn-warning" href="@Url.Action("BookManagement","Admin")">Book</a>
                 </div>
 
                 <div class="list-group-item">
-                    @Html.ActionLink("Order", "OrderManagement", "Admin")
+                    <a class="btn btn-warning" href="@Url.Action("OrderManagement","Admin")">Order</a>
+                </div>
+
+                <div class="list-group-item">
+                    <a class="btn btn-default" href="@Url.Action("Logout","Account")">Log out</a>
                 </div>
 
             </div>
@@ -47,8 +51,6 @@
             <div class="admin" style="border:2px dashed #cecaca; border-radius: 10px; margin-top: 3%;">
 
                 @{ Html.RenderPartial("_AdminInfo");}
-
-                @Html.ActionLink("Logout", "Logout", "Account")
 
             </div>
 

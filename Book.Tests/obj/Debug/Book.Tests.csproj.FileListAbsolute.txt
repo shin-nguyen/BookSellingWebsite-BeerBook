@@ -266,3 +266,5 @@ C:\Users\84364\Desktop\b3\BookSellingWebsite-BeerBook\Book.Tests\obj\Debug\Book.
 C:\Users\84364\Desktop\b3\BookSellingWebsite-BeerBook\Book.Tests\obj\Debug\Book.Tests.csproj.CopyComplete
 C:\Users\84364\Desktop\b3\BookSellingWebsite-BeerBook\Book.Tests\obj\Debug\Book.Tests.dll
 C:\Users\84364\Desktop\b3\BookSellingWebsite-BeerBook\Book.Tests\obj\Debug\Book.Tests.pdb
+C:\Users\84364\Desktop\b2\BookSellingWebsite-BeerBook\Book.Tests\bin\Debug\PayPal.dll
+C:\Users\84364\Desktop\b2\BookSellingWebsite-BeerBook\Book.Tests\bin\Debug\PayPal.xml

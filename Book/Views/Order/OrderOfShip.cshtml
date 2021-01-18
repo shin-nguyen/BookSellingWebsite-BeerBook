@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Book.Models.tbl_order>
+@using Book.Models
+@{
+    ViewBag.Title = "OrderOfShip";
+    Layout = "~/Views/Shared/_LayoutShip.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Time:
+        </th>
+        <th>
+            Total Bill:
+        </th>
+        <th>
+            Customer:
+        </th>
+        <th>
+            Phone:
+        </th>
+        <th>
+            Address:
+        </th>
+        <th>
+            Status:
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.order_time)
+        </td>
+        <td>
+            @{
+                if (item.order_isPaid == true)
+                {
+
+                    <p>0 đ</p>
+                }
+                else
+                {
+                    dbbookEntities _db = new dbbookEntities();
+                    List<tbl_oderdetail> ods = _db.tbl_oderdetail.Where(x => x.od_fk_orderid == item.order_id).ToList();
+                    int total = 0;
+                    foreach (var i in ods)
+                    {
+                        total += (int)i.tbl_book.book_price;
+                    }
+                    <p>@total đ</p>
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_customer.cus_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_customer.cus_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.order_address)
+        </td>
+        <td>
+            @if (item.order_stt_fk == 2)
+            {
+            <b style="color:#00ff21">@Html.DisplayFor(modelItem => item.tbl_status.stt_name)</b>
+            }
+            else if (item.order_stt_fk == 3)
+            {
+            <b style="color:green">@Html.DisplayFor(modelItem => item.tbl_status.stt_name)</b>
+            }
+        </td>
+        <td>
+            <a class="btn btn-default btn-sm" href="@Url.Action("OrderDetail1", new { id=item.order_id })">Detail</a>
+        </td>
+        <td>
+            @if (item.order_stt_fk == 2) { <a class="btn btn-warning btn-sm" href="@Url.Action("OrderDone", new { id=item.order_id })">Done</a> }
+        </td>
+    </tr>
+}
+
+</table>
