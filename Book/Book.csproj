@@ -654,6 +654,7 @@
     <Content Include="Views\Order\OrderOfShip.cshtml" />
     <Content Include="Views\Order\OrderDetail1.cshtml" />
     <Content Include="Views\Order\OrderDetail2.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

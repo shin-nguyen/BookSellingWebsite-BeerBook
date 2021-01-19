@@ -1,0 +1,143 @@
+﻿
+@model IEnumerable<Book.Models.tbl_cart>
+@using Book.Models
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    tbl_customer cus= (tbl_customer)Session["cus"];
+}
+
+@if (Model.Count() == 0 || Model == null)
+{
+    <h2>No products in the shopping cart</h2>
+}
+else
+{
+
+    <div class="row">
+        <div class="col-lg-6 col-12">
+            <h3>Billing Details</h3>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="checkout-form-list">
+                        <label>Name</label>
+                        <input placeholder="" type="text" value="@cus.cus_name" disabled>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="checkout-form-list">
+                        <label>Address</label>
+                        <input placeholder="" type="text" value="@cus.cus_address" disabled>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="checkout-form-list">
+                        <label>Email Address</label>
+                        <input placeholder="" type="email" value="@cus.cus_mail" disabled>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="checkout-form-list">
+                        <label>Phone</label>
+                        <input type="text" value="@cus.cus_phone" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="your-order">
+                <h3>Your order</h3>
+                <div class="your-order-table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="cart-product-name">Product</th>
+                                <th class="cart-product-total">Total</th>
+                            </tr>
+                        </thead>
+                        @{
+                            double t = 0;
+                        }
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                double total = Convert.ToDouble(Convert.ToDouble(item.tbl_book.book_price) * Convert.ToDouble(item.cart_book_amount));
+                                t += total;
+                                <tr class="cart_item">
+                                    <td class="cart-product-name" style="float:left; margin-left: 35%">@item.tbl_book.book_name<strong class="product-quantity">  X @item.cart_book_amount</strong></td>
+                                    @{ 
+                                        double itemtotal = Convert.ToDouble(Convert.ToDouble(item.tbl_book.book_price) * Convert.ToDouble(item.cart_book_amount));
+                                    }
+                                    <td class="cart-product-total"><span class="amount">@itemtotal .VNĐ</span></td>
+                                </tr>
+                                        }
+                        </tbody>
+                        <tfoot>
+                            <tr class="cart-subtotal">
+                                <th>Cart Subtotal</th>
+                                <td><span class="amount">@t .VNĐ</span></td>
+                            </tr>
+                            <tr class="order-total">
+                                <th>Order Total</th>
+                                <td><strong><span class="amount">@t .VNĐ</span></strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="payment-method">
+                    <div class="payment-accordion">
+                        <div class="order-button-payment">
+                            <a href="@Url.Action("CreateAnOrder", "ShoppingCart", new { @id = 0})" class="btn btn-info"
+                               style="background: green; color:white; padding:13px 14px;border:none; margin:5px; border-radius:6px; width:100%">Order</a>
+                            <br />
+                            <a href="@Url.Action("PaymentWithPaypal", "Paypal")" class="btn btn-info"
+                               style="background: green; color:white; padding:13px 14px;border:none; margin:5px; border-radius:6px; width:100%">Paypal</a>
+                            <br />
+                            <a href="@Url.Action("PaymentWithMomo", "Momo")" class="btn btn-info"
+                               style="background: green; color:white; padding:13px 14px;border:none; margin:5px; border-radius:6px; width:100%">Momo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="different-address">
+        @using (Html.BeginForm("CreateOrderWithDifferentAddress","ShoppingCart"))
+        {
+            @Html.ValidationSummary(true)
+            <div class="ship-different-title">
+                <h3>
+                    <label>Ship to a different address?</label>
+                    <input id="ship-box" type="checkbox">
+                </h3>
+            </div>
+            <div id="ship-box-info" class="row">
+                <div class="col-md-12">
+                    <div class="checkout-form-list">
+                        <label>Address <span class="required">*</span></label>
+                        <input placeholder="" type="text" name="address">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="checkout-form-list">
+                        <label>District <span class="required">*</span></label>
+                        <input placeholder="" type="text" name="district">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="checkout-form-list">
+                        <label>City</label>
+                        <input placeholder="" type="text" name="city">
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-warning" value="Order" />
+            </div>
+        }
+    </div>
+}
+
