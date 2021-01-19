@@ -127,9 +127,9 @@ namespace Book.Controllers
             try
             {
                 GMailer gm = new GMailer();
-                string body = "Dear " + r.Name + " !"
-                                + "\n" + "Thanks for your interest in us. Your account has been successfully activated, you can use it to shop now. "
-                                + "\n" + "Wish you have a great experience! ";
+                string body =   "Dear " + r.Name + " !"
+                                + "\nThanks for your interest in us. Your account has been successfully activated, you can use it to shop now. "
+                                + "\nWish you have a great experience! ";
                 gm.SendMail(r.Mail, "Wellcom to BeerBook!", body);
             }
             catch

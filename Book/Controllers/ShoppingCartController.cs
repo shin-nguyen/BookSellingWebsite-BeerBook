@@ -152,10 +152,10 @@ namespace Book.Controllers
             {
                 GMailer gm = new GMailer();
                 tbl_customer cus = _db.tbl_customer.Where(x => x.cus_id == customerID).SingleOrDefault();
-                string body = "Dear " + cus.cus_name + " !" + "\n" +
-                                "Thanks for your interest in us. You have successfully ordered. Please follow your mail to track order status." + "\n" +
-                                "Wish you have a great experience! ";
-                gm.SendMail(cus.cus_name, "Thanks for order!", body);
+                string body =   "Dear " + cus.cus_name + " !" +
+                                "\nThanks for your interest in us. You have successfully ordered. Please follow your mail to track order status." +
+                                "\nWish you have a great experience! ";
+                gm.SendMail(cus.cus_mail, "Thanks for order!", body);
             }
             catch
             {

@@ -33,8 +33,8 @@ namespace Book.Controllers
             string accessKey = "1c2mi3RoQ9EY8BUC";
             string serectkey = "zW2t9QyRqZfhjOACxytP0cwzvvxUAe9R";
             string orderInfo = "Info";
-            string returnUrl = "https://momo.vn/return";
-            string notifyurl = "https://momo.vn/notify";
+            string returnUrl = "https://localhost:44397/ShoppingCart/CreateAnOrder/1";
+            string notifyurl = "https://localhost:44397/ShoppingCart/CreateAnOrder/1";
 
             string amount = cart_total.ToString();
             string orderid = Guid.NewGuid().ToString();

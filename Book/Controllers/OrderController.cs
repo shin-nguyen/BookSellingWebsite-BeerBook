@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Book.helper;
 using Book.Models;
 
 namespace Book.Controllers
@@ -81,13 +82,32 @@ namespace Book.Controllers
         }
         public ActionResult OrderDone(int? id)
         {
+            
             if (id == null)
             {
                 return RedirectToAction("Index", "Ship");
             }
             tbl_order od = this._db.tbl_order.Where(x => x.order_id == id).SingleOrDefault();
+
+            int customerID = (int)od.order_fk_cusid;
+
             od.order_stt_fk = 3;
             od.order_isPaid = true;
+
+            try
+            {
+                GMailer gm = new GMailer();
+                tbl_customer cus = _db.tbl_customer.Where(x => x.cus_id == customerID).SingleOrDefault();
+                string body = "Dear " + cus.cus_name + " !" +
+                                "\nThanks for your interest in us. Your order has been successfully delivered." +
+                                "\nWish you have a great experience! ";
+                gm.SendMail(cus.cus_mail, "Thanks for order!", body);
+            }
+            catch
+            {
+
+            }
+
             this._db.SaveChanges();
 
             return RedirectToAction("OrderOfShip");
@@ -114,8 +134,25 @@ namespace Book.Controllers
                 return RedirectToAction("Index", "Admin");
             }
             tbl_order od = this._db.tbl_order.Where(x => x.order_id == id).SingleOrDefault();
+
+            int customerID = (int)od.order_fk_cusid;
+
             od.order_stt_fk = 2;
             this._db.SaveChanges();
+
+            try
+            {
+                GMailer gm = new GMailer();
+                tbl_customer cus = _db.tbl_customer.Where(x => x.cus_id == customerID).SingleOrDefault();
+                string body = "Dear " + cus.cus_name + " !" +
+                                "\nThanks for your interest in us. Your order has been confirmed and delivered to a carrier. We will deliver the goods as soon as possible."+
+                                "\nWish you have a great experience! ";
+                gm.SendMail(cus.cus_mail, "Thanks for order!", body);
+            }
+            catch
+            {
+
+            }
 
             return RedirectToAction("OrderManagement","Admin");
         }
