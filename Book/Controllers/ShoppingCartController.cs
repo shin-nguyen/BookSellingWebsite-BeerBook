@@ -51,7 +51,7 @@ namespace Book.Controllers
                 _db.SaveChanges();
             }
 
-            return RedirectToAction("Index", "HomeScreen");
+            return RedirectToAction("Store", "HomeScreen");
         }
         // trang gio hang
         public ActionResult ShowToCart()
