@@ -41,7 +41,7 @@
         int total = 0;
         foreach (var i in Model)
         {
-            total += (int)i.tbl_book.book_price;
+            total += (int)i.tbl_book.book_price * (int)i.od_book_amount;
         }
 
         <b>Total Bill: @total d</b>

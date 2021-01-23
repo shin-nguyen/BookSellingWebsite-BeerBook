@@ -69,7 +69,7 @@
                         int total = 0;
                         foreach (var i in ods)
                         {
-                            total += (int)i.tbl_book.book_price;
+                            total += (int)i.tbl_book.book_price*(int)i.od_book_amount;
                         }
                         <p>@total đ</p>
                     }
